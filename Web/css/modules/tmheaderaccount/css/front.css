@@ -1,0 +1,90 @@
+#header-login {
+  float: right;
+  margin-top: -15px;
+  padding: 4px;
+  position: relative; }
+  #header-login .header_user_info {
+    float: right; }
+    #header-login .header_user_info a {
+      color: #007ee1;
+      cursor: pointer;
+      font: 23px/18px "Roboto", sans-serif;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      #header-login .header_user_info a:hover, #header-login .header_user_info a.active {
+        color: #000; }
+    #header-login .header_user_info.current a:after {
+      content: "\f0d7";
+      font-family: "FontAwesome";
+      font-size: 11px;
+      line-height: 11px;
+      padding-left: 6px; }
+    #header-login .header_user_info.current.active a:after {
+      content: "\f0d8";
+      color: #000; }
+  #header-login .logout {
+    overflow: hidden;
+    margin-bottom: 0; }
+  @media (max-width: 991px) {
+    #header-login {
+      display: inline-block;
+      float: none;
+      margin-top: 0;
+      padding: 0 4px; }
+      #header-login .header_user_info {
+        float: none; } }
+
+#header-login-content,  #header-library-content{
+  background: #629ffa;
+  color: #fff;
+  display: none;
+  margin: 0;
+  padding: 15px;
+  position: absolute;
+  right: 0;
+  top: 37px;
+  width: 270px;
+  z-index: 2; }
+  @media (max-width: 767px) {
+    #header-login-content {
+      right: auto;
+      left: -30px; } }
+  #header-login-content .create:focus,
+  #header-login-content .create:hover {
+    color: #fff; }
+  #header-login-content label {
+    color: #fff; }
+  #header-login-content li {
+    margin: 0;
+    padding: 0; }
+    #header-login-content li ul {
+      margin: 0 0 10px 0; }
+      #header-login-content li ul li {
+        display: block;
+        border-top: 1px solid #515151;
+        line-height: 35px; }
+        #header-login-content li ul li:first-child {
+          border: none; }
+        #header-login-content li ul li a {
+          color: #fff;
+          padding: 0 10px 0 10px;
+          display: block; }
+          #header-login-content li ul li a:hover {
+            background: #007ee1;
+            color: #fff; }
+          #header-login-content li ul li a i {
+            display: none; }
+  #header-login-content .logout .btn.btn-default,
+  #header-login-content .submit .btn.btn-default {
+    background: #fff;
+    border-color: #fff;
+    color: #000; }
+    #header-login-content .logout .btn.btn-default:hover,
+    #header-login-content .submit .btn.btn-default:hover {
+      background: #007ee1;
+      border-color: #007ee1;
+      color: #fff; }
+
+#create_header_account_error {
+  padding: 8px; }

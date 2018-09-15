@@ -1,0 +1,1834 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BrandsMktgBooksModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BookChapterFiles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="chapterId" Type="int" />
+          <Property Name="title" Type="nvarchar" MaxLength="300" />
+          <Property Name="thumb" Type="nvarchar(max)" />
+          <Property Name="InteractiveFile" Type="nvarchar(max)" />
+          <Property Name="OrderIndex" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="BookGames">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="levelId" Type="int" />
+          <Property Name="Folder" Type="nvarchar(max)" />
+          <Property Name="Thumb" Type="nvarchar(max)" />
+          <Property Name="categoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="BookInteractiveChapters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookId" Type="int" />
+          <Property Name="title" Type="nvarchar" MaxLength="300" />
+          <Property Name="OrderIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="artitle" Type="nvarchar(max)" />
+          <Property Name="pdf" Type="nvarchar(max)" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="artext" Type="nvarchar(max)" />
+          <Property Name="thumb" Type="nvarchar(max)" />
+          <Property Name="video" Type="nvarchar(max)" />
+          <Property Name="isAvailable" Type="bit" />
+          <Property Name="background" Type="nvarchar(max)" />
+          <Property Name="SignLanguageVideo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="BookSlides">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookId" Type="int" />
+          <Property Name="img" Type="nvarchar(max)" />
+          <Property Name="OrderIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="200" />
+          <Property Name="OrderIndex" Type="int" />
+          <Property Name="artitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="ForGame" Type="bit" />
+        </EntityType>
+        <EntityType Name="cms_groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="cms_permissions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="cms_policies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="permissionId" Type="int" />
+          <Property Name="groupId" Type="int" />
+          <Property Name="event_permitted" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="cms_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar(max)" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="groupId" Type="int" />
+          <Property Name="date_login" Type="datetime" />
+          <Property Name="isOnline" Type="bit" />
+          <Property Name="img" Type="nvarchar(max)" />
+          <Property Name="status" Type="int" />
+          <Property Name="firstname" Type="nvarchar(max)" />
+          <Property Name="lastname" Type="nvarchar(max)" />
+          <Property Name="phone" Type="nvarchar(max)" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="email" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AboutUs" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="AddressLine" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Fax" Type="nvarchar(max)" />
+          <Property Name="longitude" Type="nvarchar" MaxLength="200" />
+          <Property Name="latitude" Type="nvarchar" MaxLength="200" />
+          <Property Name="Logo" Type="nvarchar(max)" />
+          <Property Name="SmtpServer" Type="nvarchar" MaxLength="500" />
+          <Property Name="SmtpPort" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsSSL" Type="bit" />
+          <Property Name="SystemEmail" Type="nvarchar" MaxLength="500" />
+          <Property Name="SystemEmailPassword" Type="nvarchar" MaxLength="500" />
+          <Property Name="InfoEmail" Type="nvarchar" MaxLength="500" />
+          <Property Name="keywords" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="SmartLearningVideo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="HomeBanner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="thumb" Type="nvarchar(max)" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="OrderIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="ItemsCategories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookId" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="ItemsLevels">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookId" Type="int" />
+          <Property Name="LevelId" Type="int" />
+        </EntityType>
+        <EntityType Name="Levels">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="artitle" Type="nvarchar(max)" />
+          <Property Name="status" Type="int" />
+          <Property Name="OrderIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="PressRoom">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="DateIn" Type="datetime" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="img" Type="nvarchar(max)" />
+          <Property Name="link" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoryId" Type="int" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="type" Type="nvarchar(max)" />
+          <Property Name="audio" Type="nvarchar(max)" />
+          <Property Name="correctAnswer" Type="nvarchar(max)" />
+          <Property Name="AnswersLayout" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="QuestionsAnswers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="questionId" Type="int" />
+          <Property Name="audio" Type="nvarchar(max)" />
+          <Property Name="x" Type="nvarchar(max)" />
+          <Property Name="y" Type="nvarchar(max)" />
+          <Property Name="width" Type="nvarchar(max)" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="type" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="QuestionsCategories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="bookId" Type="int" />
+        </EntityType>
+        <EntityType Name="SchoolBooks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="schoolId" Type="int" />
+          <Property Name="bookId" Type="int" />
+        </EntityType>
+        <EntityType Name="SchoolGames">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="schoolId" Type="int" />
+          <Property Name="GameId" Type="int" />
+        </EntityType>
+        <EntityType Name="Schools">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="artitle" Type="nvarchar(max)" />
+          <Property Name="thumb" Type="nvarchar(max)" />
+          <Property Name="showGame" Type="bit" />
+        </EntityType>
+        <EntityType Name="StudentLibrary">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookId" Type="int" />
+          <Property Name="studentId" Type="int" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="AccessCode" Type="nvarchar(max)" />
+          <Property Name="schoolId" Type="int" />
+          <Property Name="levelId" Type="int" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="MacAdr" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="StudentScore">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentId" Type="int" />
+          <Property Name="score" Type="int" />
+          <Property Name="bookId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_BookChapterFiles_BookInteractiveChapters">
+          <End Role="BookInteractiveChapters" Type="Self.BookInteractiveChapters" Multiplicity="0..1" />
+          <End Role="BookChapterFiles" Type="Self.BookChapterFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookInteractiveChapters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookChapterFiles">
+              <PropertyRef Name="chapterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookGames_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="BookGames" Type="Self.BookGames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookGames">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookGames_Levels">
+          <End Role="Levels" Type="Self.Levels" Multiplicity="0..1" />
+          <End Role="BookGames" Type="Self.BookGames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Levels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookGames">
+              <PropertyRef Name="levelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookInteractiveChapters_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
+          <End Role="BookInteractiveChapters" Type="Self.BookInteractiveChapters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookInteractiveChapters">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookSlides_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
+          <End Role="BookSlides" Type="Self.BookSlides" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookSlides">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cms_policies_cms_groups">
+          <End Role="cms_groups" Type="Self.cms_groups" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cms_policies" Type="Self.cms_policies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cms_policies">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cms_policies_cms_permissions">
+          <End Role="cms_permissions" Type="Self.cms_permissions" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cms_policies" Type="Self.cms_policies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_permissions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cms_policies">
+              <PropertyRef Name="permissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cms_user_cms_groups">
+          <End Role="cms_groups" Type="Self.cms_groups" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cms_user" Type="Self.cms_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cms_user">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsCategories_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ItemsCategories" Type="Self.ItemsCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemsCategories">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsCategories_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ItemsCategories" Type="Self.ItemsCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemsCategories">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsLevels_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ItemsLevels" Type="Self.ItemsLevels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemsLevels">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsLevels_Levels">
+          <End Role="Levels" Type="Self.Levels" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ItemsLevels" Type="Self.ItemsLevels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Levels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemsLevels">
+              <PropertyRef Name="LevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_QuestionsCategories">
+          <End Role="QuestionsCategories" Type="Self.QuestionsCategories" Multiplicity="0..1" />
+          <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionsCategories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsAnswers_Questions">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
+          <End Role="QuestionsAnswers" Type="Self.QuestionsAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="QuestionsAnswers">
+              <PropertyRef Name="questionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsCategories_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
+          <End Role="QuestionsCategories" Type="Self.QuestionsCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="QuestionsCategories">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolBooks_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
+          <End Role="SchoolBooks" Type="Self.SchoolBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SchoolBooks">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolBooks_Schools">
+          <End Role="Schools" Type="Self.Schools" Multiplicity="0..1" />
+          <End Role="SchoolBooks" Type="Self.SchoolBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SchoolBooks">
+              <PropertyRef Name="schoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolGames_BookGames">
+          <End Role="BookGames" Type="Self.BookGames" Multiplicity="0..1" />
+          <End Role="SchoolGames" Type="Self.SchoolGames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookGames">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SchoolGames">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolGames_Schools">
+          <End Role="Schools" Type="Self.Schools" Multiplicity="0..1" />
+          <End Role="SchoolGames" Type="Self.SchoolGames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SchoolGames">
+              <PropertyRef Name="schoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentLibrary_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
+          <End Role="StudentLibrary" Type="Self.StudentLibrary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentLibrary">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentLibrary_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="StudentLibrary" Type="Self.StudentLibrary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentLibrary">
+              <PropertyRef Name="studentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Levels">
+          <End Role="Levels" Type="Self.Levels" Multiplicity="0..1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Levels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="levelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Schools">
+          <End Role="Schools" Type="Self.Schools" Multiplicity="0..1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="schoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentScore_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
+          <End Role="StudentScore" Type="Self.StudentScore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentScore">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentScore_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="StudentScore" Type="Self.StudentScore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentScore">
+              <PropertyRef Name="studentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BrandsMktgBooksModelStoreContainer">
+          <EntitySet Name="BookChapterFiles" EntityType="Self.BookChapterFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookGames" EntityType="Self.BookGames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookInteractiveChapters" EntityType="Self.BookInteractiveChapters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookSlides" EntityType="Self.BookSlides" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_groups" EntityType="Self.cms_groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_permissions" EntityType="Self.cms_permissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_policies" EntityType="Self.cms_policies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cms_user" EntityType="Self.cms_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Content" EntityType="Self.Content" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeBanner" EntityType="Self.HomeBanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemsCategories" EntityType="Self.ItemsCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemsLevels" EntityType="Self.ItemsLevels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Levels" EntityType="Self.Levels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PressRoom" EntityType="Self.PressRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionsAnswers" EntityType="Self.QuestionsAnswers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionsCategories" EntityType="Self.QuestionsCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SchoolBooks" EntityType="Self.SchoolBooks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SchoolGames" EntityType="Self.SchoolGames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schools" EntityType="Self.Schools" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentLibrary" EntityType="Self.StudentLibrary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentScore" EntityType="Self.StudentScore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BookChapterFiles_BookInteractiveChapters" Association="Self.FK_BookChapterFiles_BookInteractiveChapters">
+            <End Role="BookInteractiveChapters" EntitySet="BookInteractiveChapters" />
+            <End Role="BookChapterFiles" EntitySet="BookChapterFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookGames_Categories" Association="Self.FK_BookGames_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="BookGames" EntitySet="BookGames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookGames_Levels" Association="Self.FK_BookGames_Levels">
+            <End Role="Levels" EntitySet="Levels" />
+            <End Role="BookGames" EntitySet="BookGames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookInteractiveChapters_Books" Association="Self.FK_BookInteractiveChapters_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="BookInteractiveChapters" EntitySet="BookInteractiveChapters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookSlides_Books" Association="Self.FK_BookSlides_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="BookSlides" EntitySet="BookSlides" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cms_policies_cms_groups" Association="Self.FK_cms_policies_cms_groups">
+            <End Role="cms_groups" EntitySet="cms_groups" />
+            <End Role="cms_policies" EntitySet="cms_policies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cms_policies_cms_permissions" Association="Self.FK_cms_policies_cms_permissions">
+            <End Role="cms_permissions" EntitySet="cms_permissions" />
+            <End Role="cms_policies" EntitySet="cms_policies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cms_user_cms_groups" Association="Self.FK_cms_user_cms_groups">
+            <End Role="cms_groups" EntitySet="cms_groups" />
+            <End Role="cms_user" EntitySet="cms_user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsCategories_Books" Association="Self.FK_ItemsCategories_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="ItemsCategories" EntitySet="ItemsCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsCategories_Categories" Association="Self.FK_ItemsCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="ItemsCategories" EntitySet="ItemsCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsLevels_Books" Association="Self.FK_ItemsLevels_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="ItemsLevels" EntitySet="ItemsLevels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsLevels_Levels" Association="Self.FK_ItemsLevels_Levels">
+            <End Role="Levels" EntitySet="Levels" />
+            <End Role="ItemsLevels" EntitySet="ItemsLevels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_QuestionsCategories" Association="Self.FK_Questions_QuestionsCategories">
+            <End Role="QuestionsCategories" EntitySet="QuestionsCategories" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsAnswers_Questions" Association="Self.FK_QuestionsAnswers_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="QuestionsAnswers" EntitySet="QuestionsAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsCategories_Books" Association="Self.FK_QuestionsCategories_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="QuestionsCategories" EntitySet="QuestionsCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolBooks_Books" Association="Self.FK_SchoolBooks_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="SchoolBooks" EntitySet="SchoolBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolBooks_Schools" Association="Self.FK_SchoolBooks_Schools">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="SchoolBooks" EntitySet="SchoolBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolGames_BookGames" Association="Self.FK_SchoolGames_BookGames">
+            <End Role="BookGames" EntitySet="BookGames" />
+            <End Role="SchoolGames" EntitySet="SchoolGames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolGames_Schools" Association="Self.FK_SchoolGames_Schools">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="SchoolGames" EntitySet="SchoolGames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentLibrary_Books" Association="Self.FK_StudentLibrary_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="StudentLibrary" EntitySet="StudentLibrary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentLibrary_Students" Association="Self.FK_StudentLibrary_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentLibrary" EntitySet="StudentLibrary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Levels" Association="Self.FK_Students_Levels">
+            <End Role="Levels" EntitySet="Levels" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Schools" Association="Self.FK_Students_Schools">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentScore_Books" Association="Self.FK_StudentScore_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="StudentScore" EntitySet="StudentScore" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentScore_Students" Association="Self.FK_StudentScore_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentScore" EntitySet="StudentScore" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BrandsMktgBooksModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BrandsMktgBooksEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="BookGames" EntityType="BrandsMktgBooksModel.BookGame" />
+          <EntitySet Name="Books" EntityType="BrandsMktgBooksModel.Book" />
+          <EntitySet Name="BookSlides" EntityType="BrandsMktgBooksModel.BookSlide" />
+          <EntitySet Name="Categories" EntityType="BrandsMktgBooksModel.Category" />
+          <EntitySet Name="cms_groups" EntityType="BrandsMktgBooksModel.cms_groups" />
+          <EntitySet Name="cms_permissions" EntityType="BrandsMktgBooksModel.cms_permissions" />
+          <EntitySet Name="cms_policies" EntityType="BrandsMktgBooksModel.cms_policies" />
+          <EntitySet Name="cms_user" EntityType="BrandsMktgBooksModel.cms_user" />
+          <EntitySet Name="Contents" EntityType="BrandsMktgBooksModel.Content" />
+          <EntitySet Name="HomeBanners" EntityType="BrandsMktgBooksModel.HomeBanner" />
+          <EntitySet Name="ItemsCategories" EntityType="BrandsMktgBooksModel.ItemsCategory" />
+          <EntitySet Name="ItemsLevels" EntityType="BrandsMktgBooksModel.ItemsLevel" />
+          <EntitySet Name="Levels" EntityType="BrandsMktgBooksModel.Level" />
+          <EntitySet Name="PressRooms" EntityType="BrandsMktgBooksModel.PressRoom" />
+          <EntitySet Name="Questions" EntityType="BrandsMktgBooksModel.Question" />
+          <EntitySet Name="QuestionsAnswers" EntityType="BrandsMktgBooksModel.QuestionsAnswer" />
+          <EntitySet Name="QuestionsCategories" EntityType="BrandsMktgBooksModel.QuestionsCategory" />
+          <EntitySet Name="SchoolBooks" EntityType="BrandsMktgBooksModel.SchoolBook" />
+          <EntitySet Name="SchoolGames" EntityType="BrandsMktgBooksModel.SchoolGame" />
+          <EntitySet Name="Schools" EntityType="BrandsMktgBooksModel.School" />
+          <EntitySet Name="StudentLibraries" EntityType="BrandsMktgBooksModel.StudentLibrary" />
+          <EntitySet Name="Students" EntityType="BrandsMktgBooksModel.Student" />
+          <EntitySet Name="sysdiagrams" EntityType="BrandsMktgBooksModel.sysdiagram" />
+          <AssociationSet Name="FK_BookGames_Levels" Association="BrandsMktgBooksModel.FK_BookGames_Levels">
+            <End Role="Level" EntitySet="Levels" />
+            <End Role="BookGame" EntitySet="BookGames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolGames_BookGames" Association="BrandsMktgBooksModel.FK_SchoolGames_BookGames">
+            <End Role="BookGame" EntitySet="BookGames" />
+            <End Role="SchoolGame" EntitySet="SchoolGames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookSlides_Books" Association="BrandsMktgBooksModel.FK_BookSlides_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="BookSlide" EntitySet="BookSlides" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsCategories_Books" Association="BrandsMktgBooksModel.FK_ItemsCategories_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="ItemsCategory" EntitySet="ItemsCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsLevels_Books" Association="BrandsMktgBooksModel.FK_ItemsLevels_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="ItemsLevel" EntitySet="ItemsLevels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsCategories_Books" Association="BrandsMktgBooksModel.FK_QuestionsCategories_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="QuestionsCategory" EntitySet="QuestionsCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolBooks_Books" Association="BrandsMktgBooksModel.FK_SchoolBooks_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="SchoolBook" EntitySet="SchoolBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentLibrary_Books" Association="BrandsMktgBooksModel.FK_StudentLibrary_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="StudentLibrary" EntitySet="StudentLibraries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsCategories_Categories" Association="BrandsMktgBooksModel.FK_ItemsCategories_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="ItemsCategory" EntitySet="ItemsCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cms_policies_cms_groups" Association="BrandsMktgBooksModel.FK_cms_policies_cms_groups">
+            <End Role="cms_groups" EntitySet="cms_groups" />
+            <End Role="cms_policies" EntitySet="cms_policies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cms_user_cms_groups" Association="BrandsMktgBooksModel.FK_cms_user_cms_groups">
+            <End Role="cms_groups" EntitySet="cms_groups" />
+            <End Role="cms_user" EntitySet="cms_user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cms_policies_cms_permissions" Association="BrandsMktgBooksModel.FK_cms_policies_cms_permissions">
+            <End Role="cms_permissions" EntitySet="cms_permissions" />
+            <End Role="cms_policies" EntitySet="cms_policies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsLevels_Levels" Association="BrandsMktgBooksModel.FK_ItemsLevels_Levels">
+            <End Role="Level" EntitySet="Levels" />
+            <End Role="ItemsLevel" EntitySet="ItemsLevels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Levels" Association="BrandsMktgBooksModel.FK_Students_Levels">
+            <End Role="Level" EntitySet="Levels" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_QuestionsCategories" Association="BrandsMktgBooksModel.FK_Questions_QuestionsCategories">
+            <End Role="QuestionsCategory" EntitySet="QuestionsCategories" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsAnswers_Questions" Association="BrandsMktgBooksModel.FK_QuestionsAnswers_Questions">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="QuestionsAnswer" EntitySet="QuestionsAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolBooks_Schools" Association="BrandsMktgBooksModel.FK_SchoolBooks_Schools">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="SchoolBook" EntitySet="SchoolBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SchoolGames_Schools" Association="BrandsMktgBooksModel.FK_SchoolGames_Schools">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="SchoolGame" EntitySet="SchoolGames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Schools" Association="BrandsMktgBooksModel.FK_Students_Schools">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentLibrary_Students" Association="BrandsMktgBooksModel.FK_StudentLibrary_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentLibrary" EntitySet="StudentLibraries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookGames_Categories" Association="BrandsMktgBooksModel.FK_BookGames_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="BookGame" EntitySet="BookGames" />
+          </AssociationSet>
+          <EntitySet Name="StudentScores" EntityType="BrandsMktgBooksModel.StudentScore" />
+          <AssociationSet Name="FK_StudentScore_Books" Association="BrandsMktgBooksModel.FK_StudentScore_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="StudentScore" EntitySet="StudentScores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentScore_Students" Association="BrandsMktgBooksModel.FK_StudentScore_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentScore" EntitySet="StudentScores" />
+          </AssociationSet>
+          <EntitySet Name="BookChapterFiles" EntityType="BrandsMktgBooksModel.BookChapterFile" />
+          <EntitySet Name="BookInteractiveChapters" EntityType="BrandsMktgBooksModel.BookInteractiveChapter" />
+          <AssociationSet Name="FK_BookChapterFiles_BookInteractiveChapters" Association="BrandsMktgBooksModel.FK_BookChapterFiles_BookInteractiveChapters">
+            <End Role="BookInteractiveChapter" EntitySet="BookInteractiveChapters" />
+            <End Role="BookChapterFile" EntitySet="BookChapterFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookInteractiveChapters_Books" Association="BrandsMktgBooksModel.FK_BookInteractiveChapters_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="BookInteractiveChapter" EntitySet="BookInteractiveChapters" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BookGame">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="levelId" Type="Int32" />
+          <Property Name="Folder" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Thumb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Level" Relationship="BrandsMktgBooksModel.FK_BookGames_Levels" FromRole="BookGame" ToRole="Level" />
+          <NavigationProperty Name="SchoolGames" Relationship="BrandsMktgBooksModel.FK_SchoolGames_BookGames" FromRole="BookGame" ToRole="SchoolGame" />
+          <Property Name="categoryId" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="BrandsMktgBooksModel.FK_BookGames_Categories" FromRole="BookGame" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pdf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artext" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="thumb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isAvailable" Type="Boolean" />
+          <Property Name="background" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SignLanguageVideo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookSlides" Relationship="BrandsMktgBooksModel.FK_BookSlides_Books" FromRole="Book" ToRole="BookSlide" />
+          <NavigationProperty Name="ItemsCategories" Relationship="BrandsMktgBooksModel.FK_ItemsCategories_Books" FromRole="Book" ToRole="ItemsCategory" />
+          <NavigationProperty Name="ItemsLevels" Relationship="BrandsMktgBooksModel.FK_ItemsLevels_Books" FromRole="Book" ToRole="ItemsLevel" />
+          <NavigationProperty Name="QuestionsCategories" Relationship="BrandsMktgBooksModel.FK_QuestionsCategories_Books" FromRole="Book" ToRole="QuestionsCategory" />
+          <NavigationProperty Name="SchoolBooks" Relationship="BrandsMktgBooksModel.FK_SchoolBooks_Books" FromRole="Book" ToRole="SchoolBook" />
+          <NavigationProperty Name="StudentLibraries" Relationship="BrandsMktgBooksModel.FK_StudentLibrary_Books" FromRole="Book" ToRole="StudentLibrary" />
+          <NavigationProperty Name="StudentScores" Relationship="BrandsMktgBooksModel.FK_StudentScore_Books" FromRole="Book" ToRole="StudentScore" />
+          <NavigationProperty Name="BookInteractiveChapters" Relationship="BrandsMktgBooksModel.FK_BookInteractiveChapters_Books" FromRole="Book" ToRole="BookInteractiveChapter" />
+        </EntityType>
+        <EntityType Name="BookSlide">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookId" Type="Int32" />
+          <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderIndex" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="BrandsMktgBooksModel.FK_BookSlides_Books" FromRole="BookSlide" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="OrderIndex" Type="Int32" />
+          <Property Name="artitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ItemsCategories" Relationship="BrandsMktgBooksModel.FK_ItemsCategories_Categories" FromRole="Category" ToRole="ItemsCategory" />
+          <Property Name="ForGame" Type="Boolean" />
+          <NavigationProperty Name="BookGames" Relationship="BrandsMktgBooksModel.FK_BookGames_Categories" FromRole="Category" ToRole="BookGame" />
+        </EntityType>
+        <EntityType Name="cms_groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cms_policies" Relationship="BrandsMktgBooksModel.FK_cms_policies_cms_groups" FromRole="cms_groups" ToRole="cms_policies" />
+          <NavigationProperty Name="cms_user" Relationship="BrandsMktgBooksModel.FK_cms_user_cms_groups" FromRole="cms_groups" ToRole="cms_user" />
+        </EntityType>
+        <EntityType Name="cms_permissions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cms_policies" Relationship="BrandsMktgBooksModel.FK_cms_policies_cms_permissions" FromRole="cms_permissions" ToRole="cms_policies" />
+        </EntityType>
+        <EntityType Name="cms_policies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="permissionId" Type="Int32" />
+          <Property Name="groupId" Type="Int32" />
+          <Property Name="event_permitted" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cms_groups" Relationship="BrandsMktgBooksModel.FK_cms_policies_cms_groups" FromRole="cms_policies" ToRole="cms_groups" />
+          <NavigationProperty Name="cms_permissions" Relationship="BrandsMktgBooksModel.FK_cms_policies_cms_permissions" FromRole="cms_policies" ToRole="cms_permissions" />
+        </EntityType>
+        <EntityType Name="cms_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="groupId" Type="Int32" />
+          <Property Name="date_login" Type="DateTime" Precision="3" />
+          <Property Name="isOnline" Type="Boolean" />
+          <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cms_groups" Relationship="BrandsMktgBooksModel.FK_cms_user_cms_groups" FromRole="cms_user" ToRole="cms_groups" />
+        </EntityType>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AboutUs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="longitude" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="latitude" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SmtpServer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SmtpPort" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsSSL" Type="Boolean" />
+          <Property Name="SystemEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SystemEmailPassword" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="InfoEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SmartLearningVideo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HomeBanner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="thumb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderIndex" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ItemsCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookId" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="BrandsMktgBooksModel.FK_ItemsCategories_Books" FromRole="ItemsCategory" ToRole="Book" />
+          <NavigationProperty Name="Category" Relationship="BrandsMktgBooksModel.FK_ItemsCategories_Categories" FromRole="ItemsCategory" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="ItemsLevel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookId" Type="Int32" />
+          <Property Name="LevelId" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="BrandsMktgBooksModel.FK_ItemsLevels_Books" FromRole="ItemsLevel" ToRole="Book" />
+          <NavigationProperty Name="Level" Relationship="BrandsMktgBooksModel.FK_ItemsLevels_Levels" FromRole="ItemsLevel" ToRole="Level" />
+        </EntityType>
+        <EntityType Name="Level">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="OrderIndex" Type="Int32" />
+          <NavigationProperty Name="BookGames" Relationship="BrandsMktgBooksModel.FK_BookGames_Levels" FromRole="Level" ToRole="BookGame" />
+          <NavigationProperty Name="ItemsLevels" Relationship="BrandsMktgBooksModel.FK_ItemsLevels_Levels" FromRole="Level" ToRole="ItemsLevel" />
+          <NavigationProperty Name="Students" Relationship="BrandsMktgBooksModel.FK_Students_Levels" FromRole="Level" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="PressRoom">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateIn" Type="DateTime" Precision="3" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoryId" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="audio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="correctAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnswersLayout" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="QuestionsCategory" Relationship="BrandsMktgBooksModel.FK_Questions_QuestionsCategories" FromRole="Question" ToRole="QuestionsCategory" />
+          <NavigationProperty Name="QuestionsAnswers" Relationship="BrandsMktgBooksModel.FK_QuestionsAnswers_Questions" FromRole="Question" ToRole="QuestionsAnswer" />
+        </EntityType>
+        <EntityType Name="QuestionsAnswer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="questionId" Type="Int32" />
+          <Property Name="audio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="x" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="y" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="width" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Question" Relationship="BrandsMktgBooksModel.FK_QuestionsAnswers_Questions" FromRole="QuestionsAnswer" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="QuestionsCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bookId" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="BrandsMktgBooksModel.FK_QuestionsCategories_Books" FromRole="QuestionsCategory" ToRole="Book" />
+          <NavigationProperty Name="Questions" Relationship="BrandsMktgBooksModel.FK_Questions_QuestionsCategories" FromRole="QuestionsCategory" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="SchoolBook">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="schoolId" Type="Int32" />
+          <Property Name="bookId" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="BrandsMktgBooksModel.FK_SchoolBooks_Books" FromRole="SchoolBook" ToRole="Book" />
+          <NavigationProperty Name="School" Relationship="BrandsMktgBooksModel.FK_SchoolBooks_Schools" FromRole="SchoolBook" ToRole="School" />
+        </EntityType>
+        <EntityType Name="SchoolGame">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="schoolId" Type="Int32" />
+          <Property Name="GameId" Type="Int32" />
+          <NavigationProperty Name="BookGame" Relationship="BrandsMktgBooksModel.FK_SchoolGames_BookGames" FromRole="SchoolGame" ToRole="BookGame" />
+          <NavigationProperty Name="School" Relationship="BrandsMktgBooksModel.FK_SchoolGames_Schools" FromRole="SchoolGame" ToRole="School" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="thumb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="showGame" Type="Boolean" />
+          <NavigationProperty Name="SchoolBooks" Relationship="BrandsMktgBooksModel.FK_SchoolBooks_Schools" FromRole="School" ToRole="SchoolBook" />
+          <NavigationProperty Name="SchoolGames" Relationship="BrandsMktgBooksModel.FK_SchoolGames_Schools" FromRole="School" ToRole="SchoolGame" />
+          <NavigationProperty Name="Students" Relationship="BrandsMktgBooksModel.FK_Students_Schools" FromRole="School" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="StudentLibrary">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookId" Type="Int32" />
+          <Property Name="studentId" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="BrandsMktgBooksModel.FK_StudentLibrary_Books" FromRole="StudentLibrary" ToRole="Book" />
+          <NavigationProperty Name="Student" Relationship="BrandsMktgBooksModel.FK_StudentLibrary_Students" FromRole="StudentLibrary" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccessCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="schoolId" Type="Int32" />
+          <Property Name="levelId" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MacAdr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Level" Relationship="BrandsMktgBooksModel.FK_Students_Levels" FromRole="Student" ToRole="Level" />
+          <NavigationProperty Name="School" Relationship="BrandsMktgBooksModel.FK_Students_Schools" FromRole="Student" ToRole="School" />
+          <NavigationProperty Name="StudentLibraries" Relationship="BrandsMktgBooksModel.FK_StudentLibrary_Students" FromRole="Student" ToRole="StudentLibrary" />
+          <NavigationProperty Name="StudentScores" Relationship="BrandsMktgBooksModel.FK_StudentScore_Students" FromRole="Student" ToRole="StudentScore" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_BookGames_Levels">
+          <End Type="BrandsMktgBooksModel.Level" Role="Level" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.BookGame" Role="BookGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookGame">
+              <PropertyRef Name="levelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolGames_BookGames">
+          <End Type="BrandsMktgBooksModel.BookGame" Role="BookGame" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.SchoolGame" Role="SchoolGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookGame">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SchoolGame">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookSlides_Books">
+          <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.BookSlide" Role="BookSlide" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookSlide">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsCategories_Books">
+          <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BrandsMktgBooksModel.ItemsCategory" Role="ItemsCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemsCategory">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsLevels_Books">
+          <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.ItemsLevel" Role="ItemsLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemsLevel">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsCategories_Books">
+          <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.QuestionsCategory" Role="QuestionsCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="QuestionsCategory">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolBooks_Books">
+          <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.SchoolBook" Role="SchoolBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SchoolBook">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentLibrary_Books">
+          <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.StudentLibrary" Role="StudentLibrary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentLibrary">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsCategories_Categories">
+          <End Type="BrandsMktgBooksModel.Category" Role="Category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BrandsMktgBooksModel.ItemsCategory" Role="ItemsCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemsCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cms_policies_cms_groups">
+          <End Type="BrandsMktgBooksModel.cms_groups" Role="cms_groups" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BrandsMktgBooksModel.cms_policies" Role="cms_policies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cms_policies">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cms_user_cms_groups">
+          <End Type="BrandsMktgBooksModel.cms_groups" Role="cms_groups" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BrandsMktgBooksModel.cms_user" Role="cms_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cms_user">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cms_policies_cms_permissions">
+          <End Type="BrandsMktgBooksModel.cms_permissions" Role="cms_permissions" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BrandsMktgBooksModel.cms_policies" Role="cms_policies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cms_permissions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cms_policies">
+              <PropertyRef Name="permissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsLevels_Levels">
+          <End Type="BrandsMktgBooksModel.Level" Role="Level" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.ItemsLevel" Role="ItemsLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemsLevel">
+              <PropertyRef Name="LevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Levels">
+          <End Type="BrandsMktgBooksModel.Level" Role="Level" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="levelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_QuestionsCategories">
+          <End Type="BrandsMktgBooksModel.QuestionsCategory" Role="QuestionsCategory" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionsCategory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsAnswers_Questions">
+          <End Type="BrandsMktgBooksModel.Question" Role="Question" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.QuestionsAnswer" Role="QuestionsAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="QuestionsAnswer">
+              <PropertyRef Name="questionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolBooks_Schools">
+          <End Type="BrandsMktgBooksModel.School" Role="School" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.SchoolBook" Role="SchoolBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SchoolBook">
+              <PropertyRef Name="schoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SchoolGames_Schools">
+          <End Type="BrandsMktgBooksModel.School" Role="School" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.SchoolGame" Role="SchoolGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SchoolGame">
+              <PropertyRef Name="schoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Schools">
+          <End Type="BrandsMktgBooksModel.School" Role="School" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="schoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentLibrary_Students">
+          <End Type="BrandsMktgBooksModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.StudentLibrary" Role="StudentLibrary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentLibrary">
+              <PropertyRef Name="studentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookGames_Categories">
+          <End Type="BrandsMktgBooksModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.BookGame" Role="BookGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookGame">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StudentScore">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentId" Type="Int32" />
+          <Property Name="score" Type="Int32" />
+          <Property Name="bookId" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="BrandsMktgBooksModel.FK_StudentScore_Books" FromRole="StudentScore" ToRole="Book" />
+          <NavigationProperty Name="Student" Relationship="BrandsMktgBooksModel.FK_StudentScore_Students" FromRole="StudentScore" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK_StudentScore_Books">
+          <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.StudentScore" Role="StudentScore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentScore">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentScore_Students">
+          <End Type="BrandsMktgBooksModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.StudentScore" Role="StudentScore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentScore">
+              <PropertyRef Name="studentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BookChapterFile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chapterId" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="thumb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InteractiveFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookInteractiveChapter" Relationship="BrandsMktgBooksModel.FK_BookChapterFiles_BookInteractiveChapters" FromRole="BookChapterFile" ToRole="BookInteractiveChapter" />
+          <Property Name="OrderIndex" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BookInteractiveChapter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookId" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookChapterFiles" Relationship="BrandsMktgBooksModel.FK_BookChapterFiles_BookInteractiveChapters" FromRole="BookInteractiveChapter" ToRole="BookChapterFile" />
+          <NavigationProperty Name="Book" Relationship="BrandsMktgBooksModel.FK_BookInteractiveChapters_Books" FromRole="BookInteractiveChapter" ToRole="Book" />
+          <Property Name="OrderIndex" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_BookChapterFiles_BookInteractiveChapters">
+          <End Type="BrandsMktgBooksModel.BookInteractiveChapter" Role="BookInteractiveChapter" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.BookChapterFile" Role="BookChapterFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookInteractiveChapter">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookChapterFile">
+              <PropertyRef Name="chapterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookInteractiveChapters_Books">
+          <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.BookInteractiveChapter" Role="BookInteractiveChapter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookInteractiveChapter">
+              <PropertyRef Name="bookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BrandsMktgBooksModelStoreContainer" CdmEntityContainer="BrandsMktgBooksEntities" >
+          <EntitySetMapping Name="BookGames">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.BookGame">
+              <MappingFragment StoreEntitySet="BookGames">
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="Thumb" ColumnName="Thumb" />
+                <ScalarProperty Name="Folder" ColumnName="Folder" />
+                <ScalarProperty Name="levelId" ColumnName="levelId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.Book">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="SignLanguageVideo" ColumnName="SignLanguageVideo" />
+                <ScalarProperty Name="background" ColumnName="background" />
+                <ScalarProperty Name="isAvailable" ColumnName="isAvailable" />
+                <ScalarProperty Name="video" ColumnName="video" />
+                <ScalarProperty Name="thumb" ColumnName="thumb" />
+                <ScalarProperty Name="artext" ColumnName="artext" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="pdf" ColumnName="pdf" />
+                <ScalarProperty Name="artitle" ColumnName="artitle" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookSlides">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.BookSlide">
+              <MappingFragment StoreEntitySet="BookSlides">
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="bookId" ColumnName="bookId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="ForGame" ColumnName="ForGame" />
+                <ScalarProperty Name="artitle" ColumnName="artitle" />
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_groups">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.cms_groups">
+              <MappingFragment StoreEntitySet="cms_groups">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_permissions">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.cms_permissions">
+              <MappingFragment StoreEntitySet="cms_permissions">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_policies">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.cms_policies">
+              <MappingFragment StoreEntitySet="cms_policies">
+                <ScalarProperty Name="event_permitted" ColumnName="event_permitted" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="permissionId" ColumnName="permissionId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cms_user">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.cms_user">
+              <MappingFragment StoreEntitySet="cms_user">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="isOnline" ColumnName="isOnline" />
+                <ScalarProperty Name="date_login" ColumnName="date_login" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contents">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.Content">
+              <MappingFragment StoreEntitySet="Content">
+                <ScalarProperty Name="SmartLearningVideo" ColumnName="SmartLearningVideo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
+                <ScalarProperty Name="InfoEmail" ColumnName="InfoEmail" />
+                <ScalarProperty Name="SystemEmailPassword" ColumnName="SystemEmailPassword" />
+                <ScalarProperty Name="SystemEmail" ColumnName="SystemEmail" />
+                <ScalarProperty Name="IsSSL" ColumnName="IsSSL" />
+                <ScalarProperty Name="SmtpPort" ColumnName="SmtpPort" />
+                <ScalarProperty Name="SmtpServer" ColumnName="SmtpServer" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="AboutUs" ColumnName="AboutUs" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeBanners">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.HomeBanner">
+              <MappingFragment StoreEntitySet="HomeBanner">
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="thumb" ColumnName="thumb" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsCategories">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.ItemsCategory">
+              <MappingFragment StoreEntitySet="ItemsCategories">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsLevels">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.ItemsLevel">
+              <MappingFragment StoreEntitySet="ItemsLevels">
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+                <ScalarProperty Name="bookId" ColumnName="bookId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Levels">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.Level">
+              <MappingFragment StoreEntitySet="Levels">
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="artitle" ColumnName="artitle" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PressRooms">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.PressRoom">
+              <MappingFragment StoreEntitySet="PressRoom">
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.Question">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="AnswersLayout" ColumnName="AnswersLayout" />
+                <ScalarProperty Name="correctAnswer" ColumnName="correctAnswer" />
+                <ScalarProperty Name="audio" ColumnName="audio" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionsAnswers">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.QuestionsAnswer">
+              <MappingFragment StoreEntitySet="QuestionsAnswers">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="audio" ColumnName="audio" />
+                <ScalarProperty Name="questionId" ColumnName="questionId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionsCategories">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.QuestionsCategory">
+              <MappingFragment StoreEntitySet="QuestionsCategories">
+                <ScalarProperty Name="bookId" ColumnName="bookId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SchoolBooks">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.SchoolBook">
+              <MappingFragment StoreEntitySet="SchoolBooks">
+                <ScalarProperty Name="bookId" ColumnName="bookId" />
+                <ScalarProperty Name="schoolId" ColumnName="schoolId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SchoolGames">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.SchoolGame">
+              <MappingFragment StoreEntitySet="SchoolGames">
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="schoolId" ColumnName="schoolId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schools">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.School">
+              <MappingFragment StoreEntitySet="Schools">
+                <ScalarProperty Name="showGame" ColumnName="showGame" />
+                <ScalarProperty Name="thumb" ColumnName="thumb" />
+                <ScalarProperty Name="artitle" ColumnName="artitle" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentLibraries">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.StudentLibrary">
+              <MappingFragment StoreEntitySet="StudentLibrary">
+                <ScalarProperty Name="studentId" ColumnName="studentId" />
+                <ScalarProperty Name="bookId" ColumnName="bookId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="MacAdr" ColumnName="MacAdr" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="levelId" ColumnName="levelId" />
+                <ScalarProperty Name="schoolId" ColumnName="schoolId" />
+                <ScalarProperty Name="AccessCode" ColumnName="AccessCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentScores">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.StudentScore">
+              <MappingFragment StoreEntitySet="StudentScore">
+                <ScalarProperty Name="bookId" ColumnName="bookId" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="studentId" ColumnName="studentId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookChapterFiles">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.BookChapterFile">
+              <MappingFragment StoreEntitySet="BookChapterFiles">
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="InteractiveFile" ColumnName="InteractiveFile" />
+                <ScalarProperty Name="thumb" ColumnName="thumb" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="chapterId" ColumnName="chapterId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookInteractiveChapters">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.BookInteractiveChapter">
+              <MappingFragment StoreEntitySet="BookInteractiveChapters">
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="bookId" ColumnName="bookId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,677 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="default.master.cs" Inherits="Web._default1" %>
+
+<!DOCTYPE HTML>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8 ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9 ie8" lang="en"><![endif]-->
+<!--[if gt IE 8]> <html class="no-js ie9" lang="en"><![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+</script>
+    <script type="text/javascript">window.NREUM || (NREUM = {}), __nr_require = function (t, e, n) { function r(n) { if (!e[n]) { var o = e[n] = { exports: {} }; t[n][0].call(o.exports, function (e) { var o = t[n][1][e]; return r(o || e) }, o, o.exports) } return e[n].exports } if ("function" == typeof __nr_require) return __nr_require; for (var o = 0; o < n.length; o++) r(n[o]); return r }({ 1: [function (t, e, n) { function r() { } function o(t, e, n) { return function () { return i(t, [(new Date).getTime()].concat(u(arguments)), e ? null : this, n), e ? void 0 : this } } var i = t("handle"), a = t(2), u = t(3), c = t("ee").get("tracer"), f = NREUM; "undefined" == typeof window.newrelic && (newrelic = f); var s = ["setPageViewName", "setCustomAttribute", "finished", "addToTrace", "inlineHit"], p = "api-", l = p + "ixn-"; a(s, function (t, e) { f[e] = o(p + e, !0, "api") }), f.addPageAction = o(p + "addPageAction", !0), e.exports = newrelic, f.interaction = function () { return (new r).get() }; var d = r.prototype = { createTracer: function (t, e) { var n = {}, r = this, o = "function" == typeof e; return i(l + "tracer", [Date.now(), t, n], r), function () { if (c.emit((o ? "" : "no-") + "fn-start", [Date.now(), r, o], n), o) try { return e.apply(this, arguments) } finally { c.emit("fn-end", [Date.now()], n) } } } }; a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","), function (t, e) { d[e] = o(l + e) }), newrelic.noticeError = function (t) { "string" == typeof t && (t = new Error(t)), i("err", [t, (new Date).getTime()]) } }, {}], 2: [function (t, e, n) { function r(t, e) { var n = [], r = "", i = 0; for (r in t) o.call(t, r) && (n[i] = e(r, t[r]), i += 1); return n } var o = Object.prototype.hasOwnProperty; e.exports = r }, {}], 3: [function (t, e, n) { function r(t, e, n) { e || (e = 0), "undefined" == typeof n && (n = t ? t.length : 0); for (var r = -1, o = n - e || 0, i = Array(o < 0 ? 0 : o) ; ++r < o;) i[r] = t[e + r]; return i } e.exports = r }, {}], ee: [function (t, e, n) { function r() { } function o(t) { function e(t) { return t && t instanceof r ? t : t ? u(t, a, i) : i() } function n(n, r, o) { t && t(n, r, o); for (var i = e(o), a = l(n), u = a.length, c = 0; c < u; c++) a[c].apply(i, r); var s = f[m[n]]; return s && s.push([w, n, r, i]), i } function p(t, e) { g[t] = l(t).concat(e) } function l(t) { return g[t] || [] } function d(t) { return s[t] = s[t] || o(n) } function v(t, e) { c(t, function (t, n) { e = e || "feature", m[n] = e, e in f || (f[e] = []) }) } var g = {}, m = {}, w = { on: p, emit: n, get: d, listeners: l, context: e, buffer: v }; return w } function i() { return new r } var a = "nr@context", u = t("gos"), c = t(2), f = {}, s = {}, p = e.exports = o(); p.backlog = f }, {}], gos: [function (t, e, n) { function r(t, e, n) { if (o.call(t, e)) return t[e]; var r = n(); if (Object.defineProperty && Object.keys) try { return Object.defineProperty(t, e, { value: r, writable: !0, enumerable: !1 }), r } catch (i) { } return t[e] = r, r } var o = Object.prototype.hasOwnProperty; e.exports = r }, {}], handle: [function (t, e, n) { function r(t, e, n, r) { o.buffer([t], r), o.emit(t, e, n) } var o = t("ee").get("handle"); e.exports = r, r.ee = o }, {}], id: [function (t, e, n) { function r(t) { var e = typeof t; return !t || "object" !== e && "function" !== e ? -1 : t === window ? 0 : a(t, i, function () { return o++ }) } var o = 1, i = "nr@id", a = t("gos"); e.exports = r }, {}], loader: [function (t, e, n) { function r() { if (!h++) { var t = y.info = NREUM.info, e = s.getElementsByTagName("script")[0]; if (t && t.licenseKey && t.applicationID && e) { c(m, function (e, n) { t[e] || (t[e] = n) }); var n = "https" === g.split(":")[0] || t.sslForHttp; y.proto = n ? "https://" : "http://", u("mark", ["onload", a()], null, "api"); var r = s.createElement("script"); r.src = y.proto + t.agent, e.parentNode.insertBefore(r, e) } } } function o() { "complete" === s.readyState && i() } function i() { u("mark", ["domContent", a()], null, "api") } function a() { return (new Date).getTime() } var u = t("handle"), c = t(2), f = window, s = f.document, p = "addEventListener", l = "attachEvent", d = f.XMLHttpRequest, v = d && d.prototype; NREUM.o = { ST: setTimeout, CT: clearTimeout, XHR: d, REQ: f.Request, EV: f.Event, PR: f.Promise, MO: f.MutationObserver }, t(1); var g = "" + location, m = { beacon: "bam.nr-data.net", errorBeacon: "bam.nr-data.net", agent: "js-agent.newrelic.com/nr-963.min.js" }, w = d && v && v[p] && !/CriOS/.test(navigator.userAgent), y = e.exports = { offset: a(), origin: g, features: {}, xhrWrappable: w }; s[p] ? (s[p]("DOMContentLoaded", i, !1), f[p]("load", r, !1)) : (s[l]("onreadystatechange", o), f[l]("onload", r)), u("mark", ["firstbyte", a()], null, "api"); var h = 0 }, {}] }, {}, ["loader"]);</script>
+    <title>TEACH KIDS</title>
+    <meta name="description" content="" />
+    <link rel="icon" href="../img/icon.png" />
+    <meta name="robots" content="index,follow" />
+    <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="../css/global.css" media="all" />
+    <link rel="stylesheet" href="../css/autoload/highdpi.css" media="all" />
+    <link rel="stylesheet" href="../css/autoload/responsive-tables.css" media="all" />
+    <link rel="stylesheet" href="../css/autoload/uniform.default.css" media="all" />
+    <link rel="stylesheet" href="../js/jquery/plugins/fancybox/jquery.fancybox.css" media="all" />
+    <link rel="stylesheet" href="../css/product_list.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/blockcart/blockcart.css" media="all" />
+    <link rel="stylesheet" href="../js/jquery/plugins/bxslider/jquery.bxslider.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/blockcategories/blockcategories.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/blockcurrencies/blockcurrencies.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/blocklanguages/blocklanguages.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/blockcontact/blockcontact.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/blocknewsletter/blocknewsletter.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/blocksearch/blocksearch.css" media="all" />
+    <link rel="stylesheet" href="../js/jquery/plugins/autocomplete/jquery.autocomplete.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/blocktags/blocktags.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/blockviewed/blockviewed.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/homeslider/homeslider.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/themeconfigurator/css/hooks.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/themeconfigurator/css/live_configurator.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/blockwishlist/blockwishlist.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/productcomments/productcomments.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/blockpermanentlinks/blockpermanentlinks.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/smartblog/css/smartblogstyle.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/smartbloghomelatestnews/css/smartbloglatestnews.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/smartblogtag/css/smartblogtags.css" media="all" />
+    <%--<link rel="stylesheet" href="../css/modules/tmproductvideos/css/tmproductvideos.css" media="all" />--%>
+    <link rel="stylesheet" href="../css/tmlistingimages/css/front.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/tmheaderaccount/css/front.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/tmmediaparallax/css/tm-media-parallax-styles.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/tmmegamenu/views/css/front.css" media="all" />
+    <link rel="stylesheet" href="../css/modules/tmnewsletter/views/css/front.css" media="all" />
+    <%--<link rel="stylesheet" href="../css/tmsociallogin/views/css/front.css" media="all" />--%>
+    <link rel="stylesheet" href="../css/themeconfiglink/themeconfiglink.css" media="all" />
+    
+    <asp:ContentPlaceHolder ID="header" runat="server" />
+    <script type="text/javascript">
+        var CUSTOMIZE_TEXTFIELD = 1;
+        var FancyboxI18nClose = 'Close';
+        var FancyboxI18nNext = 'Next';
+        var FancyboxI18nPrev = 'Previous';
+        var added_to_wishlist = 'Added to your wishlist.';
+        var ajax_allowed = true;
+        var ajaxsearch = true;
+        var baseDir = '/';
+        var baseUri = '/';
+        var blocksearch_type = 'top';
+        var comparator_max_item = 2;
+        var comparedProductsIds = [];
+        var contentOnly = false;
+        var customizationIdMessage = 'Customization #';
+        var delete_txt = 'Delete';
+        var displayList = false;
+        var freeProductTranslation = 'Free!';
+        var freeShippingTranslation = 'Free shipping!';
+        var generated_date = 1474362094;
+        var hasDeliveryAddress = false;
+        var homeslider_loop = 1;
+        var homeslider_pause = 3000;
+        var homeslider_speed = 500;
+        var homeslider_width = 10000;
+        var id_lang = 1;
+        var img_dir = 'img/';
+        var instantsearch = true;
+        var isGuest = 0;
+        var isLogged = 0;
+        var isMobile = false;
+        var loggin_required = 'You must be logged in to manage your wishlist.';
+        var max_item = 'You cannot add more than 2 product(s) to the product comparison';
+        var min_item = 'Please select at least one product';
+        var module_url = '/';
+        var mywishlist_url = '/';
+        var nbItemsPerLine = 4;
+        var nbItemsPerLineMobile = 2;
+        var nbItemsPerLineTablet = 3;
+        var page_name = 'index';
+        var placeholder_blocknewsletter = 'Enter your e-mail';
+        var popup_status = false;
+        var priceDisplayMethod = 1;
+        var priceDisplayPrecision = 2;
+        var quickView = true;
+        var removingLinkText = 'remove this product from my cart';
+        var roundMode = 2;
+        var search_url = '/?controller=search';
+        var static_token = '1d2feb3da7acafcae0c7e8674da02312';
+        var text_close = 'Close';
+        var text_description = 'Enter your email address to receive all news, updates on new arrivals, special offers and other discount information.';
+        var text_email = 'Your E-Mail';
+        var text_heading = 'Subscribe to our newsletter';
+        var text_heading_1 = 'Subscribe to our newsletter';
+        var text_heading_2 = 'Success';
+        var text_heading_3 = 'Error';
+        var text_placeholder = 'Enter your e-mail';
+        var text_remove = 'Do not show again';
+        var text_sign = 'Subscribe';
+        var toBeDetermined = 'To be determined';
+        var token = '5dff7928919ab808f8a275deb7e136c7';
+        var user_newsletter_status = 0;
+        var usingSecureMode = false;
+        var wishlistProductsIds = false;
+</script>
+    <script type="text/javascript" src="../js/jquery/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery/plugins/jquery.easing.js"></script>
+    <script type="text/javascript" src="../js/tools.js"></script>
+    <script type="text/javascript" src="../js/global.js"></script>
+    <script src="../js/jquery.bpopup.min.js"></script>
+    <script type="text/javascript" src="../js/autoload/10-bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/autoload/14-device.min.js"></script>
+    <script type="text/javascript" src="../js/autoload/15-jquery.total-storage.min.js"></script>
+    <script type="text/javascript" src="../js/autoload/15-jquery.uniform-modified.js"></script>
+    <script type="text/javascript" src="../js/autoload/16-jquery.scrollmagic.min.js"></script>
+    <script type="text/javascript" src="../js/autoload/17-jquery.scrollmagic.debug.js"></script>
+    <script type="text/javascript" src="../js/autoload/18-TimelineMax.min.js"></script>
+    <script type="text/javascript" src="../js/autoload/19-TweenMax.min.js"></script>
+    <script type="text/javascript" src="../js/jquery/plugins/fancybox/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="../js/products-comparison.js"></script>
+    <script type="text/javascript" src="../js/modules/blockcart/ajax-cart.js"></script>
+    <script type="text/javascript" src="../js/jquery/plugins/jquery.scrollTo.js"></script>
+    <script type="text/javascript" src="../js/jquery/plugins/jquery.serialScroll.js"></script>
+    <script type="text/javascript" src="../js/jquery/plugins/bxslider/jquery.bxslider.js"></script>
+    <script type="text/javascript" src="../js/tools/treeManagement.js"></script>
+    <script type="text/javascript" src="../js/modules/blocknewsletter/blocknewsletter.js"></script>
+    <script type="text/javascript" src="../js/jquery/plugins/autocomplete/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="../js/modules/blocksearch/blocksearch.js"></script>
+    <script type="text/javascript" src="../js/modules/homeslider/homeslider.js"></script>
+    <script type="text/javascript" src="../js/modules/themeconfigurator/js/live_configurator.js"></script>
+    <script type="text/javascript" src="../js/modules/blockwishlist/ajax-wishlist.js"></script>
+    <script type="text/javascript" src="../js/tmlistingimages/front.js"></script>
+    <script type="text/javascript" src="../js/validate.js"></script>
+    <%--<script type="text/javascript" src="../js/modules/tmheaderaccount/front.js"></script>--%>
+    <script type="text/javascript" src="../js/modules/tmmediaparallax/tm-media-parallax.js"></script>
+    <script type="text/javascript" src="../js/modules/tmmediaparallax/device.min.js"></script>
+    <script type="text/javascript" src="../js/modules/tmmegamenu/views/js/hoverIntent.js"></script>
+    <script type="text/javascript" src="../js/modules/tmmegamenu/views/js/superfish.js"></script>
+    <script type="text/javascript" src="../js/modules/tmmegamenu/views/js/front.js"></script>
+    <script type="text/javascript" src="../js/modules/tmnewsletter/views/js/front.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <script>
+        function addVideoParallax(selector, path, filename) {
+            var selector = $(selector);
+
+            selector.addClass('parallax_section');
+            selector.attr('data-type-media', 'video_html');
+            selector.attr('data-mp4', 'true');
+            selector.attr('data-webm', 'true');
+            selector.attr('data-ogv', 'true');
+            selector.attr('data-poster', 'true');
+            selector.wrapInner('<div class="container parallax_content"></div>');
+            selector.append('<div class="parallax_inner"><video class="parallax_media" width="100%" height="100%" autoplay loop poster="/prestashop_53956/' + path + filename + '.jpg"><source src="/prestashop_53956/' + path + filename + '.mp4" type="video/mp4"><source src="/prestashop_53956/' + path + filename + '.webdm" type="video/webm"><source src="/prestashop_53956/' + path + filename + '.ogv" type="video/ogg"></video></div>');
+
+            selector.tmMediaParallax();
+        }
+
+        function addImageParallax(selector, path, filename, width, height) {
+            var selector = $(selector);
+
+            selector.addClass('parallax_section');
+            selector.attr('data-type-media', 'image');
+            selector.wrapInner('<div class="container parallax_content"></div>');
+            selector.append('<div class="parallax_inner"><img class="parallax_media" src="' + path + filename + '" data-base-width="' + width + '" data-base-height="' + height + '"/></div>');
+
+            selector.tmMediaParallax();
+        }
+
+        function checkBrowser() {
+            var ua = navigator.userAgent;
+
+            if (ua.search(/MSIE/) > 0) return 'Internet Explorer';
+            if (ua.search(/Firefox/) > 0) return 'Firefox';
+            if (ua.search(/Opera/) > 0) return 'Opera';
+            if (ua.search(/Chrome/) > 0) return 'Google Chrome';
+            if (ua.search(/Safari/) > 0) return 'Safari';
+            if (ua.search(/Konqueror/) > 0) return 'Konqueror';
+            if (ua.search(/Iceweasel/) > 0) return 'Debian Iceweasel';
+            if (ua.search(/SeaMonkey/) > 0) return 'SeaMonkey';
+            if (ua.search(/Gecko/) > 0) return 'Gecko';
+
+            return 'Search Bot';
+        }
+
+
+        //$(window).load(function () {
+        //    addImageParallax('#htmlcontent_home', '../modules/tmmediaparallax/media/', 'bg_parallax.jpg', '1920', '663');
+        //});
+    </script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
+    <!--[if IE 8]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+		<![endif]-->
+    <script language="javascript" type="text/javascript">
+    //<![CDATA[</span />
+
+    var clicked = false;
+    function CheckBrowser() {
+        if (clicked == false) {
+            //Browser closed
+        }
+        else {
+            //redirected 
+            clicked = false;
+        }
+    }
+
+    function bodyUnload() {
+
+        if (clicked == false)//browser is closed
+        {
+            var request = GetRequest();
+
+            request.open("POST", "logout", false);
+            request.send();
+            alert('This is close');
+        }
+    }
+    function GetRequest() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return xmlhttp;
+    }
+</script>
+    <style class="cp-pen-styles">/* Demo */
+
+
+/* Animation */
+@-webkit-keyframes rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+/* Variables */
+/* Loading Icon */
+.loading-wrapper{
+        position: absolute;
+    width: 99.1vw;
+    height: 150vh;
+    top: 0px;
+    background-color: white;
+    z-index: 999999;
+}
+.loading {
+  width: 100px;
+  height: 100px;
+  margin:250px auto;
+}
+.loading__ring {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+.loading__ring:first-child {
+  -webkit-transform: skew(30deg, 20deg);
+          transform: skew(30deg, 20deg);
+}
+.loading__ring:last-child {
+  -webkit-transform: skew(-30deg, -20deg) scale(-1, 1);
+          transform: skew(-30deg, -20deg) scale(-1, 1);
+}
+.loading__ring:last-child svg {
+  -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s;
+}
+.loading__ring svg {
+  -webkit-animation: rotate 1s linear infinite;
+          animation: rotate 1s linear infinite;
+  fill: rgba(0, 0, 0, 0.2);
+}
+</style>
+</head>
+<body id="index" class="index hide-left-column hide-right-column lang_en  one-column" <%=lang=="ar"?"style='font-family:Web-Font-Ar'":"" %> onunload="bodyUnload();" onclick="clicked=true;">
+    <!--[if IE 8]>
+        <div style='clear:both;height:59px;padding:0 15px 0 15px;position:relative;z-index:10000;text-align:center;'><a href="//www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div>
+		<![endif]-->
+    <div class="loading-wrapper">
+        <div class="loading">
+  <div class="loading__ring">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve"><path d="M85.5,42c-0.2-0.8-0.5-1.7-0.8-2.5c-0.3-0.9-0.7-1.6-1-2.3c-0.3-0.7-0.6-1.3-1-1.9c0.3,0.5,0.5,1.1,0.8,1.7  c0.2,0.7,0.6,1.5,0.8,2.3s0.5,1.7,0.8,2.5c0.8,3.5,1.3,7.5,0.8,12c-0.4,4.3-1.8,9-4.2,13.4c-2.4,4.2-5.9,8.2-10.5,11.2  c-1.1,0.7-2.2,1.5-3.4,2c-0.5,0.2-1.2,0.6-1.8,0.8s-1.3,0.5-1.9,0.8c-2.6,1-5.3,1.7-8.1,1.8l-1.1,0.1L53.8,84c-0.7,0-1.4,0-2.1,0  c-1.4-0.1-2.9-0.1-4.2-0.5c-1.4-0.1-2.8-0.6-4.1-0.8c-1.4-0.5-2.7-0.9-3.9-1.5c-1.2-0.6-2.4-1.2-3.7-1.9c-0.6-0.3-1.2-0.7-1.7-1.1  l-0.8-0.6c-0.3-0.1-0.6-0.4-0.8-0.6l-0.8-0.6L31.3,76l-0.2-0.2L31,75.7l-0.1-0.1l0,0l-1.5-1.5c-1.2-1-1.9-2.1-2.7-3.1  c-0.4-0.4-0.7-1.1-1.1-1.7l-1.1-1.7c-0.3-0.6-0.6-1.2-0.9-1.8c-0.2-0.5-0.6-1.2-0.8-1.8c-0.4-1.2-1-2.4-1.2-3.7  c-0.2-0.6-0.4-1.2-0.5-1.9c-0.1-0.6-0.2-1.2-0.3-1.8c-0.3-1.2-0.3-2.4-0.4-3.7c-0.1-1.2,0-2.5,0.1-3.7c0.2-1.2,0.3-2.4,0.6-3.5  c0.1-0.6,0.3-1.1,0.4-1.7l0.1-0.8l0.3-0.8c1.5-4.3,3.8-8,6.5-11c0.8-0.8,1.4-1.5,2.1-2.1c0.9-0.9,1.4-1.3,2.2-1.8  c1.4-1.2,2.9-2,4.3-2.8c2.8-1.5,5.5-2.3,7.7-2.8s4-0.7,5.2-0.6c0.6-0.1,1.1,0,1.4,0s0.4,0,0.4,0h0.1c2.7,0.1,5-2.2,5-5  c0.1-2.7-2.2-5-5-5c-0.2,0-0.2,0-0.3,0c0,0-0.2,0.1-0.6,0.1c-0.4,0-1,0-1.8,0.1c-1.6,0.1-4,0.4-6.9,1.2c-2.9,0.8-6.4,2-9.9,4.1  c-1.8,1-3.6,2.3-5.4,3.8C26,21.4,25,22.2,24.4,23c-0.2,0.2-0.4,0.4-0.6,0.6c-0.2,0.2-0.5,0.4-0.6,0.7c-0.5,0.4-0.8,0.9-1.3,1.4  c-3.2,3.9-5.9,8.8-7.5,14.3l-0.3,1l-0.2,1.1c-0.1,0.7-0.3,1.4-0.4,2.1c-0.3,1.5-0.4,2.9-0.5,4.5c0,1.5-0.1,3,0.1,4.5  c0.2,1.5,0.2,3,0.6,4.6c0.1,0.7,0.3,1.5,0.4,2.3c0.2,0.8,0.5,1.5,0.7,2.3c0.4,1.6,1.1,3,1.7,4.4c0.3,0.7,0.7,1.4,1.1,2.1  c0.4,0.8,0.8,1.4,1.2,2.1c0.5,0.7,0.9,1.4,1.4,2s0.9,1.3,1.5,1.9c1.1,1.3,2.2,2.7,3.3,3.5l1.7,1.6c0,0,0.1,0.1,0.1,0.1c0,0,0,0,0,0  c0,0,0,0,0,0l0.1,0.1l0.1,0.1h0.2l0.5,0.4l1,0.7c0.4,0.2,0.6,0.5,1,0.7l1.1,0.6c0.8,0.4,1.4,0.9,2.1,1.2c1.4,0.7,2.9,1.5,4.4,2  c1.5,0.7,3.1,1,4.6,1.5c1.5,0.3,3.1,0.7,4.7,0.8c1.6,0.2,3.1,0.2,4.7,0.2c0.8,0,1.6-0.1,2.4-0.1l1.2-0.1l1.1-0.1  c3.1-0.4,6.1-1.3,8.9-2.4c0.8-0.3,1.4-0.6,2.1-0.9s1.3-0.7,2-1.1c1.3-0.7,2.6-1.7,3.7-2.5c0.5-0.4,1-0.9,1.6-1.3l0.8-0.6l0.2-0.2  c0,0,0.1-0.1,0.1-0.1c0.1-0.1,0,0,0,0v0.1l0.1-0.1l0.4-0.4c0.5-0.5,1-1,1.5-1.5c0.3-0.3,0.5-0.5,0.8-0.8l0.7-0.8  c0.9-1.1,1.8-2.2,2.5-3.3c0.4-0.6,0.7-1.1,1.1-1.7c0.3-0.7,0.6-1.2,0.9-1.8c2.4-4.9,3.5-9.8,3.7-14.4C87.3,49.7,86.6,45.5,85.5,42z"></path></svg>
+  </div>
+  <div class="loading__ring">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve"><path d="M85.5,42c-0.2-0.8-0.5-1.7-0.8-2.5c-0.3-0.9-0.7-1.6-1-2.3c-0.3-0.7-0.6-1.3-1-1.9c0.3,0.5,0.5,1.1,0.8,1.7  c0.2,0.7,0.6,1.5,0.8,2.3s0.5,1.7,0.8,2.5c0.8,3.5,1.3,7.5,0.8,12c-0.4,4.3-1.8,9-4.2,13.4c-2.4,4.2-5.9,8.2-10.5,11.2  c-1.1,0.7-2.2,1.5-3.4,2c-0.5,0.2-1.2,0.6-1.8,0.8s-1.3,0.5-1.9,0.8c-2.6,1-5.3,1.7-8.1,1.8l-1.1,0.1L53.8,84c-0.7,0-1.4,0-2.1,0  c-1.4-0.1-2.9-0.1-4.2-0.5c-1.4-0.1-2.8-0.6-4.1-0.8c-1.4-0.5-2.7-0.9-3.9-1.5c-1.2-0.6-2.4-1.2-3.7-1.9c-0.6-0.3-1.2-0.7-1.7-1.1  l-0.8-0.6c-0.3-0.1-0.6-0.4-0.8-0.6l-0.8-0.6L31.3,76l-0.2-0.2L31,75.7l-0.1-0.1l0,0l-1.5-1.5c-1.2-1-1.9-2.1-2.7-3.1  c-0.4-0.4-0.7-1.1-1.1-1.7l-1.1-1.7c-0.3-0.6-0.6-1.2-0.9-1.8c-0.2-0.5-0.6-1.2-0.8-1.8c-0.4-1.2-1-2.4-1.2-3.7  c-0.2-0.6-0.4-1.2-0.5-1.9c-0.1-0.6-0.2-1.2-0.3-1.8c-0.3-1.2-0.3-2.4-0.4-3.7c-0.1-1.2,0-2.5,0.1-3.7c0.2-1.2,0.3-2.4,0.6-3.5  c0.1-0.6,0.3-1.1,0.4-1.7l0.1-0.8l0.3-0.8c1.5-4.3,3.8-8,6.5-11c0.8-0.8,1.4-1.5,2.1-2.1c0.9-0.9,1.4-1.3,2.2-1.8  c1.4-1.2,2.9-2,4.3-2.8c2.8-1.5,5.5-2.3,7.7-2.8s4-0.7,5.2-0.6c0.6-0.1,1.1,0,1.4,0s0.4,0,0.4,0h0.1c2.7,0.1,5-2.2,5-5  c0.1-2.7-2.2-5-5-5c-0.2,0-0.2,0-0.3,0c0,0-0.2,0.1-0.6,0.1c-0.4,0-1,0-1.8,0.1c-1.6,0.1-4,0.4-6.9,1.2c-2.9,0.8-6.4,2-9.9,4.1  c-1.8,1-3.6,2.3-5.4,3.8C26,21.4,25,22.2,24.4,23c-0.2,0.2-0.4,0.4-0.6,0.6c-0.2,0.2-0.5,0.4-0.6,0.7c-0.5,0.4-0.8,0.9-1.3,1.4  c-3.2,3.9-5.9,8.8-7.5,14.3l-0.3,1l-0.2,1.1c-0.1,0.7-0.3,1.4-0.4,2.1c-0.3,1.5-0.4,2.9-0.5,4.5c0,1.5-0.1,3,0.1,4.5  c0.2,1.5,0.2,3,0.6,4.6c0.1,0.7,0.3,1.5,0.4,2.3c0.2,0.8,0.5,1.5,0.7,2.3c0.4,1.6,1.1,3,1.7,4.4c0.3,0.7,0.7,1.4,1.1,2.1  c0.4,0.8,0.8,1.4,1.2,2.1c0.5,0.7,0.9,1.4,1.4,2s0.9,1.3,1.5,1.9c1.1,1.3,2.2,2.7,3.3,3.5l1.7,1.6c0,0,0.1,0.1,0.1,0.1c0,0,0,0,0,0  c0,0,0,0,0,0l0.1,0.1l0.1,0.1h0.2l0.5,0.4l1,0.7c0.4,0.2,0.6,0.5,1,0.7l1.1,0.6c0.8,0.4,1.4,0.9,2.1,1.2c1.4,0.7,2.9,1.5,4.4,2  c1.5,0.7,3.1,1,4.6,1.5c1.5,0.3,3.1,0.7,4.7,0.8c1.6,0.2,3.1,0.2,4.7,0.2c0.8,0,1.6-0.1,2.4-0.1l1.2-0.1l1.1-0.1  c3.1-0.4,6.1-1.3,8.9-2.4c0.8-0.3,1.4-0.6,2.1-0.9s1.3-0.7,2-1.1c1.3-0.7,2.6-1.7,3.7-2.5c0.5-0.4,1-0.9,1.6-1.3l0.8-0.6l0.2-0.2  c0,0,0.1-0.1,0.1-0.1c0.1-0.1,0,0,0,0v0.1l0.1-0.1l0.4-0.4c0.5-0.5,1-1,1.5-1.5c0.3-0.3,0.5-0.5,0.8-0.8l0.7-0.8  c0.9-1.1,1.8-2.2,2.5-3.3c0.4-0.6,0.7-1.1,1.1-1.7c0.3-0.7,0.6-1.2,0.9-1.8c2.4-4.9,3.5-9.8,3.7-14.4C87.3,49.7,86.6,45.5,85.5,42z"></path></svg>
+  </div>
+</div>
+            </div>
+    <div id="page">
+        <div class="header-container">
+            <header id="header">
+                <div class="banner">
+                    <div class="container">
+                        <div class="row">
+                        </div>
+                    </div>
+                </div>
+                <div class="nav">
+                    <div class="container">
+                        <div class="row">
+                            <nav>
+                                <div id="header_logo">
+                                    <a href="home" title="Brands Marketing">
+                                        <img class="logo img-responsive" src="../img/logo.png" alt="Brands Marketing" height="60" />
+                                    </a>
+                                    
+                                </div>
+                                <div id="header_menu">
+                                    <ul class="uppermenu">
+                                        <li><a href="home#about"><%=lang=="en"?"ABOUT US":"من نحن" %></a></li>
+                                        <li><a href="home#offerings"><%=lang=="en"?"OFFERINGS":"عروضات" %></a></li>
+                                        <li><a href="home#smartlearning"><%=lang=="en"?"SMART LEARNING":"التعلم الذكي" %></a></li>
+                                        <li><a href="home#contactus"><%=lang=="en"?"CONTACT US":"تواصل معنا" %></a></li>
+                                    </ul>
+                                </div>
+                                <div id="header-login">
+                                    <%if (Session["UserId"] == null)
+                                            { %>
+                                    <div class="current header_user_info"><a href="#" onclick="return false;" style="font-size:18px;<%=lang=="ar"?"font-family:Web-Font-Ar":"" %>"><%=lang == "en" ? "Sign in" : "الدخول" %></a></div>
+                                    <ul id="header-login-content" class="toogle_content">
+                                        <li>
+                                            <form action="login" method="post" id="header_login_form">
+                                                <div id="create_header_account_error" class="alert alert-danger" style="display: none;"></div>
+                                                <div class="form_content clearfix">
+                                                    <div class="form-group">
+                                                        <label for="header-email"><%=lang=="en"?"Username":"اسم المستخدم" %></label>
+                                                        <input class="is_required validate account_input form-control" type="text" id="header-email" name="header-email" value=""/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="header-passwd"><%=lang == "en" ? "Password" : "كلمة السر" %></label>
+                                                        <span>
+                                                            <input class="is_required validate account_input form-control" type="password" data-validate="isPasswd" id="header-passwd" name="header-passwd" value="" autocomplete="off" /></span>
+                                                    </div>
+                                                    <p class="submit">
+                                                        <button type="submit" id="HeaderSubmitLogin" name="HeaderSubmitLogin" class="btn btn-default btn-sm" onclick="clicked = true;">
+                                                            <i class="fa fa-lock left"></i>
+                                                            <%=lang == "en" ? "Sign in" : "أدخل" %>
+                                                        </button>
+                                                    </p>
+                                                    <p class="submit">
+                                                        <a href="verify-account" class="btn btn-default btn-sm">
+                                                            <i class="fa fa-lock left"></i>
+                                                            <%=lang == "en" ? "Sign Up" : "تسجل" %>
+                                                        </a>
+                                                        <a href="forgot-password" class="btn btn-default btn-sm">
+                                                            <i class="fa fa-lock left"></i>
+                                                            <%=lang == "en" ? "Forgot Password" : "نسيت كلمة السر" %>
+                                                        </a>
+                                                    </p>
+                                                    
+                                                    <p>
+                                                    </p>
+                                                   
+                                                </div>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                    <%}else {
+                                            int studentId = (int)Session["UserId"];
+                                            var userLibrary = db.StudentLibraries.Where(x => x.studentId == studentId).ToList();
+                                            var student = db.Students.Where(x => x.id == studentId).SingleOrDefault();
+                                            %>
+                                    <div class="current header_user_info"><a href="#" onclick="return false;" style="font-size:18px;<%=lang=="ar"?"font-family:Web-Font-Ar":"" %>"><%=student.FirstName+" " + student.LastName %></a></div>
+                                    <ul id="header-login-content" class="toogle_content" style="padding:0px">
+                                        <li>
+                                           <a href="logout" class="logoutA" style="width:100%;height:30px;line-height:30px;font-size:18px;text-align:center;display:block"><%=lang=="en"?"Logout":"الخروج" %></a>
+                                        </li>
+                                        <%if(userLibrary.Count>0) { %>
+                                        <li>
+                                           <a href="#" onclick="showLibrary()" class="logoutA" style="width:100%;height:30px;line-height:30px;font-size:18px;text-align:center;display:block"><%=lang=="en"?"My Library":"مكتبتي" %></a>
+                                        </li>
+                                        <%} %>
+                                    </ul>
+                                    <div id="Library" style="background-color:white;overflow:auto;width:300px;height:500px;display:none;position:absolute;margin-left:-188px;border:1px solid #cccccc;margin-top:100px;z-index:9999999999">
+                                        <table style="width:100%"><tr><td><h3 <%=lang=="ar"?"style='font-family:Web-Font-Ar'":"" %>>&nbsp;&nbsp;<%=lang=="en"?"My Library":"مكتبتي" %></h3></td><th style="text-align:right"><a style="cursor:pointer" onclick="showLibrary()">X</a></th></tr></table>
+                                        <%foreach(var b in userLibrary) { %>
+                                        <table id="table<%=b.bookId %>" style="width:100%;border:0px;background-color:#f1f9fc;height:30px;line-height:30px;border-bottom:1px solid #cccccc"><tr><td style="width:50px"><a href="book-<%=b.bookId %>"><img src="../Media/<%=b.Book.thumb %>" style="width:50px" /></a></td><th><a href="book-<%=b.bookId %>"><%=lang=="en"?b.Book.title:b.Book.artitle %></a></th><th style="cursor:pointer;text-align:right" onclick="removeFromLibrary('<%=b.bookId %>')">X</th></tr></table>
+                                        <%} %>
+                                    </div>
+                                    <%} %>
+                                </div>
+                                <div id="languages-block-top" class="languages-block">
+                                    <div class="current">
+                                        <span style="font-size:80%;<%=lang=="ar"?"font-family:Web-Font-Ar":"" %>"><%=lang=="en"?"English":"عربي" %></span>
+                                    </div>
+                                    <ul id="first-languages" class="languages-block_ul toogle_content">
+                                        <li <%=lang=="en"?"class='selected'":"" %>>
+                                            <a href="/en/<%=(Page.RouteData.Values["page"]!=null?Page.RouteData.Values["page"]:"home")+"?"+Request.QueryString.ToString() %>" onclick="clicked=true" title="English" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+                                                <span>English</span></a>
+</li>
+                                        <li <%=lang=="ar"?"class='selected'":"" %>>
+                                            <a href="/ar/<%=(Page.RouteData.Values["page"]!=null?Page.RouteData.Values["page"]:"home")+"?"+Request.QueryString.ToString()%>" onclick="clicked=true" title="عربي">
+                                                <span>عربي</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+
+                                <%--<div id="currencies-block-top">
+<form id="setCurrency" action="/prestashop_53956/index.php?live_configurator_token=4163280f7cfaefd3d70df7ad0702e772&amp;id_shop=1&amp;id_employee=2&amp;theme_font=font1" method="post">
+<div class="current">
+<input type="hidden" name="id_currency" id="id_currency" value=""/>
+<input type="hidden" name="SubmitCurrency" value=""/>
+<span class="cur-label">Currency :</span>
+<strong>USD</strong> </div>
+<ul id="first-currencies" class="currencies_ul toogle_content">
+<li class="selected">
+<a href="javascript:setCurrency(1);" rel="nofollow" title="Dollar (USD)">
+Dollar (USD)
+</a>
+</li>
+<li>
+<a href="javascript:setCurrency(2);" rel="nofollow" title="Euro (EUR)">
+Euro (EUR)
+</a>
+</li>
+</ul>
+</form>
+</div>--%>
+
+                                <%--<div id="search_block_top">
+                                    <form id="searchbox" method="get" action="search">
+                                        <input type="hidden" name="controller" value="search" />
+                                        <input type="hidden" name="orderby" value="position" />
+                                        <input type="hidden" name="orderway" value="desc" />
+                                        <input class="search_query form-control" type="text" id="search_query_top" name="search_query" placeholder="" value="" />
+                                        <button type="submit" name="submit_search" class="btn btn-default button-search">
+                                            <span><%=lang=="en"?"Search":"بحث" %></span>
+                                        </button>
+                                    </form>
+                                </div>--%>
+
+                                <%--<div class="div">
+<div class="shopping_cart">
+<a href="http://livedemo00.template-help.com/prestashop_53956/index.php?controller=order" title="View my shopping cart" rel="nofollow">
+<b>Cart</b>
+<span class="ajax_cart_quantity unvisible">0</span>
+<span class="ajax_cart_product_txt unvisible">Product</span>
+<span class="ajax_cart_product_txt_s unvisible">Products</span>
+<span class="ajax_cart_total unvisible">
+</span>
+<span class="ajax_cart_no_product">0</span>
+</a>
+<div class="cart_block block">
+<div class="block_content">
+ 
+<div class="cart_block_list">
+<p class="cart_block_no_products">
+No products
+</p>
+<div class="cart-prices">
+<div class="cart-prices-line first-line  unvisible">
+<span class="cart_block_shipping_cost ajax_cart_shipping_cost">
+To be determined </span>
+<span>
+Shipping
+</span>
+</div>
+<div class="cart-prices-line last-line">
+<span class="price cart_block_total ajax_block_cart_total">$0.00</span>
+<span>Total</span>
+</div>
+</div>
+<p class="cart-buttons">
+<a id="button_order_cart" class="btn btn-default btn-sm icon-right" href="http://livedemo00.template-help.com/prestashop_53956/index.php?controller=order" title="Check out" rel="nofollow">
+<span>
+Check out
+</span>
+</a>
+</p>
+</div>
+</div>
+</div> 
+</div>
+</div>
+<div id="layer_cart">
+<div class="clearfix">
+<div class="layer_cart_product col-xs-12 col-md-6">
+<span class="cross" title="Close window"></span>
+<h2>
+<i class="fa fa-ok"></i>
+Product successfully added to your shopping cart
+</h2>
+<div class="product-image-container layer_cart_img">
+</div>
+<div class="layer_cart_product_info">
+<span id="layer_cart_product_title" class="product-name"></span>
+<span id="layer_cart_product_attributes"></span>
+<div>
+<strong class="dark">Quantity</strong>
+<span id="layer_cart_product_quantity"></span>
+</div>
+<div>
+<strong class="dark">Total</strong>
+<span id="layer_cart_product_price"></span>
+</div>
+</div>
+</div>
+<div class="layer_cart_cart col-xs-12 col-md-6">
+<h2>
+ 
+<span class="ajax_cart_product_txt_s  unvisible">
+There are <span class="ajax_cart_quantity">0</span> items in your cart.
+</span>
+ 
+<span class="ajax_cart_product_txt ">
+There is 1 item in your cart.
+</span>
+</h2>
+<div class="layer_cart_row">
+<strong class="dark">
+Total products
+</strong>
+<span class="ajax_block_products_total">
+</span>
+</div>
+<div class="layer_cart_row">
+<strong class="dark unvisible">
+Total shipping&nbsp; </strong>
+<span class="ajax_cart_shipping_cost unvisible">
+To be determined </span>
+</div>
+<div class="layer_cart_row">
+<strong class="dark">
+Total
+</strong>
+<span class="ajax_block_cart_total">
+</span>
+</div>
+<div class="button-container">
+<span class="continue btn btn-default btn-md icon-left" title="Continue shopping">
+<span>
+Continue shopping
+</span>
+</span>
+<a class="btn btn-default btn-md icon-right" href="http://livedemo00.template-help.com/prestashop_53956/index.php?controller=order" title="Proceed to checkout" rel="nofollow">
+<span>
+Proceed to checkout
+</span>
+</a>
+</div>
+</div>
+</div>
+<div class="crossseling"></div>
+</div>  --%>
+                                <%--<div class="layer_cart_overlay"></div>--%>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div id="top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="top_menu">
+                                <div class="menu-title" <%=lang=="ar"?"style='font-family:Web-Font-Ar'":"" %>><%=lang=="en"?"Menu":"القائمة" %></div>
+                                <ul class="menu clearfix">
+                                    
+                                    <%foreach (var level in levels)
+                                                 { %>
+                                    <%if (usr != null && level.id == usr.levelId)
+                                                 { %>
+                                    <li><a href="level-<%=level.id %>" <%=(Page.RouteData.Values["levelId"] != null && Page.RouteData.Values["levelId"].ToString() == level.id.ToString() || (Request["levelId"]!=null && Request["levelId"] == level.id.ToString()) ? ("style='color:#27a9f7;" + (lang == "ar" ? "font-family:Web-Font-Ar" : "") + "'") : ("style='color:lightblue;" + (lang == "ar" ? "font-family:Web-Font-Ar'" : "'"))) %>><%=lang == "en" ? level.title : level.artitle %></a></li>
+                                    <%}
+                                                 else
+                                                 { %>
+                                    <li><a href="level-<%=level.id %>" <%=(Page.RouteData.Values["levelId"] != null && Page.RouteData.Values["levelId"].ToString() == level.id.ToString() || (Request["levelId"]!=null && Request["levelId"] == level.id.ToString()) ? ("style='color:black;" + (lang == "ar" ? "font-family:Web-Font-Ar" : "") + "'") : ("style='" + (lang == "ar" ? "font-family:Web-Font-Ar'" : "'"))) %>><%=lang == "en" ? level.title : level.artitle %></a></li>
+                                    <%}
+                                                 }%>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="columns-container" id="mainContent">
+            <asp:ContentPlaceHolder ID="main" runat="server" />
+            
+        </div>
+        
+        <div class="footer-container">
+            <footer id="footer" class="container">
+                <div class="row">
+                    <section class="footer-block col-xs-12 col-sm-3" id="block_various_links_footer">
+                        <h4 <%=lang=="ar"?"style='font-family:Web-Font-Ar'":"" %>><%=lang=="en"?"Levels":"المستويات" %></h4>
+                        <ul class="toggle-footer">
+                            <%foreach(var level in levels){ %>
+                                    <li class="item"><a href="level-<%=level.id %>" title="<%=lang=="en"?level.title:level.artitle %>"><%=lang=="en"?level.title:level.artitle %></a></li>
+                                    <%} %>
+                            
+                        </ul>
+                    </section>
+                    <div class="bottom-footer col-xs-12">
+                        <div>
+                            &copy; <span class="current-year"><%=DateTime.Now.Year %></span> <a class="_blank" title="Z" href="http://maizonpub.com">By MAIZON PUB</a>
+                        </div>
+                    </div>
+
+
+                    <section id="social_block" class="footer-block col-xs-12 col-sm-3">
+                        <h4 <%=lang=="ar"?"style='font-family:Web-Font-Ar'":"" %>><%=lang=="en"?"Follow us":"تابعونا" %></h4>
+                        <ul class="toggle-footer">
+                            <li class="facebook">
+                                <a target="_blank" href="https://www.facebook.com/Brands-Marketing-194023190981109" title="Facebook">
+                                    <span><%=lang=="en"?"Facebook":"فيسبوك" %></span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </section>
+
+                    <%--<div id="newsletter_block_left" class="block footer-block col-xs-12 col-sm-3">
+                        <h4>Newsletter</h4>
+                        <div class="block_content">
+                            <form action="//livedemo00.template-help.com/prestashop_53956/index.php" method="post">
+                                <div class="form-group">
+                                    <input class="inputNew form-control grey newsletter-input" id="newsletter-input" type="text" name="email" size="18" value="" />
+                                    <button type="submit" name="submitNewsletter" class="btn btn-default btn-sm">
+                                        <span>Ok</span>
+                                    </button>
+                                    <input type="hidden" name="action" value="0" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>--%>
+
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <script>
+        function showLibrary() {
+            $('#Library').slideToggle();
+        }
+        function removeFromLibrary(bookId)
+        {
+            
+            $.post("../removeFromLibrary.ashx", { bookId: bookId }, function (msg) { if (msg == "success") { $("#table" + bookId).hide(); } else { alert("An error has occured. Please try again later"); } });
+        }
+        window.onload = function () {
+            $(".loading-wrapper").fadeOut();
+        }
+        $("a").on("click", function () { clicked = true });
+    </script>
+</body></html>

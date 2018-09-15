@@ -1,0 +1,131 @@
+.blog-image {
+  margin-bottom: 15px; }
+  .blog-image a {
+    display: block; }
+    @media only screen and (max-width: 767px) {
+      .blog-image a img {
+        width: 100%; } }
+
+#homepage-blog .title_block {
+  margin-bottom: 38px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 18px;
+  font-size: 24px; }
+  #homepage-blog .title_block:after {
+    display: none; }
+@media (max-width: 767px) {
+  #homepage-blog ul {
+    margin: 0 -5px; } }
+#homepage-blog li {
+  margin-bottom: 30px;
+  text-align: center; }
+  @media (min-width: 992px) {
+    #homepage-blog li.first-in-line {
+      clear: left; } }
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+    #homepage-blog li {
+      float: left;
+      width: 50%; } }
+  @media (max-width: 767px) {
+    #homepage-blog li {
+      padding-left: 5px;
+      padding-right: 5px; } }
+  @media (min-width: 768px) and (max-width: 991px) {
+    #homepage-blog li.first-item-of-tablet-line {
+      clear: left; } }
+  @media only screen and (max-width: 767px) {
+    #homepage-blog li.first-item-of-mobile-line {
+      clear: left; } }
+  #homepage-blog li .date-added {
+    font: 400 16px/20px "Roboto", sans-serif;
+    color: #777; }
+  #homepage-blog li .post-descr {
+    font: 400 13px/20px "Roboto", sans-serif;
+    color: #000;
+    margin-bottom: 16px; }
+  #homepage-blog li .blog-image {
+    overflow: hidden; }
+    #homepage-blog li .blog-image a {
+      background: #fff;
+      border: 1px solid #e2e2e2;
+      display: block;
+      position: relative;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      @media (min-width: 992px) {
+        #homepage-blog li .blog-image a:after {
+          color: #fff;
+          content: '\f129';
+          font: 60px/40px "FontAwesome";
+          left: 52%;
+          margin: -20px 0 0 -20px;
+          opacity: 0.8;
+          position: absolute;
+          top: -50%;
+          -webkit-transition: all 1.2s ease;
+          -moz-transition: all 1.2s ease;
+          transition: all 1.2s ease; }
+        #homepage-blog li .blog-image a:hover:after {
+          top: 50%;
+          -webkit-animation: spinAround 2s linear infinite;
+          -moz-animation: spinAround 2s linear infinite;
+          animation: spinAround 2s linear infinite; } }
+  #homepage-blog li .product-name {
+    font: 16px/23px "Roboto", sans-serif; }
+  #homepage-blog li .div2 {
+    padding: 0 10px; }
+  #homepage-blog li .btn.btn-default {
+    background: #31b041;
+    border: none;
+    color: #fff;
+    font: 500 18px/20px "Roboto", sans-serif;
+    height: 40px;
+    overflow: hidden;
+    padding: 8px 2px 0;
+    position: relative;
+    text-align: center;
+    width: 150px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+    #homepage-blog li .btn.btn-default:after {
+      color: #fff;
+      content: '\f129';
+      font-family: "FontAwesome";
+      font-size: 22px;
+      font-style: normal;
+      left: 48%;
+      position: absolute;
+      top: -109px;
+      z-index: 10;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      transition: all 0.2s ease; }
+    #homepage-blog li .btn.btn-default:hover, #homepage-blog li .btn.btn-default:active, #homepage-blog li .btn.btn-default:active:focus, #homepage-blog li .btn.btn-default:focus {
+      color: #fff;
+      background: #000; }
+      #homepage-blog li .btn.btn-default:hover span, #homepage-blog li .btn.btn-default:active span, #homepage-blog li .btn.btn-default:active:focus span, #homepage-blog li .btn.btn-default:focus span {
+        display: none; }
+      #homepage-blog li .btn.btn-default:hover:after, #homepage-blog li .btn.btn-default:active:after, #homepage-blog li .btn.btn-default:active:focus:after, #homepage-blog li .btn.btn-default:focus:after {
+        top: 10px; }
+
+@-webkit-keyframes spinAround {
+  from {
+    -webkit-transform: rotateY(0deg); }
+
+  to {
+    -webkit-transform: rotateY(360deg); } }
+@-moz-keyframes spinAround {
+  from {
+    -moz-transform: rotateY(0deg); }
+
+  to {
+    -moz-transform: rotateY(360deg); } }
+@keyframes spinAround {
+  from {
+    transform: rotateY(0deg); }
+
+  to {
+    transform: rotateY(360deg); } }

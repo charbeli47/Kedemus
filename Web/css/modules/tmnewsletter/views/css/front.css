@@ -1,0 +1,113 @@
+.newsletter-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 9999;
+  overflow: hidden; }
+
+.newsletter-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 9999;
+  overflow: hidden; }
+
+#newsletter_popup {
+  background: url("../../../../../img/newsletterpopup-bg.jpg");
+  border: none;
+  margin: 0 auto;
+  max-width: 770px;
+  min-width: 300px;
+  width: 70%;
+  position: relative;
+  margin: 30px auto; }
+  #newsletter_popup .btn.btn-default {
+    background: #31b041;
+    border-color: #31b041;
+    color: #fff; }
+    #newsletter_popup .btn.btn-default:hover {
+      background: #000;
+      border-color: #000; }
+  #newsletter_popup .description {
+    color: #777;
+    margin-bottom: 20px;
+    padding-top: 84px; }
+  @media (min-width: 1200px) {
+    #newsletter_popup .description {
+      width: 44%; } }
+  #newsletter_popup .form-group label {
+    display: none; }
+  #newsletter_popup .form-group .form-control {
+    width: 236px;
+    color: #007ee1;
+    background: #eee;
+    height: 30px;
+    padding: 4px 6px; }
+  #newsletter_popup .form-control::-moz-placeholder {
+    color: #007ee1; }
+
+.tmnewsletter-inner {
+  position: relative;
+  padding: 20px 0 20px 20px; }
+
+.tmnewsletter-header h4 {
+  color: #000;
+  font: 700 22px/20px "Lato", sans-serif;
+  margin: 0;
+  display: none; }
+
+.tmnewsletter-content {
+  padding: 10px 15px; }
+  .tmnewsletter-content .form-group .form-control {
+    height: 40px;
+    padding: 6px 12px; }
+
+.tmnewsletter-footer {
+  padding: 10px 15px 0;
+  overflow: hidden; }
+  @media (max-width: 767px) {
+    .tmnewsletter-footer {
+      padding-top: 0; } }
+
+.tmnewsletter-footer .btn {
+  margin-left: 5px;
+  margin-bottom: 10px; }
+
+.tmnewsletter-submit {
+  background: #000;
+  border-color: #000;
+  color: #fff; }
+
+.tmnewsletter-footer .checkbox {
+  float: left; }
+
+.tmnewsletter-submit:hover {
+  background: #fff;
+  color: #000; }
+
+.icon.tmnewsletter-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  cursor: pointer;
+  background: #777;
+  text-align: center;
+  line-height: 30px;
+  color: #fff; }
+  .icon.tmnewsletter-close:hover {
+    background: #000; }
+
+.icon.tmnewsletter-close:before {
+  content: '\f00d';
+  font-family: "FontAwesome"; }
+
+#newsletter_popup .tmnewsletter-close {
+  display: none; }

@@ -1,0 +1,78 @@
+.product-name,
+.product-name a,
+.block h4 a:hover,
+.block .title_block a:hover,
+header .top_menu .is-megamenu ul.content > li > a:hover,
+#home-page-tabs > li a:hover,
+#header-login-content a:hover,
+#header-library-content a:hover,
+#home-page-tabs > li.active a,
+#header .cart_block dl a:hover,
+#header .shopping_cart:hover > a:first-child:before,
+#header .cart_block .cart_block_list .remove_link a:hover,
+#header .cart_block .cart_block_list .ajax_cart_block_remove_link:hover {
+  color: #df8f2a; }
+
+.pagination > li > a:hover,
+.pagination > li > a:focus,
+.pagination > li > span:hover,
+.pagination > li > span:focus,
+.accessories-block .product-name a:hover,
+ul.product_list .functional-buttons div a:hover,
+ul.product_list .functional-buttons div label:hover,
+header #header-login .header_user_info a,
+#instant_search_results a.close:hover,
+#subcategories ul li .subcategory-name:hover,
+#productscategory_list .product-name a:hover,
+#layered_block_left ul li:hover {
+  color: #9c8d47; }
+
+#languages-block-top div.current,
+#currencies-block-top div.current {
+  color: #9c8d47; }
+#languages-block-top ul li.selected,
+#languages-block-top ul li:hover a,
+#currencies-block-top ul li.selected,
+#currencies-block-top ul li:hover a {
+  background: #9c8d47; }
+
+.sale-label,
+.price-percent-reduction,
+header .top_menu .menu-title:hover,
+#home-page-tabs > li a:after,
+#search_block_top .btn.button-search,
+#htmlcontent_top ul li > a.item-link .div1,
+#footer #newsletter_block_left .form-group .btn-sm,
+#homepage-slider .bx-wrapper .bx-controls-direction a:hover {
+  background: #df8f2a; }
+
+.btn.ajax_add_to_cart_button,
+.btn.ajax_add_to_cart_product_button,
+header #header-login-content li ul li a:hover,
+header #header-library-content li ul li a:hover,
+.home-column #homepage-blog li .btn.btn-default,
+#htmlcontent_top ul li > a.item-link .div2 {
+  background: #9c8d47; }
+
+.new-label,
+#htmlcontent_top ul li > a.item-link .div3 {
+  background: #9d1f00; }
+
+.cart_block .cart-buttons .btn:hover {
+  background: #df8f2a;
+  border-color: #df8f2a; }
+
+ul.step li.step_current,
+ul.step li.step_current span:after,
+header #header-login-content .logout .btn.btn-default:hover,
+header #header-login-content .submit .btn.btn-default:hover,
+body #newsletter_popup .btn.btn-default {
+  background: #9c8d47;
+  border-color: #9c8d47; }
+
+@media (max-width: 767px) {
+  header .top_menu > ul > li:hover > a,
+  header .top_menu > ul > li.sfHover > a,
+  header .top_menu > ul > li.sfHoverForce > a,
+  header .top_menu > ul > li > a:hover {
+    background: #df8f2a; } }
