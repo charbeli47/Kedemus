@@ -135,6 +135,8 @@
     <Content Include="bin\NPOI.OOXML.dll" />
     <Content Include="bin\NPOI.OpenXml4Net.dll" />
     <Content Include="bin\NPOI.OpenXmlFormats.dll" />
+    <Content Include="bookmenu.aspx" />
+    <Content Include="img\exerciseBack.png" />
     <Content Include="story.aspx" />
     <Content Include="stories.aspx" />
     <Content Include="books.aspx" />
@@ -955,6 +957,13 @@
     </Compile>
     <Compile Include="BookPoster.cs">
       <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bookmenu.aspx.cs">
+      <DependentUpon>bookmenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bookmenu.aspx.designer.cs">
+      <DependentUpon>bookmenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="story.aspx.cs">
       <DependentUpon>story.aspx</DependentUpon>

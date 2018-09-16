@@ -21,11 +21,11 @@
                                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                                 <div class="left-block">
                                                     <div class="product-image-container">
-                                                        <a class="product_img_link" <%=student.levelId == levelId?("href='book-"+item.id+"'"):"" %> title="<%=item.title%>" itemprop="url">
+                                                        <a class="product_img_link" <%=student.levelId == levelId?("href='bookmenu-"+item.id+"'"):"" %> title="<%=item.title%>" itemprop="url">
                                                             <img class="replace-2x img-responsive" src="../Media/<%=item.thumb %>" alt="<%=item.title %>" title="<%=item.title %>" itemprop="image" />
                                                             <img class="img-responsive hover-image" id="thumb-<%=item.id %>" src="../Media/<%=item.thumb %>" alt="<%=item.title %>" title="<%=item.title %>" itemprop="image" />
                                                         </a>
-                                                        <a class="quick-view" <%=student.levelId == levelId ? "href='book-" + item.id + "'" : "" %> rel="">
+                                                        <a class="quick-view" <%=student.levelId == levelId ? "href='bookmenu-" + item.id + "'" : "" %> rel="">
                                                             <span style="font-size:15px;"><%=item.title %></span>
                                                         </a>
                                                         <%if (item.StudentLibraries.Where(x=>x.studentId == student.id).Count() == 0 && student.levelId == levelId)
