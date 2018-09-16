@@ -31,8 +31,7 @@
                                             <tr>
                                                 <th>ID</th>
                                                 <th>English Title</th>
-                                                <th>Arabic Title</th>
-                                                <th>Show Games</th>
+                                                <th>French Title</th>
                                                 <th>Thumb</th>                                                
                                                 <th></th>
                                             </tr>
@@ -42,8 +41,7 @@
                                             <tr id="<%=results[i].id %>">
                                                 <td class="index"><%=results[i].id %></td>
                                                 <td><a href="#" id="entitle<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Schools" data-title="English Title"><%=HttpUtility.HtmlEncode(results[i].title) %></a></td>
-                                                <td><a href="#" id="artitle<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Schools" data-title="Arabic Title"><%=HttpUtility.HtmlEncode(results[i].artitle) %></a></td>
-                                                <td><a href="#" id="showGame<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Schools" data-title="English Title"><%=results[i].showGame==true?"YES":"NO" %></a></td>
+                                                <td><a href="#" id="artitle<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Schools" data-title="French Title"><%=HttpUtility.HtmlEncode(results[i].artitle) %></a></td>
                                                 <td><input type="file" name="thumbnailupload" data-id="<%=results[i].id %>"/><img src="../Media/<%=results[i].thumb %>" style="height:100px" /><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editLoader<%=results[i].id %>" /></td>
                                                 <td><% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Schools", "delete"))
                {%>
@@ -51,7 +49,6 @@
                                                     <%} %>
                                                     <br /><a onclick="getSubPage('students.aspx','<%=results[i].id %>')" href="#!students.aspx">Students</a>
                                                     <br /><a style="cursor:pointer" data-toggle="modal" data-target="#books-modal<%=results[i].id %>">Enabled Books</a>
-                                                    <br /><a style="cursor:pointer" data-toggle="modal" data-target="#games-modal<%=results[i].id %>">Enabled Games</a>
                                                 </td>
                                             </tr>
                                             <%} %>
@@ -60,8 +57,7 @@
                                             <tr>
                                                 <th>ID</th>
                                                 <th>English Title</th>
-                                                <th>Arabic Title</th>
-                                                <th>Show Games</th>
+                                                <th>French Title</th>
                                                 <th>Thumb</th>                                                
                                                 <th></th>
                                             </tr>
@@ -167,7 +163,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon">Arabic Title:</span>
+                                    <span class="input-group-addon">French Title:</span>
                                     <input name="artitle" type="text" class="form-control" placeholder="Title">
                                 </div>
                             </div>
@@ -176,12 +172,6 @@
                                 <div class="input-group">
                                     <span class="input-group-addon">Thumb:</span>
                                     <input name="thumb" type="file" class="form-control" placeholder="Small Image">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon">Show Games:</span>
-                                    <input type="checkbox" name="showGame"/>
                                 </div>
                             </div>
                         </div>
@@ -209,16 +199,16 @@
                                      <%foreach (var level in levels)
     {%>
                         <h3><%=level.title %></h3>
-       <% foreach (var item in level.ItemsLevels)
+       <% foreach (var item in level.Books)
         {
             string cheked = "";
-            if (item.Book.SchoolBooks.Where(x => x.schoolId == row.id).Count() > 0)
+            if (item.SchoolBooks.Where(x => x.schoolId == row.id).Count() > 0)
             {
                 cheked = "checked=\"checked\"";
             }
                                            %>
-                                    <label class="checkbox-inline"><input type="checkbox" name="book_<%=row.id %>_<%=item.Book.id %>" id="book_<%=row.id %>_<%=item.Book.id %>" <%=cheked %> />
-                                        <%=item.Book.title %>
+                                    <label class="checkbox-inline"><input type="checkbox" name="book_<%=row.id %>_<%=item.id %>" id="book_<%=row.id %>_<%=item.id %>" <%=cheked %> />
+                                        <%=item.title %>
                                     </label>
                                     <%}
     } %>
@@ -239,65 +229,13 @@
                                                                     string list = "";
                                                                     foreach (var level in levels)
                                                                     {
-                                                                        foreach(var item in level.ItemsLevels)
-                                                                            list += ",book" + item.bookId + ":document.getElementById('book_" + row.id + "_" + item.bookId + "').checked";
+                                                                        foreach(var item in level.Books)
+                                                                            list += ",book" + item.id + ":document.getElementById('book_" + row.id + "_" + item.id + "').checked";
                                                                     }
                                                                     if (list != "")
                                                                         list = list.Substring(1);
                   %>
         $.post("resources/SaveSchoolBooks.ashx", {schoolId: <%=row.id %>, <%=list%>}, function (data) { getSearchedContent("<%=searchKey %>","schools.aspx","<%=page %>");$(".modal-backdrop").hide(); })
-    }
-    </script>
-<div class="modal fade" id="games-modal<%=row.id %>" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" >
-                <div class="modal-content">
-                    
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title"><i class="fa fa-envelope-o"></i> <%=row.title %> / Games list</h4>
-                    </div>
-                    <div class="modal-body">
-                      
-                                     <%foreach (var level in levels)
-    {%>
-                        <h3><%=level.title %></h3>
-       <% foreach (var item in level.BookGames)
-        {
-            string cheked = "";
-            if (item.SchoolGames.Where(x => x.schoolId == row.id).Count() > 0)
-            {
-                cheked = "checked=\"checked\"";
-            }
-                                           %>
-                                    <label class="checkbox-inline"><input type="checkbox" name="game_<%=row.id %>_<%=item.id %>" id="game_<%=row.id %>_<%=item.id %>" <%=cheked %> />
-                                        <%=item.Folder %>
-                                    </label>
-                                    <%}
-    } %>
-                            </div>
-                    <div class="modal-footer clearfix">
-
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard</button>
-
-                            <button type="button" class="btn btn-primary pull-left" data-dismiss="modal" onclick="SaveSchoolGames<%=row.id %>()"><i class="fa fa-plus"></i> Save</button>
-                        </div>
-                            </div>
-                        
-                </div><!-- /.modal-content -->
-    </div>
-<script>
-    function SaveSchoolGames<%=row.id %>() {
-                <%
-                                                                    list = "";
-                                                                    foreach (var level in levels)
-                                                                    {
-                                                                        foreach(var item in level.BookGames)
-                                                                            list += ",game" + item.id + ":document.getElementById('game_" + row.id + "_" + item.id + "').checked";
-                                                                    }
-                                                                    if (list != "")
-                                                                        list = list.Substring(1);
-                  %>
-        $.post("resources/SaveSchoolGames.ashx", {schoolId: <%=row.id %>, <%=list%>}, function (data) { getSearchedContent("<%=searchKey %>","schools.aspx","<%=page %>");$(".modal-backdrop").hide(); })
     }
     </script>
 <%} %>

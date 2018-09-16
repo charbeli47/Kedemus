@@ -38,28 +38,21 @@ namespace Web.resources
                     db.cms_groups.Add(new cms_groups() { name = split[0] });
                     success = "success";
                     break;
-                case "BooksCategories":
-                    db.Categories.Add(new Category() { title = split[0],artitle = split[1], OrderIndex = 0, ForGame = bool.Parse(split[2]) });
-                    success = "success";
-                    break;
-                case "QuestionsCategories":
-                    db.QuestionsCategories.Add(new QuestionsCategory() { title = split[0], bookId = int.Parse(split[1]) });
-                    success = "success";
-                    break;
+               
                 case "Levels":
-                    var orderId = db.Levels.OrderByDescending(x => x.OrderIndex).FirstOrDefault();
+                    var orderId = db.BooksLevels.OrderByDescending(x => x.OrderIndex).FirstOrDefault();
                     
                     if (orderId != null)
                         lastOrderId = (int)orderId.OrderIndex + 1;
-                    db.Levels.Add(new Level() { title = split[0], OrderIndex = lastOrderId, artitle = split[1] });
+                    db.BooksLevels.Add(new BooksLevel() { title = split[0], lang = split[1], OrderIndex = lastOrderId });
                     success = "success";
                     break;
                 case "BookUnites":
-                    var lastunite = db.BookInteractiveChapters.OrderByDescending(x => x.OrderIndex).FirstOrDefault();
+                    var lastunite = db.BookUnites.OrderByDescending(x => x.OrderIndex).FirstOrDefault();
                     
                     if (lastunite != null)
                         lastOrderId = (int)lastunite.OrderIndex + 1;
-                    db.BookInteractiveChapters.Add(new BookInteractiveChapter { title = split[0], bookId = int.Parse(split[1]), OrderIndex = lastOrderId });
+                    db.BookUnites.Add(new BookUnite { title = split[0], bookId = int.Parse(split[1]), OrderIndex = lastOrderId });
                     break;
                 case "IPs":
                     string val = split[0];

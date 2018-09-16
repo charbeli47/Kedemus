@@ -25,14 +25,14 @@ namespace Web
                     if(lang == "en")
                         msg.Text = "<font color='green'>Your Password is : "+password+"</font>";
                     else
-                        msg.Text = "<font color='green'>كلمة السر الخاصة بك هي: " +password + "</font>";
+                        msg.Text = "<font color='green'>Votre mot de passe est: " + password + "</font>";
                 }
                 else
                 {
                     if (lang == "en")
                         msg.Text = "<font color='red'>We didn't find your account. Please request it from your school or try again later.</font>";
                     else
-                        msg.Text = "<font color='red'>لم نجد حسابك. يرجى طلب ذلك من مدرستك أو المحاولة مرة أخرى في وقت لاحق.</font>";
+                        msg.Text = "<font color='red'>Nous n'avons pas trouvé votre compte. Veuillez le demander à votre école ou réessayer plus tard.</font>";
                 }
             }
         }

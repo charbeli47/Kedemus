@@ -12,13 +12,14 @@ namespace Web
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentLibrary
+    public partial class BookPoster
     {
-        public long id { get; set; }
+        public int id { get; set; }
+        public string title { get; set; }
+        public string InteractiveFile { get; set; }
         public Nullable<int> bookId { get; set; }
-        public Nullable<long> studentId { get; set; }
+        public string thumb { get; set; }
     
         public virtual Book Book { get; set; }
-        public virtual Student Student { get; set; }
     }
 }

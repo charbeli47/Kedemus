@@ -10,6 +10,6 @@
 namespace Web.resources {
     
     
-    public partial class games {
+    public partial class stories {
     }
 }

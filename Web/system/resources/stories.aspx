@@ -1,11 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="books.aspx.cs" Inherits="Web.system.resources.books" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="stories.aspx.cs" Inherits="Web.resources.stories" %>
 <link href="css/iCheck/all.css" rel="stylesheet" type="text/css" />
 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
                         Web Content
-                        <small>Books</small>
+                        <small><%=book.title %> / Stories</small>
                     </h1>
                     <%--<ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -25,55 +24,42 @@
                                      <h3 class="box-title"><div style="width:100px;float:right;margin-bottom:-25px"><a class="btn btn-block btn-primary" data-toggle="modal" data-target="#compose-modal" style="color:white;"><i class="fa fa-plus" style="color:white;"></i> Add new</a></div><div style="clear:right"></div><br/></h3><%} %>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
-                                    <div class="row"><div class="col-xs-6"></div><div class="col-xs-6"><div class="dataTables_filter" id="example1_filter"><label>Search: <input type="text" aria-controls="example1" id="searchTable" value="<%=searchKey %>"></label><button onclick="searchTable(document.getElementById('searchTable').value)">Search</button></div></div></div>
-                                    <table id="example1" class="sort table table-bordered table-striped" >
+                                    <table id="example1" class="table table-bordered table-striped" >
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Folder</th>
+                                                <th>Thumb</th>
+                                                <th>PDF</th>
                                                 <th>Title</th>
-                                                <th>Level</th>
-                                                <th>Language</th>
-                                                <th>Thumbnail</th>
-                                                <th>PDF File</th>
-                                                <th>Is Available</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <%for(int i=0;i<results.Count;i++){ %>
-                                            <tr id="<%=results[i].id %>">
-                                                <td class="index"><%=results[i].id %></td>
-                                                <td><a href="#" id="title<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Books" data-title="Title"><%=HttpUtility.HtmlEncode(results[i].title) %></a></td>
-                                                <td><a href="#" id="level<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Books" data-title="Level"><%=HttpUtility.HtmlEncode(results[i].BooksLevel.title) %></a></td>
-                                                <td><a href="#" id="lang<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Books" data-title="Language"><%=HttpUtility.HtmlEncode(results[i].lang) %></a></td>
+                                            <tr>
+                                                <td><%=results[i].id %></td>
+                                                <td><a href="../Media/Stories/<%=results[i].bookId %>/<%=results[i].InteractiveFile %>" target="_blank"><%=results[i].InteractiveFile %></a></td>
                                                 <td><input type="file" name="thumbnailupload" data-id="<%=results[i].id %>"/><img src="../Media/<%=results[i].thumb %>" style="height:100px" /><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editLoader<%=results[i].id %>" /></td>
                                                 <td><input type="file" name="pdfupload" data-id="<%=results[i].id %>"/><a href="../Media/<%=results[i].pdf %>" style="height:100px" target="_blank">View File</a><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editPdfLoader<%=results[i].id %>" /></td>
-                                                <td><a href="#" id="isAvailable<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Books"><%=results[i].isAvailable %></a></td>
+                                                <td><a href="#" id="title<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Stories" data-title="Title"><%=HttpUtility.HtmlEncode(results[i].title) %></a></td>
                                                 <td><% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "delete"))
-               {%>
-                                                    <a href="#" class="fa fa-times" onclick="DeleteRow(<%=results[i].id %>)"></a><br />
-                                                    <%} %>
-                                                    <br /><a onclick="getSubPage('bookunites.aspx','<%=results[i].id %>')" href="#!bookunites.aspx">Book Unites</a>
-                                                    <br /><a onclick="getSubPage('stories.aspx','<%=results[i].id %>')" href="#!stories.aspx">Book Stories</a>
-                                                    <br /><a onclick="getSubPage('games.aspx','<%=results[i].id %>')" href="#!games.aspx">Book Posters</a>
+               {%><a href="#" class="btn btn-block btn-primary" style="color:white" onclick="DeleteRow(<%=results[i].id %>)"><i class="fa fa-plus" style="color:white;"></i> Delete</a><%} %>
                                                 </td>
                                             </tr>
                                             <%} %>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>ID</th>
+                                               <th>ID</th>
+                                                <th>Folder</th>
+                                                <th>Thumb</th>
+                                                <th>PDF</th>
                                                 <th>Title</th>
-                                                <th>Level</th>
-                                                <th>Language</th>
-                                                <th>Thumbnail</th>
-                                                <th>PDF File</th>
-                                                <th>Is Available</th>
                                                 <th></th>
                                             </tr>
                                         </tfoot>
                                     </table>
-                                    <div class="row"><div class="col-xs-6"><div class="dataTables_info" id="example1_info">Showing <%=((page - 1) * pageSize) + 1 %> to <%= (page * pageSize)%> of <%= resultCount %> entries</div></div><div class="col-xs-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#!books.aspx" onclick='searchContent("<%=page - 1 %>")'>← Previous</a></li><li class="next"><a href="#!books.aspx" onclick='searchContent("<%=page + 1 %>")'>Next → </a></li></ul></div></div></div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
@@ -85,16 +71,8 @@
 
         <script type="text/javascript">
             $(function () {
-                $("#example1").dataTable({bPaginate:false,  bInfo : false, bFilter: false});
+                $("#example1").dataTable({ bPaginate: false });
             });
-            function searchTable(s)
-            {
-                getSearchedContent(s,"books.aspx","<%=page %>");
-            }
-            function searchContent(page)
-            {
-                getSearchedContent("<%=searchKey %>","books.aspx",page)
-            }
             </script>
 <%--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">--%>
 
@@ -108,44 +86,9 @@
 
             //make username editable
             <% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "edit"))
-               {%>
-            <%for(int i=0;i<results.Count;i++){%>
-            $('#entitle<%=i%>').editable();
-            $('#artitle<%=i%>').editable();
-            $('#entext<%=i%>').editable();
-            $('#artext<%=i%>').editable();
-            $('#youtubeId<%=i%>').editable();
-            $('#SignLanguage<%=i%>').editable();
-            $('#isAvailable<%=i%>').editable({
-                type: 'select',
-                title: 'choose if available',
-                placement: 'right',
-                value: '<%=results[i].isAvailable == true?"YES":"NO"%>',
-                source: [
-                    { value: 'YES', text: 'YES' },
-                    { value: 'NO', text: 'NO' }
-                ]
-            });
-            $('#lang<%=i%>').editable({
-                type: 'select',
-                title: 'Language',
-                placement: 'right',
-                value: '<%=results[i].lang%>',
-                source: [
-                    { value: 'fr', text: 'Francais' },
-                    { value: 'en', text: 'English' }
-                ]
-            });
-            $('#level<%=i%>').editable({
-                type: 'select',
-                title: 'Language',
-                placement: 'right',
-                value: '<%=results[i].levelId%>',
-                source: [
-                    <%=levelsList%>
-                ]
-            });
-            
+        {%>
+            <%for (int i = 0; i < results.Count; i++) {%>
+            $('#title<%=i%>').editable();
             <%} }%>
         });
         $("input[name='thumbnailupload']").on("change", function () {
@@ -162,17 +105,16 @@
                     var imRes = this.result;
                     $.ajax({
                         type: "POST",
-                        url: "resources/uploadBooksImage.ashx",
-                        data: { img: imRes, id: imId, field: "thumb" }
+                        url: "resources/uploadStoryImage.ashx",
+                        data: { img: imRes, id: imId, field: "Img" }
                     })
 .done(function (msg) {
-    getSearchedContent("<%=searchKey %>","books.aspx","<%=page %>");
+                        getSubPage('stories.aspx','<%=Request["pageId"] %>');
     $("#editLoader" + imId).hide();
 });
                 }
             }
         });
-        
         $("input[name='pdfupload']").on("change", function () {
             var files = !!this.files ? this.files : [];
             if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
@@ -186,17 +128,16 @@
                     var imRes = this.result;
                     $.ajax({
                         type: "POST",
-                        url: "resources/uploadBooksImage.ashx",
+                        url: "resources/uploadStoryImage.ashx",
                         data: { img: imRes, id: imId, field: "pdf" }
                     })
 .done(function (msg) {
-    getSearchedContent("<%=searchKey %>","books.aspx","<%=page %>");
+    getSubPage('stories.aspx','<%=Request["pageId"] %>');
     $("#editPdfLoader" + imId).hide();
 });
                 }
             
         });
-        
     </script>
 
 <div class="modal fade" id="compose-modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -204,20 +145,15 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title"><i class="fa fa-envelope-o"></i> Add Book</h4>
+                        <h4 class="modal-title"><i class="fa fa-envelope-o"></i> Add new Record</h4>
                     </div>
-                    <form action="resources/addBooks.ashx" id="submitForm" method="post" enctype="multipart/form-data">
+                    <form action="resources/addStory.ashx" id="submitForm" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="pageId" value="<%=Request["pageId"] %>" />
                         <div class="modal-body">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon">Title:</span>
-                                    <input name="title" type="text" class="form-control" placeholder="Title">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon">Thumb:</span>
-                                    <input name="thumb" type="file" class="form-control">
+                                    <span class="input-group-addon">Folder (*.zip containing index.html as the startup page):</span>
+                                    <input name="GameFile" type="file" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -229,31 +165,22 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon">Is Available:</span>
-                                    <input type="checkbox" name="isAvailable"/>
+                                    <span class="input-group-addon">Thumb:</span>
+                                    <input name="Thumb" type="file" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon">Language:</span>
-                                    <select name="langselect" id="langselect" class="form-control">
-                                        <option value="fr">Francais</option>
-                                        <option value="en">English</option>
-                                    </select>
+                                    <span class="input-group-addon">Title:</span>
+                                    <input name="title" type="text" class="form-control" />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon">Level:</span>
-                                    <select name="levelselect" id="levelselect" runat="server" class="form-control"></select>
-                                </div>
-                            </div>
-                            
                         </div>
                         <div class="modal-footer clearfix">
 
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard</button>
-                            <input type="submit" class="btn btn-primary pull-left" value="Save" id="submitBtn"/><img src="img/ajax-loader.gif" style="height:30px;display:none" class="pull-left" id="loader" />
+
+                            <input type="submit" class="btn btn-primary pull-left" id="submitBtn" value="Save"/><img src="img/ajax-loader.gif" style="height:30px;display:none" class="pull-left" id="loader" />
                         </div>
                     </form>
                 </div><!-- /.modal-content -->
@@ -305,10 +232,9 @@
             });
             
             function DeleteRow(id) {
-                $.post("resources/DeleteRow.ashx", { table: "Books", tableId: id },
+                $.post("resources/DeleteRow.ashx", { table: "Stories", tableId: id },
                     function (data) {
-                        getSearchedContent("<%=searchKey %>","books.aspx","<%=page %>");
-                        $(".modal-backdrop").hide();
+                        getSubPage('stories.aspx','<%=Request["pageId"] %>');
                     });
             }
             $('#submitForm').on('submit', (function (e) {
@@ -324,7 +250,7 @@
                     contentType: false,
                     processData: false,
                     success: function (data) {
-                        getSearchedContent("<%=searchKey %>","books.aspx","<%=page %>");
+                        getSubPage('stories.aspx', '<%=Request["pageId"] %>');
                         document.getElementById("submitBtn").disabled = false;
                         $("#loader").hide();
                         $(".modal-backdrop").hide();
@@ -336,7 +262,5 @@
                 });
 
             }));
-
         </script>
-
 

@@ -13,25 +13,25 @@
 <i class="fa fa-home"></i>
 </a>
 <span class="navigation-pipe">&gt;</span>
-<%=lang=="en"?"Authentication":"الدخول" %>
+<%=lang=="en"?"Authentication":"Authentification" %>
 </div>
  
 <div class="row">
 <div class="large-left col-sm-6">
 <div class="row">
 <div id="center_column" class="center_column col-xs-12 col-sm-12">
-<h1 class="page-heading" <%=lang=="ar"?"style='font-family:Web-Font-Ar'":"" %>><%=lang=="en"?"Authentication":"الدخول" %></h1>
+<h1 class="page-heading"><%=lang=="en"?"Authentication":"Authentification" %></h1>
 <div class="row">
 <div class="col-xs-12 col-sm-12">
 <form action="login" method="post" id="login_form" class="box">
-<h3 class="page-subheading" <%=lang=="ar"?"style='font-family:Web-Font-Ar'":"" %>><%=lang=="en"?"Login":"أدخل" %></h3>
+<h3 class="page-subheading"><%=lang=="en"?"Login":"Connectez-vous" %></h3>
 <div class="form_content clearfix">
 <div class="form-group">
-<label for="passwd"><%=lang=="en"?"Username":"إسم المستخدم" %></label>
+<label for="passwd"><%=lang=="en"?"Username":"Nom d'utilisateur" %></label>
 <input class="is_required validate account_input form-control" type="text" data-validate="isPasswd" id="uname" name="uname" required value=""/>
 </div>
     <div class="form-group">
-<label for="passwd"><%=lang=="en"?"Password":"كلمة السر" %></label>
+<label for="passwd"><%=lang=="en"?"Password":"Password" %></label>
 <input class="is_required validate account_input form-control" type="password" data-validate="isPasswd" id="passwd" name="passwd" required value=""/>
 </div>
 <p class="lost_password form-group">
@@ -41,7 +41,7 @@
 <button type="submit" id="SubmitLogin" name="SubmitLogin" class="btn btn-default btn-md">
 <span>
 <i class="fa fa-lock left"></i>
-<%=lang=="en"?"Sign in":"أدخل" %>
+<%=lang=="en"?"Sign in":"Connectez-vous" %>
 </span>
 </button>
 </p>

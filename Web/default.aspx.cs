@@ -9,15 +9,9 @@ namespace Web
 {
     public partial class _default2 : System.Web.UI.Page
     {
-        protected List<Category> categories;
-        protected List<HomeBanner> banners;
-        protected List<PressRoom> news;
-        protected Content content;
-        protected string lang;
-        protected Student student;
         protected void Page_Load(object sender, EventArgs e)
         {
-            BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
+            /*BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
             categories = db.Categories.OrderBy(x => x.OrderIndex).ToList();
             banners = db.HomeBanners.ToList();
             news = db.PressRooms.ToList();
@@ -35,7 +29,16 @@ namespace Web
                     int sId = (int)Session["UserId"];
                     student = db.Students.Where(x => x.id == sId).SingleOrDefault();
                 }
+            }*/
+            if (Session["UserId"] != null)
+            {
+                BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
+                var studentId = (long)Session["UserId"];
+                var student = db.Students.Where(x => x.id == studentId);
+                Response.Redirect("/fr/books");
             }
+            else
+                Response.Redirect("/fr/login");
         }
     }
 }

@@ -7,19 +7,22 @@ using System.Web.UI.WebControls;
 
 namespace Web.resources
 {
-    public partial class bookslevels : System.Web.UI.Page
+    public partial class stories : System.Web.UI.Page
     {
-        protected List<BooksLevel> results;
+        protected List<BookStory> results;
+        protected Book book;
         protected void Page_Load(object sender, EventArgs e)
         {
             BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
             int opId = int.Parse(Request["opId"]);
+            int bookId = int.Parse(Request["pageId"]);
             bool perm = Permissions.Check(opId, "Books", "view");
             if (!perm)
                 Response.Write("<script>getContent('accessdenied.html');</script>");
             else
             {
-                results = db.BooksLevels.ToList().OrderBy(x => x.OrderIndex).ToList();
+                results = db.BookStories.Where(x=>x.bookId == bookId).ToList();
+                book = db.Books.Where(x => x.id == bookId).SingleOrDefault();
             }
         }
     }

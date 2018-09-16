@@ -17,43 +17,34 @@ namespace Web
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Book()
         {
+            this.BookPosters = new HashSet<BookPoster>();
+            this.BookUnites = new HashSet<BookUnite>();
             this.BookSlides = new HashSet<BookSlide>();
-            this.ItemsCategories = new HashSet<ItemsCategory>();
-            this.ItemsLevels = new HashSet<ItemsLevel>();
-            this.QuestionsCategories = new HashSet<QuestionsCategory>();
+            this.BookStories = new HashSet<BookStory>();
             this.SchoolBooks = new HashSet<SchoolBook>();
             this.StudentLibraries = new HashSet<StudentLibrary>();
-            this.StudentScores = new HashSet<StudentScore>();
-            this.BookInteractiveChapters = new HashSet<BookInteractiveChapter>();
         }
     
         public int id { get; set; }
         public string title { get; set; }
-        public string artitle { get; set; }
         public string pdf { get; set; }
-        public string text { get; set; }
-        public string artext { get; set; }
         public string thumb { get; set; }
-        public string video { get; set; }
         public Nullable<bool> isAvailable { get; set; }
-        public string background { get; set; }
-        public string SignLanguageVideo { get; set; }
+        public Nullable<int> levelId { get; set; }
+        public string lang { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BookPoster> BookPosters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BookUnite> BookUnites { get; set; }
+        public virtual BooksLevel BooksLevel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BookSlide> BookSlides { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemsCategory> ItemsCategories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemsLevel> ItemsLevels { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<QuestionsCategory> QuestionsCategories { get; set; }
+        public virtual ICollection<BookStory> BookStories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SchoolBook> SchoolBooks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentLibrary> StudentLibraries { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentScore> StudentScores { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BookInteractiveChapter> BookInteractiveChapters { get; set; }
     }
 }

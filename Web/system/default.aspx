@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         
-                        <% if (Web.Permissions.Check(op.id, "Content", "view") || Web.Permissions.Check(op.id, "Books", "view") || Web.Permissions.Check(op.id, "Home Banners", "view") || Web.Permissions.Check(op.id, "Partners", "view") || Web.Permissions.Check(op.id, "Press Room", "view") || Web.Permissions.Check(op.id, "Assessment", "view"))
+                        <% if (Web.Permissions.Check(op.id, "Content", "view") || Web.Permissions.Check(op.id, "Books", "view"))
                             { %>
                         <li class="treeview">
                             <a href="#">
@@ -130,22 +130,12 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <%if (Web.Permissions.Check(op.id, "Content", "view"))
-                                  { %><li><a href="#!content.aspx" onclick="getContent('content.aspx')"><i class="fa fa-angle-double-right"></i> Content</a></li><%} %>
-                                <%if (Web.Permissions.Check(op.id, "Books", "view"))
-                                  { %><li><a href="#!bookscategories.aspx" onclick="getContent('bookscategories.aspx')"><i class="fa fa-angle-double-right"></i> Books Categories</a></li><%} %>
+                                <%--<%if (Web.Permissions.Check(op.id, "Content", "view"))
+                                  { %><li><a href="#!content.aspx" onclick="getContent('content.aspx')"><i class="fa fa-angle-double-right"></i> Content</a></li><%} %>--%>
                                 <%if (Web.Permissions.Check(op.id, "Books", "view"))
                                   { %><li><a href="#!bookslevels.aspx" onclick="getContent('bookslevels.aspx')"><i class="fa fa-angle-double-right"></i> Books Levels</a></li><%} %>
                                 <%if (Web.Permissions.Check(op.id, "Books", "view"))
                                   { %><li><a href="#!books.aspx" onclick="getSearchedContent('', 'books.aspx','1')"><i class="fa fa-angle-double-right"></i> Books</a></li><%} %>
-                               <%if (Web.Permissions.Check(op.id, "Assessment", "view"))
-                                  { %><li><a href="#!assessmentcategories.aspx" onclick="getContent('assessmentcategories.aspx')"><i class="fa fa-angle-double-right"></i> Assessments</a></li><%} %>
-                                <%if (Web.Permissions.Check(op.id, "Assessment", "view"))
-                                  { %><li><a href="#!assessmentquestions.aspx" onclick="getContent('assessmentquestions.aspx')"><i class="fa fa-angle-double-right"></i> Assessment Questions</a></li><%} %>
-                                 <%if (Web.Permissions.Check(op.id, "Home Banners", "view"))
-                                  { %><li><a href="#!homebanners.aspx" onclick="getContent('homebanners.aspx')"><i class="fa fa-angle-double-right"></i> Home Banners</a></li><%} %>
-                               <%if (Web.Permissions.Check(op.id, "Press Room", "view"))
-                                  { %><li><a href="#!pressroom.aspx" onclick="getContent('pressroom.aspx')"><i class="fa fa-angle-double-right"></i> News</a></li><%} %>
                                 
                             </ul>
                         </li>
@@ -273,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if(page!="")
                     getContent(page);
                 else
-                    getContent("content.aspx");
+                    getContent("books.aspx");
             }
             getHashPage();
         </script>

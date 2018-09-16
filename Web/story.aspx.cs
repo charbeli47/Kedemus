@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Web
 {
-    public partial class product : System.Web.UI.Page
+    public partial class story : System.Web.UI.Page
     {
         protected string lang;
-        protected int bookId;
-        protected Book result;
+        protected int storyId;
+        protected BookStory result;
         protected Student usr;
         protected BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
         protected void Page_Load(object sender, EventArgs e)
@@ -26,10 +26,10 @@ namespace Web
                 if (usr != null)
                 {
                     lang = Page.RouteData.Values["lang"].ToString();
-                    bookId = int.Parse(Page.RouteData.Values["id"].ToString());
-                    result = db.Books.Where(x => x.id == bookId).SingleOrDefault();
+                    storyId = int.Parse(Page.RouteData.Values["id"].ToString());
+                    result = db.BookStories.Where(x => x.id == storyId).SingleOrDefault();
                     int userLevelId = (int)usr.levelId;
-                    if (result.levelId != userLevelId)
+                    if (result.Book.levelId != userLevelId)
                     {
                         Response.Redirect("home");
                     }

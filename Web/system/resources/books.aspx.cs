@@ -14,16 +14,15 @@ namespace Web.system.resources
         protected int PageCount;
         protected int resultCount;
         protected List<Book> results;
-        protected List<Category> categories;
-        protected List<Level> levels;
-        protected string searchKey = "";
+        protected List<BooksLevel> levels;
+        protected string searchKey = "", levelsList;
         protected void Page_Load(object sender, EventArgs e)
         {
             BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
             int opId = int.Parse(Request["opId"]);
             int.TryParse(Request["page"], out page);
             bool perm = Permissions.Check(opId, "Books", "view");
-            searchKey = Request["key"];
+            searchKey = !string.IsNullOrEmpty(Request["key"])? Request["key"].ToLower():"" ;
             if (!perm)
                 Response.Write("<script>getContent('accessdenied.html');</script>");
             else
@@ -31,7 +30,7 @@ namespace Web.system.resources
                 
                 var allresults = db.Books.OrderByDescending(x => x.id).ToList();
                 if (!string.IsNullOrEmpty(searchKey))
-                    allresults = allresults.Where(x => x.title.ToLower().Contains(searchKey) || x.text.ToLower().Contains(searchKey) || x.artitle.ToLower().Contains(searchKey) || x.artext.ToLower().Contains(searchKey)).ToList();
+                    allresults = allresults.Where(x => x.title.ToLower().Contains(searchKey)).ToList();
                 resultCount = allresults.Count;
                 PageCount = resultCount / pageSize;
                 if (allresults.Count % pageSize > 0)
@@ -40,8 +39,17 @@ namespace Web.system.resources
                     page = 1;
                 results = allresults.Skip((page - 1) * pageSize)
                        .Take(pageSize).ToList();
-                categories = db.Categories.ToList();
-                levels = db.Levels.ToList();                
+                levels = db.BooksLevels.ToList();
+                levelselect.DataSource = levels;
+                levelselect.DataTextField = "title";
+                levelselect.DataValueField = "id";
+                levelselect.DataBind();
+                foreach (BooksLevel level in levels)
+                {
+                    levelsList += ",{ value: " + level.id + ", text: '" + level.title + "' }";
+                }
+                if (!string.IsNullOrEmpty(levelsList))
+                    levelsList = levelsList.Substring(1);
             }
         }
     }

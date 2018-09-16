@@ -35,7 +35,7 @@ namespace Web
                         if (lang == "en")
                             msg.Text = "<font color='red'>The Access Code you entered is not correct, please use another one.</font>";
                         if (lang == "ar")
-                            msg.Text = "<font color='red'>إن رمز الدخول غير صحيح, الرجاء إستعمال واحد آخر.</font>";
+                            msg.Text = "<font color='red'>Le code d'accès que vous avez entré n'est pas correct, veuillez en utiliser un autre.</font>";
                     }
                 }
                 else
@@ -43,7 +43,7 @@ namespace Web
                     if (lang == "en")
                         msg.Text = "<font color='red'>Username is used. Please choose another one.</font>";
                     if (lang == "ar")
-                        msg.Text = "<font color='red'>إسم المستخدم قيد الإستعمال, الرجاء إستعمال واحد آخر.</font>";
+                        msg.Text = "<font color='red'>Le nom d'utilisateur est utilisé. Veuillez en choisir un autre.</font>";
                 }
             }
         }

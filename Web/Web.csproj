@@ -131,11 +131,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
-    <Content Include="assessment\index.aspx" />
     <Content Include="bin\NPOI.dll" />
     <Content Include="bin\NPOI.OOXML.dll" />
     <Content Include="bin\NPOI.OpenXml4Net.dll" />
     <Content Include="bin\NPOI.OpenXmlFormats.dll" />
+    <Content Include="story.aspx" />
+    <Content Include="stories.aspx" />
     <Content Include="books.aspx" />
     <Content Include="bookSlide\css\jquery.ui.css" />
     <Content Include="bookSlide\css\jquery.ui.html4.css" />
@@ -300,89 +301,6 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="forgot-password.aspx" />
     <Content Include="games.aspx" />
-    <Content Include="assessment\assets\arrow.png" />
-    <Content Include="assessment\assets\brainIdea_Spritesheet4x4.png" />
-    <Content Include="assessment\assets\brainWrong_Spritesheet4x4.png" />
-    <Content Include="assessment\assets\brain_result.png" />
-    <Content Include="assessment\assets\brain_score.png" />
-    <Content Include="assessment\assets\icon_facebook.png" />
-    <Content Include="assessment\assets\icon_google.png" />
-    <Content Include="assessment\assets\icon_replay.png" />
-    <Content Include="assessment\assets\icon_save.png" />
-    <Content Include="assessment\assets\icon_scoreboard.png" />
-    <Content Include="assessment\assets\icon_twitter.png" />
-    <Content Include="assessment\assets\loader_Spritesheet5x5.png" />
-    <Content Include="assessment\assets\logo.png" />
-    <Content Include="assessment\assets\questions\number1.png" />
-    <Content Include="assessment\assets\questions\number2.png" />
-    <Content Include="assessment\assets\questions\number3.png" />
-    <Content Include="assessment\assets\questions\number4.png" />
-    <Content Include="assessment\assets\questions\parking.png" />
-    <Content Include="assessment\assets\questions\screwdriver1.png" />
-    <Content Include="assessment\assets\questions\screwdriver2.png" />
-    <Content Include="assessment\assets\questions\screwdriver3.png" />
-    <Content Include="assessment\assets\questions\tshirt.png" />
-    <Content Include="assessment\assets\questions\twins.png" />
-    <Content Include="assessment\assets\sounds\complete.mp3" />
-    <Content Include="assessment\assets\sounds\fail.mp3" />
-    <Content Include="assessment\assets\sounds\musicGame.mp3" />
-    <Content Include="assessment\assets\sounds\musicMain.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question1.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question1_a1.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question1_a2.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question1_a3.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question1_a4.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question2.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question2_a1.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question2_a2.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question2_a3.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question2_a4.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question2_a5.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question2_a6.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question3.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question3_a1.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question3_a2.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question3_a3.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question3_a4.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question3_a5.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question3_a6.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question3_a7.mp3" />
-    <Content Include="assessment\assets\sounds\questions\question3_a8.mp3" />
-    <Content Include="assessment\assets\sounds\scoreBrain.mp3" />
-    <Content Include="assessment\assets\sounds\scoreBrainIdea.mp3" />
-    <Content Include="assessment\assets\sounds\select.mp3" />
-    <Content Include="assessment\assets\sounds\selectAnswer.mp3" />
-    <Content Include="assessment\assets\sounds\whoosh.mp3" />
-    <Content Include="assessment\assets\sounds\wrong.mp3" />
-    <Content Include="assessment\css\fonts\bariol_regular-webfont.svg" />
-    <Content Include="assessment\css\main.css" />
-    <Content Include="assessment\css\normalize.css" />
-    <Content Include="assessment\edit.aspx" />
-    <Content Include="assessment\edit.html" />
-    <Content Include="assessment\editTools.html" />
-    <Content Include="assessment\icon.ico" />
-    <Content Include="assessment\js\canvas.js" />
-    <Content Include="assessment\js\edit.js" />
-    <Content Include="assessment\js\game.js" />
-    <Content Include="assessment\js\init.js" />
-    <Content Include="assessment\js\loader.js" />
-    <Content Include="assessment\js\main.js" />
-    <Content Include="assessment\js\mobile.js" />
-    <Content Include="assessment\js\plugins.js" />
-    <Content Include="assessment\js\sound.js" />
-    <Content Include="assessment\js\vendor\detectmobilebrowser.js" />
-    <Content Include="assessment\js\vendor\easeljs-0.8.1.min.js" />
-    <Content Include="assessment\js\vendor\jquery-1.8.3.min.js" />
-    <Content Include="assessment\js\vendor\modernizr-2.6.2.min.js" />
-    <Content Include="assessment\js\vendor\preloadjs-0.6.1.min.js" />
-    <Content Include="assessment\js\vendor\soundjs-0.6.1.min.js" />
-    <Content Include="assessment\js\vendor\TweenMax.min.js" />
-    <Content Include="assessment\questions.xml" />
-    <Content Include="assessment\questions_template.xml" />
-    <Content Include="assessment\save.php" />
-    <Content Include="assessment\share.jpg" />
-    <Content Include="assessment\share.php" />
-    <Content Include="assessment\temp.xml" />
     <Content Include="img\backgroundUnites.png" />
     <Content Include="img\feat_shelf.png" />
     <Content Include="img\humberger.png" />
@@ -1007,12 +925,9 @@
     <Content Include="system\js\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="system\login.aspx" />
     <Content Include="system\logout.aspx" />
-    <Content Include="system\resources\assessmentquestions.aspx" />
-    <Content Include="system\resources\assessmentcategories.aspx" />
-    <Content Include="system\resources\bookscategories.aspx" />
+    <Content Include="system\resources\stories.aspx" />
     <Content Include="system\resources\games.aspx" />
     <Content Include="system\resources\loggedsessions.aspx" />
-    <Content Include="system\resources\assessmentanswers.aspx" />
     <Content Include="system\resources\bookunites.aspx" />
     <Content Include="system\resources\bookunitefiles.aspx" />
     <Content Include="system\resources\slides.aspx" />
@@ -1020,8 +935,6 @@
     <Content Include="system\resources\books.aspx" />
     <Content Include="system\resources\bookslevels.aspx" />
     <Content Include="system\resources\ips.aspx" />
-    <Content Include="system\resources\pressroom.aspx" />
-    <Content Include="system\resources\homebanners.aspx" />
     <Content Include="system\resources\content.aspx" />
     <Content Include="system\resources\cmsgroups.aspx" />
     <Content Include="system\resources\cmsusers.aspx" />
@@ -1037,39 +950,25 @@
     <Compile Include="AddToLibrary.ashx.cs">
       <DependentUpon>AddToLibrary.ashx</DependentUpon>
     </Compile>
-    <Compile Include="apis\getBooks.ashx.cs">
-      <DependentUpon>getBooks.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="apis\getGames.ashx.cs">
-      <DependentUpon>getGames.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="apis\RegisterFromBrands.ashx.cs">
-      <DependentUpon>RegisterFromBrands.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="assessment\data.ashx.cs">
-      <DependentUpon>data.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="assessment\index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="assessment\index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="assessment\saveResult.ashx.cs">
-      <DependentUpon>saveResult.ashx</DependentUpon>
-    </Compile>
     <Compile Include="Book.cs">
       <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
-    <Compile Include="BookChapterFile.cs">
+    <Compile Include="BookPoster.cs">
       <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
-    <Compile Include="BookGame.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    <Compile Include="story.aspx.cs">
+      <DependentUpon>story.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BookInteractiveChapter.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    <Compile Include="story.aspx.designer.cs">
+      <DependentUpon>story.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="stories.aspx.cs">
+      <DependentUpon>stories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="stories.aspx.designer.cs">
+      <DependentUpon>stories.aspx</DependentUpon>
     </Compile>
     <Compile Include="books.aspx.cs">
       <DependentUpon>books.aspx</DependentUpon>
@@ -1078,7 +977,19 @@
     <Compile Include="books.aspx.designer.cs">
       <DependentUpon>books.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BooksLevel.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
     <Compile Include="BookSlide.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookStory.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookUnite.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookUniteFile.cs">
       <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="BrandsMktg.Context.cs">
@@ -1095,9 +1006,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BrandsMktg.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Category.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="cms_groups.cs">
       <DependentUpon>BrandsMktg.tt</DependentUpon>
@@ -1142,25 +1050,6 @@
     <Compile Include="games.aspx.designer.cs">
       <DependentUpon>games.aspx</DependentUpon>
     </Compile>
-    <Compile Include="assessment\edit.aspx.cs">
-      <DependentUpon>edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="assessment\edit.aspx.designer.cs">
-      <DependentUpon>edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="HomeBanner.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ItemsCategory.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ItemsLevel.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Level.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1182,24 +1071,12 @@
     <Compile Include="pdfViewer.aspx.designer.cs">
       <DependentUpon>pdfViewer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PressRoom.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
     <Compile Include="product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="product.aspx.designer.cs">
       <DependentUpon>product.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Question.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="QuestionsAnswer.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="QuestionsCategory.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="removeFromLibrary.ashx.cs">
       <DependentUpon>removeFromLibrary.ashx</DependentUpon>
@@ -1208,9 +1085,6 @@
       <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="SchoolBook.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SchoolGame.cs">
       <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="sendMail.ashx.cs">
@@ -1222,9 +1096,6 @@
       <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentLibrary.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentScore.cs">
       <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
@@ -1269,14 +1140,11 @@
     <Compile Include="system\resources\addBookUniteFiles.ashx.cs">
       <DependentUpon>addBookUniteFiles.ashx</DependentUpon>
     </Compile>
+    <Compile Include="system\resources\addStory.ashx.cs">
+      <DependentUpon>addStory.ashx</DependentUpon>
+    </Compile>
     <Compile Include="system\resources\addGame.ashx.cs">
       <DependentUpon>addGame.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="system\resources\addAssessmentAnswer.ashx.cs">
-      <DependentUpon>addAssessmentAnswer.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="system\resources\AddQuestion.ashx.cs">
-      <DependentUpon>AddQuestion.ashx</DependentUpon>
     </Compile>
     <Compile Include="system\resources\addSlides.ashx.cs">
       <DependentUpon>addSlides.ashx</DependentUpon>
@@ -1287,41 +1155,21 @@
     <Compile Include="system\resources\addBooks.ashx.cs">
       <DependentUpon>addBooks.ashx</DependentUpon>
     </Compile>
-    <Compile Include="system\resources\addPressRoom.ashx.cs">
-      <DependentUpon>addPressRoom.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="system\resources\addHomeBanners.ashx.cs">
-      <DependentUpon>addHomeBanners.ashx</DependentUpon>
-    </Compile>
     <Compile Include="system\resources\AddRow.ashx.cs">
       <DependentUpon>AddRow.ashx</DependentUpon>
     </Compile>
     <Compile Include="system\resources\addStudents.ashx.cs">
       <DependentUpon>addStudents.ashx</DependentUpon>
     </Compile>
-    <Compile Include="system\resources\assessmentquestions.aspx.cs">
-      <DependentUpon>assessmentquestions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="system\resources\assessmentquestions.aspx.designer.cs">
-      <DependentUpon>assessmentquestions.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="system\resources\assessmentcategories.aspx.cs">
-      <DependentUpon>assessmentcategories.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="system\resources\assessmentcategories.aspx.designer.cs">
-      <DependentUpon>assessmentcategories.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="system\resources\bookscategories.aspx.cs">
-      <DependentUpon>bookscategories.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="system\resources\bookscategories.aspx.designer.cs">
-      <DependentUpon>bookscategories.aspx</DependentUpon>
-    </Compile>
     <Compile Include="system\resources\downloadStudentsExcel.ashx.cs">
       <DependentUpon>downloadStudentsExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="system\resources\stories.aspx.cs">
+      <DependentUpon>stories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="system\resources\stories.aspx.designer.cs">
+      <DependentUpon>stories.aspx</DependentUpon>
     </Compile>
     <Compile Include="system\resources\games.aspx.cs">
       <DependentUpon>games.aspx</DependentUpon>
@@ -1337,18 +1185,8 @@
     <Compile Include="system\resources\loggedsessions.aspx.designer.cs">
       <DependentUpon>loggedsessions.aspx</DependentUpon>
     </Compile>
-    <Compile Include="system\resources\SaveSchoolGames.ashx.cs">
-      <DependentUpon>SaveSchoolGames.ashx</DependentUpon>
-    </Compile>
     <Compile Include="system\resources\SaveSchoolBooks.ashx.cs">
       <DependentUpon>SaveSchoolBooks.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="system\resources\assessmentanswers.aspx.cs">
-      <DependentUpon>assessmentanswers.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="system\resources\assessmentanswers.aspx.designer.cs">
-      <DependentUpon>assessmentanswers.aspx</DependentUpon>
     </Compile>
     <Compile Include="system\resources\bookunites.aspx.cs">
       <DependentUpon>bookunites.aspx</DependentUpon>
@@ -1370,9 +1208,6 @@
     </Compile>
     <Compile Include="system\resources\slides.aspx.designer.cs">
       <DependentUpon>slides.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="system\resources\SaveCategoriesBooks.ashx.cs">
-      <DependentUpon>SaveCategoriesBooks.ashx</DependentUpon>
     </Compile>
     <Compile Include="system\resources\schools.aspx.cs">
       <DependentUpon>schools.aspx</DependentUpon>
@@ -1405,16 +1240,6 @@
     <Compile Include="system\resources\ips.aspx.designer.cs">
       <DependentUpon>ips.aspx</DependentUpon>
     </Compile>
-    <Compile Include="system\resources\pressroom.aspx.cs">
-      <DependentUpon>pressroom.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="system\resources\pressroom.aspx.designer.cs">
-      <DependentUpon>pressroom.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="system\resources\SaveLevelsBooks.ashx.cs">
-      <DependentUpon>SaveLevelsBooks.ashx</DependentUpon>
-    </Compile>
     <Compile Include="system\resources\students.aspx.cs">
       <DependentUpon>students.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1425,6 +1250,9 @@
     <Compile Include="system\resources\UpdateOrder.ashx.cs">
       <DependentUpon>UpdateOrder.ashx</DependentUpon>
     </Compile>
+    <Compile Include="system\resources\uploadStoriesImage.ashx.cs">
+      <DependentUpon>uploadStoriesImage.ashx</DependentUpon>
+    </Compile>
     <Compile Include="system\resources\uploadGameImage.ashx.cs">
       <DependentUpon>uploadGameImage.ashx</DependentUpon>
     </Compile>
@@ -1433,13 +1261,6 @@
     </Compile>
     <Compile Include="system\resources\uploadBooksImage.ashx.cs">
       <DependentUpon>uploadBooksImage.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="system\resources\homebanners.aspx.cs">
-      <DependentUpon>homebanners.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="system\resources\homebanners.aspx.designer.cs">
-      <DependentUpon>homebanners.aspx</DependentUpon>
     </Compile>
     <Compile Include="system\resources\content.aspx.cs">
       <DependentUpon>content.aspx</DependentUpon>
@@ -1473,9 +1294,6 @@
     </Compile>
     <Compile Include="system\resources\editRow.ashx.cs">
       <DependentUpon>editRow.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="system\resources\uploadPressRoomImage.ashx.cs">
-      <DependentUpon>uploadPressRoomImage.ashx</DependentUpon>
     </Compile>
     <Compile Include="verify-account.aspx.cs">
       <DependentUpon>verify-account.aspx</DependentUpon>
@@ -1551,50 +1369,9 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="bookSlide\lib\compress.sh" />
     <Content Include="AddToLibrary.ashx" />
-    <Content Include="assessment\.DS_Store" />
-    <Content Include="assessment\assets\sounds\complete.ogg" />
-    <Content Include="assessment\assets\sounds\fail.ogg" />
-    <Content Include="assessment\assets\sounds\musicGame.ogg" />
-    <Content Include="assessment\assets\sounds\musicMain.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question1.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question1_a1.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question1_a2.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question1_a3.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question1_a4.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question2.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question2_a1.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question2_a2.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question2_a3.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question2_a4.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question2_a5.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question2_a6.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question3.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question3_a1.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question3_a2.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question3_a3.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question3_a4.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question3_a5.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question3_a6.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question3_a7.ogg" />
-    <Content Include="assessment\assets\sounds\questions\question3_a8.ogg" />
-    <Content Include="assessment\assets\sounds\scoreBrain.ogg" />
-    <Content Include="assessment\assets\sounds\scoreBrainIdea.ogg" />
-    <Content Include="assessment\assets\sounds\select.ogg" />
-    <Content Include="assessment\assets\sounds\selectAnswer.ogg" />
-    <Content Include="assessment\assets\sounds\whoosh.ogg" />
-    <Content Include="assessment\assets\sounds\wrong.ogg" />
-    <Content Include="assessment\css\fonts\bariol_regular-webfont.eot" />
-    <Content Include="assessment\css\fonts\bariol_regular-webfont.ttf" />
-    <Content Include="assessment\css\fonts\bariol_regular-webfont.woff" />
-    <Content Include="assessment\css\fonts\bariol_regular-webfont.woff2" />
-    <Content Include="assessment\data.ashx" />
-    <Content Include="apis\RegisterFromBrands.ashx" />
-    <Content Include="apis\getBooks.ashx" />
-    <Content Include="apis\getGames.ashx" />
     <Content Include="dflip\fonts\themify.eot" />
     <Content Include="dflip\fonts\themify.ttf" />
     <Content Include="dflip\fonts\themify.woff" />
-    <Content Include="assessment\saveResult.ashx" />
     <None Include="Properties\PublishProfiles\BrandsBooks.pubxml" />
     <None Include="Properties\PublishProfiles\BrandsMarketing.pubxml" />
     <None Include="Properties\PublishProfiles\brandsmktg.pubxml" />
@@ -1604,29 +1381,23 @@
     <None Include="Properties\PublishProfiles\myschoolpulse.pubxml" />
     <None Include="Properties\PublishProfiles\Pharmacovigilance.pubxml" />
     <Content Include="system\resources\SaveContentData.ashx" />
-    <Content Include="system\resources\addHomeBanners.ashx" />
     <Content Include="system\resources\addBooks.ashx" />
     <Content Include="system\resources\uploadBooksImage.ashx" />
     <Content Include="sendMail.ashx" />
-    <Content Include="system\resources\SaveLevelsBooks.ashx" />
-    <Content Include="system\resources\addPressRoom.ashx" />
-    <Content Include="system\resources\uploadPressRoomImage.ashx" />
     <Content Include="system\resources\searchBooks.ashx" />
     <Content Include="system\resources\UpdateOrder.ashx" />
     <Content Include="system\resources\uploadSchoolsImage.ashx" />
     <Content Include="system\resources\addSchools.ashx" />
     <Content Include="system\resources\addStudents.ashx" />
     <Content Include="system\resources\downloadStudentsExcel.ashx" />
-    <Content Include="system\resources\SaveCategoriesBooks.ashx" />
     <Content Include="system\resources\addSlides.ashx" />
     <Content Include="system\resources\addGame.ashx" />
     <Content Include="system\resources\uploadGameImage.ashx" />
     <Content Include="removeFromLibrary.ashx" />
     <Content Include="system\resources\SaveSchoolBooks.ashx" />
-    <Content Include="system\resources\SaveSchoolGames.ashx" />
-    <Content Include="system\resources\AddQuestion.ashx" />
-    <Content Include="system\resources\addAssessmentAnswer.ashx" />
     <Content Include="system\resources\addBookUniteFiles.ashx" />
+    <Content Include="system\resources\uploadStoriesImage.ashx" />
+    <Content Include="system\resources\addStory.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

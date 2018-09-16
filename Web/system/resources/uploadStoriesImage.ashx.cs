@@ -12,7 +12,7 @@ namespace Web.system.resources
     /// <summary>
     /// Summary description for uploadDivisionsImage
     /// </summary>
-    public class uploadBooksImage : IHttpHandler
+    public class uploadStoriesImage : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)
@@ -20,7 +20,7 @@ namespace Web.system.resources
             context.Response.ContentType = "text/plain";
             BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
             int imId = int.Parse(context.Request["id"]);
-            var row = db.Books.Where(x => x.id == imId).SingleOrDefault();
+            var row = db.BookStories.Where(x => x.id == imId).SingleOrDefault();
             switch (context.Request["field"])
             {
                 case "thumb":

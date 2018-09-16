@@ -18,11 +18,11 @@ namespace Web.system.resources
             context.Response.ContentType = "text/plain";
             BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
             int imId = int.Parse(context.Request["id"]);
-            var row = db.BookGames.Where(x => x.id == imId).SingleOrDefault();
+            var row = db.BookPosters.Where(x => x.id == imId).SingleOrDefault();
             switch (context.Request["field"])
             {
                 case "Img":
-                    row.Thumb = SaveImage(context, context.Request["img"]);
+                    row.thumb = SaveImage(context, context.Request["img"]);
                     break;
             }
             db.SaveChanges();

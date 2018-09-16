@@ -9,32 +9,24 @@ namespace Web
 {
     public partial class games : System.Web.UI.Page
     {
-        protected List<HomeBanner> banners;
-        protected string lang;
-        protected int levelId;
-        protected List<BookGame> gamesList;
+        protected int bookId;
+        protected List<BookPoster> gamesList;
         protected Student student;
-        protected List<Category> categories;
-        protected Category GameCategory;
+        protected Book book;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserId"] == null)
                 Response.Redirect("login");
             else
             {
-                int categoryId = int.Parse(Request["categoryId"]);
-                lang = Page.RouteData.Values["lang"].ToString();
-                levelId = int.Parse(Request["levelId"]);
+                int bookId = int.Parse(Request["bookId"]);
                 BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
-                GameCategory = db.Categories.Where(x => x.id == categoryId).SingleOrDefault();
-                categories = db.Categories.OrderBy(x => x.OrderIndex).ToList();
-                banners = db.HomeBanners.ToList();
-                int sId = (int)Session["UserId"];
+                long sId = (long)Session["UserId"];
                 student = db.Students.Where(x => x.id == sId).SingleOrDefault();
-                gamesList = db.BookGames.Where(x => x.levelId == levelId && x.SchoolGames.Where(z=>z.schoolId == student.schoolId).Count()>0 && x.categoryId == categoryId).ToList();
-                
+                gamesList = db.BookPosters.Where(x => x.bookId == bookId).ToList();
+                book = db.Books.Where(x => x.id == bookId).SingleOrDefault();
                 if (student.School.showGame == false)
-                    Response.Redirect("level-" + levelId);
+                    Response.Redirect("books");
             }
         }
     }

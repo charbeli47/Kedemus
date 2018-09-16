@@ -25,31 +25,22 @@ namespace Web
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BookGame> BookGames { get; set; }
+        public virtual DbSet<BookPoster> BookPosters { get; set; }
         public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<BooksLevel> BooksLevels { get; set; }
         public virtual DbSet<BookSlide> BookSlides { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<BookStory> BookStories { get; set; }
+        public virtual DbSet<BookUniteFile> BookUniteFiles { get; set; }
+        public virtual DbSet<BookUnite> BookUnites { get; set; }
         public virtual DbSet<cms_groups> cms_groups { get; set; }
         public virtual DbSet<cms_permissions> cms_permissions { get; set; }
         public virtual DbSet<cms_policies> cms_policies { get; set; }
         public virtual DbSet<cms_user> cms_user { get; set; }
         public virtual DbSet<Content> Contents { get; set; }
-        public virtual DbSet<HomeBanner> HomeBanners { get; set; }
-        public virtual DbSet<ItemsCategory> ItemsCategories { get; set; }
-        public virtual DbSet<ItemsLevel> ItemsLevels { get; set; }
-        public virtual DbSet<Level> Levels { get; set; }
-        public virtual DbSet<PressRoom> PressRooms { get; set; }
-        public virtual DbSet<Question> Questions { get; set; }
-        public virtual DbSet<QuestionsAnswer> QuestionsAnswers { get; set; }
-        public virtual DbSet<QuestionsCategory> QuestionsCategories { get; set; }
         public virtual DbSet<SchoolBook> SchoolBooks { get; set; }
-        public virtual DbSet<SchoolGame> SchoolGames { get; set; }
         public virtual DbSet<School> Schools { get; set; }
         public virtual DbSet<StudentLibrary> StudentLibraries { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<StudentScore> StudentScores { get; set; }
-        public virtual DbSet<BookChapterFile> BookChapterFiles { get; set; }
-        public virtual DbSet<BookInteractiveChapter> BookInteractiveChapters { get; set; }
     }
 }

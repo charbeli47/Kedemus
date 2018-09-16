@@ -34,16 +34,6 @@ namespace Web.resources
                     db.cms_groups.Remove(group);
                     success = "success";
                     break;
-                case "HomeBanners":
-                    HomeBanner homebanner = db.HomeBanners.Where(x => x.id == tableId).SingleOrDefault();
-                    db.HomeBanners.Remove(homebanner);
-                    success = "success";
-                    try
-                    {
-                        File.Delete(context.Server.MapPath("~/Media/" + homebanner.thumb));
-                    }
-                    catch { }
-                    break;
                 case "Slides":
                     BookSlide slide = db.BookSlides.Where(x => x.id == tableId).SingleOrDefault();
                     db.BookSlides.Remove(slide);
@@ -55,13 +45,13 @@ namespace Web.resources
                     catch { }
                     break;
                 case "BookUnites":
-                    BookInteractiveChapter bunite = db.BookInteractiveChapters.Where(x => x.id == tableId).SingleOrDefault();
-                    db.BookInteractiveChapters.Remove(bunite);
+                    BookUnite bunite = db.BookUnites.Where(x => x.id == tableId).SingleOrDefault();
+                    db.BookUnites.Remove(bunite);
                     success = "success";
                     break;
                 case "BookUniteFiles":
-                    BookChapterFile unitefile = db.BookChapterFiles.Where(x => x.id == tableId).SingleOrDefault();
-                    db.BookChapterFiles.Remove(unitefile);
+                    BookUniteFile unitefile = db.BookUniteFiles.Where(x => x.id == tableId).SingleOrDefault();
+                    db.BookUniteFiles.Remove(unitefile);
                     success = "success";
                     break;
                 case "Books":
@@ -72,38 +62,13 @@ namespace Web.resources
                     {
                         File.Delete(context.Server.MapPath("~/Media/" + b.thumb));
                         File.Delete(context.Server.MapPath("~/Media/" + b.pdf));
-                        File.Delete(context.Server.MapPath("~/Media/" + b.video));
                     }
                     catch { }
                     break;
-                case "BooksCategories":
-                    Category category = db.Categories.Where(x => x.id == tableId).SingleOrDefault();
-                    db.Categories.Remove(category);
-                    success = "success";
-                    break;
-                case "QuestionsCategories":
-                    QuestionsCategory qcategory = db.QuestionsCategories.Where(x => x.id == tableId).SingleOrDefault();
-                    db.QuestionsCategories.Remove(qcategory);
-                    success = "success";
-                    break;
-                case "Questions":
-                    Question question = db.Questions.Where(x => x.id == tableId).SingleOrDefault();
-                    db.Questions.Remove(question);
-                    success = "success";
-                    break;
-                case "QuestionsAnswers":
-                    QuestionsAnswer qanswer = db.QuestionsAnswers.Where(x => x.id == tableId).SingleOrDefault();
-                    db.QuestionsAnswers.Remove(qanswer);
-                    success = "success";
-                    break;
+                
                 case "Levels":
-                    Level level = db.Levels.Where(x => x.id == tableId).SingleOrDefault();
-                    db.Levels.Remove(level);
-                    success = "success";
-                    break;
-                case "PressRoom":
-                    PressRoom pressroom = db.PressRooms.Where(x => x.id == tableId).SingleOrDefault();
-                    db.PressRooms.Remove(pressroom);
+                    BooksLevel level = db.BooksLevels.Where(x => x.id == tableId).SingleOrDefault();
+                    db.BooksLevels.Remove(level);
                     success = "success";
                     break;
                 case "Schools":
@@ -116,12 +81,25 @@ namespace Web.resources
                     }
                     catch { }
                     break;
-                case "Games":
-                    BookGame game = db.BookGames.Where(x => x.id == tableId).SingleOrDefault();
-                    db.BookGames.Remove(game);
+                case "Posters":
+                    BookPoster game = db.BookPosters.Where(x => x.id == tableId).SingleOrDefault();
+                    db.BookPosters.Remove(game);
                     try
                     {
-                        Directory.Delete(context.Server.MapPath("~/Media/Games/" + game.levelId + "/" + game.Folder));
+                        Directory.Delete(context.Server.MapPath("~/Media/Games/" + game.bookId + "/" + game.InteractiveFile));
+                        File.Delete(context.Server.MapPath("~/Media/" + game.thumb));
+                    }
+                    catch { }
+                    success = "success";
+                    break;
+                case "Stories":
+                    BookStory story = db.BookStories.Where(x => x.id == tableId).SingleOrDefault();
+                    db.BookStories.Remove(story);
+                    try
+                    {
+                        Directory.Delete(context.Server.MapPath("~/Media/Games/" + story.bookId + "/" + story.InteractiveFile));
+                        File.Delete(context.Server.MapPath("~/Media/" + story.thumb));
+                        File.Delete(context.Server.MapPath("~/Media/" + story.pdf));
                     }
                     catch { }
                     success = "success";

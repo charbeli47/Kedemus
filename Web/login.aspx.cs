@@ -38,13 +38,13 @@ namespace Web
                         {
                             if (lang == "en")
                                 msg.Text = "<font color='red'>Invalid Username/Password.</font>";
-                            if (lang == "ar")
-                                msg.Text = "<font color='red'>إسم مستخدم أو كلمة سر غير صحيحة. </font>";
+                            if (lang == "fr")
+                                msg.Text = "<font color='red'>Nom d'utilisateur / mot de passe invalide.</font>";
                         }
                     }
                     else
                     {
-                        msg.Text = lang=="ar"?"<font color='red'>هذا الحساب قيد الإستعمال الرجاء إستعمال واحد آخر</font>":"<font color='red'>There is another Session using this account,please another one.</font>";
+                        msg.Text = lang=="fr"? "<font color='red'>Il y a une autre session utilisant ce compte, veuillez en utiliser une autre.</font>" : "<font color='red'>There is another Session using this account,please use another one.</font>";
                     }
                 }
                 else
@@ -52,7 +52,7 @@ namespace Web
                     if (lang == "en")
                         msg.Text = "<font color='red'>Invalid Username/Password.</font>";
                     if (lang == "ar")
-                        msg.Text = "<font color='red'>إسم مستخدم أو كلمة سر غير صحيحة. </font>";
+                        msg.Text = "<font color='red'>Nom d'utilisateur / mot de passe invalide. </font>";
                 }
             }
             else if (!string.IsNullOrEmpty(Request.Form["uname"]))
@@ -77,12 +77,12 @@ namespace Web
                             if (lang == "en")
                                 msg.Text = "<font color='red'>Invalid Username/Password.</font>";
                             if (lang == "ar")
-                                msg.Text = "<font color='red'>إسم مستخدم أو كلمة سر غير صحيحة. </font>";
+                                msg.Text = "<font color='red'>Nom d'utilisateur / mot de passe invalide. </font>";
                         }
                     }
                     else
                     {
-                        msg.Text = lang == "ar" ? "<font color='red'>هذا الحساب قيد الإستعمال الرجاء إستعمال واحد آخر</font>" : "<font color='red'>There is another Session using this account,please another one.</font>";
+                        msg.Text = lang == "ar" ? "<font color='red'>Il y a une autre session utilisant ce compte, veuillez en utiliser une autre.</font>" : "<font color='red'>There is another Session using this account,please another one.</font>";
                     }
                 }
                 else
@@ -90,7 +90,7 @@ namespace Web
                     if (lang == "en")
                         msg.Text = "<font color='red'>Invalid Username/Password.</font>";
                     if (lang == "ar")
-                        msg.Text = "<font color='red'>إسم مستخدم أو كلمة سر غير صحيحة. </font>";
+                        msg.Text = "<font color='red'>Nom d'utilisateur / mot de passe invalide. </font>";
                 }
             }
         }

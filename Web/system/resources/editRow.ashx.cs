@@ -55,73 +55,41 @@ namespace Web.resources
                     break;
                 case "Books":
                     var project = db.Books.Where(x => x.id == pk).SingleOrDefault();
-                    if (name.Contains("artitle"))
-                        project.artitle = value;
-                    if (name.Contains("entitle"))
+                    if (name.Contains("title"))
                         project.title = value;
-                    else if (name.Contains("artext"))
-                        project.artext = value;
-                    else if (name.Contains("entext"))
-                        project.text = value;
-                    else if (name.Contains("youtubeId"))
-                        project.video = value;
-                    else if (name.Contains("SignLanguage"))
-                        project.SignLanguageVideo = value;
+                    else if (name.Contains("lang"))
+                        project.lang = value;
+                    if (name.Contains("level"))
+                        project.levelId = int.Parse(value);
                     else if (name.Contains("isAvailable"))
                         project.isAvailable = value == "YES";
                     success = "success";
                     break;
-                case "BooksCategories":
-                    var category = db.Categories.Where(x => x.id == pk).SingleOrDefault();
-                    if (name.Contains("artitle"))
-                        category.artitle = value;
-                    else if (name.Contains("entitle"))
-                        category.title = value;
-                    else if (name.Contains("ForGame"))
-                        category.ForGame = value == "YES";
-                    success = "success";
-                    break;
                 case "BookUnites":
-                    var unite = db.BookInteractiveChapters.Where(x => x.id == pk).SingleOrDefault();
-                    if (name.Contains("entitle"))
+                    var unite = db.BookUnites.Where(x => x.id == pk).SingleOrDefault();
+                    if (name.Contains("title"))
                         unite.title = value;
                     success = "success";
                     break;
-                case "Games":
-                    var game = db.BookGames.Where(x => x.id == pk).SingleOrDefault();
-                    game.categoryId = int.Parse(value);
-                    break;
-                case "QuestionsCategories":
-                    var qcategory = db.QuestionsCategories.Where(x => x.id == pk).SingleOrDefault();
+                case "Posters":
+                    var poster = db.BookPosters.Where(x => x.id == pk).SingleOrDefault();
                     if (name.Contains("title"))
-                        qcategory.title = value;
-                    else if(name.Contains("bookId"))
-                        qcategory.bookId = int.Parse(value);
-                    success = "success";
+                        poster.title = value;
                     break;
-                case "Questions":
-                    var question = db.Questions.Where(x=>x.id == pk).SingleOrDefault();
-                    question.correctAnswer = value;
+                case "Stories":
+                    var story = db.BookStories.Where(x => x.id == pk).SingleOrDefault();
+                    if (name.Contains("title"))
+                        story.title = value;
                     break;
                 case "Levels":
-                    var level = db.Levels.Where(x => x.id == pk).SingleOrDefault();
-                    if (name.Contains("artitle"))
-                        level.artitle = value;
-                    if (name.Contains("entitle"))
+                    var level = db.BooksLevels.Where(x => x.id == pk).SingleOrDefault();
+                    if (name.Contains("title"))
                         level.title = value;
+                    if (name.Contains("lang"))
+                        level.lang = value;
                     success = "success";
                     break;
                 
-                case "PressRoom":
-                    var pressroom = db.PressRooms.Where(x => x.id == pk).SingleOrDefault();
-                    if (name.Contains("title"))
-                        pressroom.title = value;
-                    else if (name.Contains("text"))
-                        pressroom.text = value;
-                    else if (name.Contains("link"))
-                        pressroom.link = value;
-                    success = "success";
-                    break;
                 case "Schools":
                     var school = db.Schools.Where(x => x.id == pk).SingleOrDefault();
                     if (name.Contains("artitle"))

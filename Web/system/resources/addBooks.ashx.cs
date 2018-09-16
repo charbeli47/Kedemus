@@ -15,9 +15,8 @@ namespace Web.system.resources
         {
             context.Response.ContentType = "text/plain";
             HttpPostedFile thumb = context.Request.Files["thumb"];
-            HttpPostedFile background = context.Request.Files["background"];
             HttpPostedFile Pdffile = context.Request.Files["pdf"];
-            string thumb_file = "", pdf_file = "", background_file = "";
+            string thumb_file = "", pdf_file = "";
             if (thumb.ContentLength > 0)
             {
                 string sfiletype1 = thumb.FileName;
@@ -25,14 +24,6 @@ namespace Web.system.resources
                 thumb_file = Guid.NewGuid().ToString() + "." + sfiletype1;
                 string _path1 = context.Server.MapPath("~/Media");
                 thumb.SaveAs(_path1 + "/" + thumb_file);
-            }
-            if (background.ContentLength > 0)
-            {
-                string sfiletype1 = background.FileName;
-                sfiletype1 = sfiletype1.Substring(sfiletype1.LastIndexOf('.') + 1).ToLower();
-                background_file = Guid.NewGuid().ToString() + "." + sfiletype1;
-                string _path1 = context.Server.MapPath("~/Media");
-                background.SaveAs(_path1 + "/" + background_file);
             }
             if (Pdffile.ContentLength > 0)
             {
@@ -44,14 +35,10 @@ namespace Web.system.resources
             }
             BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
             string title = context.Request["title"];
-            string artitle = context.Request["artitle"];
-            string text = context.Request["text"];
-            string artext = context.Request["artext"];
+            string lang = context.Request["langselect"];
             bool isAvailable = context.Request["isAvailable"] == "on";
-            bool isElearning = context.Request["isElearning"] == "on";
-            bool isFeatured = context.Request["isFeatured"] == "on";
-            string ISBN = context.Request["ISBN"];
-            Book book = new Book { title = title, text = text, thumb = thumb_file, video = context.Request["youtubeId"],SignLanguageVideo = context.Request["SignLanguageVideo"], pdf = pdf_file, isAvailable = isAvailable, artext = artext, artitle = artitle, background = background_file};
+            int levelId = int.Parse(context.Request["levelselect"]);
+            Book book = new Book { title = title, thumb = thumb_file, pdf = pdf_file, isAvailable = isAvailable, lang = lang, levelId = levelId};
             book = db.Books.Add(book);
             
             db.SaveChanges();

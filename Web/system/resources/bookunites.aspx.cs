@@ -9,7 +9,7 @@ namespace Web.resources
 {
     public partial class bookunites : System.Web.UI.Page
     {
-        protected List<BookInteractiveChapter> results;
+        protected List<BookUnite> results;
         protected void Page_Load(object sender, EventArgs e)
         {
             BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
@@ -20,7 +20,7 @@ namespace Web.resources
                 Response.Write("<script>getContent('accessdenied.html');</script>");
             else
             {
-                results = db.BookInteractiveChapters.Where(x=>x.bookId == bookId).ToList();
+                results = db.BookUnites.Where(x=>x.bookId == bookId).ToList();
             }
         }
     }

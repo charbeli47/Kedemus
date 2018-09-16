@@ -4,7 +4,7 @@
                 <section class="content-header">
                     <h1>
                         Web Content
-                        <small><%=level.title %> / Games</small>
+                        <small><%=book.title %> / Posters</small>
                     </h1>
                     <%--<ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -30,7 +30,7 @@
                                                 <th>ID</th>
                                                 <th>Folder</th>
                                                 <th>Thumb</th>
-                                                <th>Category</th>
+                                                <th>Title</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -38,9 +38,9 @@
                                             <%for(int i=0;i<results.Count;i++){ %>
                                             <tr>
                                                 <td><%=results[i].id %></td>
-                                                <td><a href="../Media/Games/<%=results[i].levelId %>/<%=results[i].Folder %>" target="_blank"><%=results[i].Folder %></a></td>
-                                                <td><input type="file" name="thumbnailupload" data-id="<%=results[i].id %>"/><img src="../Media/<%=results[i].Thumb %>" style="height:100px" /><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editLoader<%=results[i].id %>" /></td>
-                                                <td><a href="#" id="category<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Games" data-title="Category"><%=HttpUtility.HtmlEncode(results[i].Category.title) %></a></td>
+                                                <td><a href="../Media/Posters/<%=results[i].bookId %>/<%=results[i].InteractiveFile %>" target="_blank"><%=results[i].InteractiveFile %></a></td>
+                                                <td><input type="file" name="thumbnailupload" data-id="<%=results[i].id %>"/><img src="../Media/<%=results[i].thumb %>" style="height:100px" /><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editLoader<%=results[i].id %>" /></td>
+                                                <td><a href="#" id="title<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Posters" data-title="Title"><%=HttpUtility.HtmlEncode(results[i].title) %></a></td>
                                                 <td><% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "delete"))
                {%><a href="#" class="btn btn-block btn-primary" style="color:white" onclick="DeleteRow(<%=results[i].id %>)"><i class="fa fa-plus" style="color:white;"></i> Delete</a><%} %>
                                                 </td>
@@ -52,7 +52,7 @@
                                                <th>ID</th>
                                                 <th>Folder</th>
                                                 <th>Thumb</th>
-                                                <th>Category</th>
+                                                <th>Title</th>
                                                 <th></th>
                                             </tr>
                                         </tfoot>
@@ -85,15 +85,7 @@
             <% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "edit"))
         {%>
             <%for (int i = 0; i < results.Count; i++) {%>
-            $('#category<%=i%>').editable({
-                type: 'select',
-                title: 'Game Category',
-                placement: 'right',
-                value: '<%=results[i].categoryId%>',
-                source: [
-                    <%=categoriesList%>
-                ]
-            });
+            $('#title<%=i%>').editable();
             <%} }%>
         });
         $("input[name='thumbnailupload']").on("change", function () {
@@ -147,8 +139,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon">Category:</span>
-                                    <select name="categoriesSelect" id="categoriesSelect" class="form-control" runat="server"></select>
+                                    <span class="input-group-addon">Title:</span>
+                                    <input name="title" type="text" class="form-control" />
                                 </div>
                             </div>
                         </div>
@@ -208,7 +200,7 @@
             });
             
             function DeleteRow(id) {
-                $.post("resources/DeleteRow.ashx", { table: "Games", tableId: id },
+                $.post("resources/DeleteRow.ashx", { table: "Posters", tableId: id },
                     function (data) {
                         getSubPage('games.aspx','<%=Request["pageId"] %>');
                     });

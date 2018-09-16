@@ -28,7 +28,7 @@ namespace Web.system.resources
             BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
             string title = context.Request["title"];
             string artitle = context.Request["artitle"];
-            School school = new School { title = title, thumb = thumb_file, artitle = artitle, showGame = context.Request["showGame"] == "on"};
+            School school = new School { title = title, thumb = thumb_file, artitle = artitle};
             school = db.Schools.Add(school);
             
             db.SaveChanges();

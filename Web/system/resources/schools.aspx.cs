@@ -14,7 +14,7 @@ namespace Web.system.resources
         protected int PageCount;
         protected int resultCount;
         protected List<School> results;
-        protected List<Level> levels;
+        protected List<BooksLevel> levels;
         protected string searchKey = "";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,7 +22,7 @@ namespace Web.system.resources
             int opId = int.Parse(Request["opId"]);
             int.TryParse(Request["page"], out page);
             bool perm = Permissions.Check(opId, "Schools", "view");
-            levels = db.Levels.ToList();
+            levels = db.BooksLevels.ToList();
             searchKey = Request["key"];
             if (!perm)
                 Response.Write("<script>getContent('accessdenied.html');</script>");

@@ -41,13 +41,13 @@ namespace Web.system.resources
                     page = 1;
                 results = allresults.Skip((page - 1) * pageSize)
                        .Take(pageSize).OrderByDescending(x => x.id).ToList();
-                var levels = db.Levels.ToList();
+                var levels = db.BooksLevels.ToList();
                 levelsSelect.DataSource = levels;
                 levelsSelect.DataTextField = "title";
                 levelsSelect.DataValueField = "id";
                 levelsSelect.DataBind();
                 levelsSelect.Items.Insert(0, new ListItem("Select Level","-1"));
-                foreach (Level level in levels)
+                foreach (BooksLevel level in levels)
                 {
                     levelsList += ",{ value: " + level.id + ", text: '" + level.title + "' }";
                 }

@@ -21,23 +21,9 @@
                 </div>
             </div>--%>
     <div style="background-color:#4fb9e1;padding:1%;">
-        <img src="../img/humberger.png"  onclick="$('#subGames').slideToggle()" style='cursor:pointer;height:30px'/>
-        <span style="color:white;font-size:40px;font-weight:bold;<%=lang=="ar"?"font-family:Web-Font-Ar":""%>;position:absolute;left:45%;margin-top:5px" id="cat"><%=lang=="en"?GameCategory.title:GameCategory.artitle %></span>
-        <div style="position:absolute;width:300px;display:none;background-color:white;z-index:999999;" id="subGames">
-            <ul id="home-page-tabs" class="nav nav-tabs clearfix">
-                <%if (student.School.showGame != false)
-                        { %>
-                <%foreach (var category in categories.Where(x=>x.ForGame==true).ToList())
-                                        { %>
-                <li class="cat-0" style="width:100%;margin:0px;background-color:#d4d4d4;border-bottom:1px solid #cccccc"><a href="games?levelId=<%=levelId %>&categoryId=<%=category.id %>" style="color:black;text-decoration:none;font-size:20px;<%=lang=="ar"?"font-family:Web-Font-Ar":""%>" class="cat-0"><%=lang=="en"?category.title:category.artitle %></a></li><%} } %>
-                <%foreach (var category in categories.Where(x=>x.ForGame!=true).ToList())
-                                        { %>
-                                    <li class="cat-<%=category.id %>" style="width:100%;margin:0px;background-color:#d4d4d4;border-bottom:1px solid #cccccc"><a href="level-<%=levelId %>#cat-<%=category.id %>" class="cat-<%=category.id %>" style="color:black;text-decoration:none;font-size:20px;<%=lang=="ar"?"font-family:Web-Font-Ar":""%>" ><%=lang=="en"?category.title:category.artitle %></a></li>
-                                    
-                                    <%} %>
-                
-                                </ul>
-        </div>
+        
+        <span style="color:white;font-size:40px;font-weight:bold;position:absolute;left:45%;margin-top:5px" id="cat"><%=book.title %> (Posters)</span>
+        
     </div>
     <div id="columns" class="container">
         
@@ -55,12 +41,12 @@
                                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                                 <div class="left-block">
                                                     <div class="product-image-container">
-                                                        <a class="product_img_link" <%=student.levelId == levelId?("onclick=\"popupGame(\'"+item.levelId +"\',\'"+item.Folder +"\')\""):"" %> title="<%=item.Folder %>" itemprop="url">
-                                                            <img class="replace-2x img-responsive" src="../Media/<%=item.Thumb %>" alt="<%=item.Folder %>" title="<%=item.Folder %>" itemprop="image" />
-                                                            <img class="img-responsive hover-image" id="thumb-<%=item.levelId %>" src="../Media/<%=item.Thumb %>" alt="<%=item.Folder %>" title="<%=item.Folder %>" itemprop="image" />
+                                                        <a class="product_img_link" <%=student.levelId == book.levelId?("onclick=\"popupGame(\'"+item.bookId +"\',\'"+item.InteractiveFile +"\')\""):"" %> title="<%=item.InteractiveFile %>" itemprop="url">
+                                                            <img class="replace-2x img-responsive" src="../Media/<%=item.thumb %>" alt="<%=item.InteractiveFile %>" title="<%=item.InteractiveFile %>" itemprop="image" />
+                                                            <img class="img-responsive hover-image" id="thumb-<%=item.bookId %>" src="../Media/<%=item.thumb %>" alt="<%=item.InteractiveFile %>" title="<%=item.InteractiveFile %>" itemprop="image" />
                                                         </a>
-                                                        <a class="quick-view" <%=student.levelId == levelId?("onclick=\"popupGame(\'"+item.levelId +"\',\'"+item.Folder +"\')\""):"" %> rel="" style="cursor:pointer">
-                                                            <span><%=lang == "en" ? item.Folder : item.Folder %></span>
+                                                        <a class="quick-view" <%=student.levelId == book.levelId?("onclick=\"popupGame(\'"+item.bookId +"\',\'"+item.InteractiveFile +"\')\""):"" %> rel="" style="cursor:pointer">
+                                                            <span><%=item.InteractiveFile %></span>
                                                         </a>
                                                         
                                                     </div>
@@ -81,12 +67,12 @@
             </div>
     <div id="GameContainer" style="width:80%;height:70%;display:none"></div>
     <script>
-        function popupGame(levelId, folder) {
+        function popupGame(bookId, folder) {
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                window.location.href = "../Media/Games/" + levelId + "/" + folder;
+                window.location.href = "../Media/Posters/" + bookId + "/" + folder;
             }
             else {
-                var iframe = "<div style='width:100%;height:5%;color:white;font-weight:bold;cursor:pointer;text-align:right;' onclick='bpop.close()'>X</div><iframe width='100%' height='100%' src='../Media/Games/" + levelId + "/" + folder + "' frameborder='0' allowfullscreen ></iframe>";
+                var iframe = "<div style='width:100%;height:5%;color:white;font-weight:bold;cursor:pointer;text-align:right;' onclick='bpop.close()'>X</div><iframe width='100%' height='100%' src='../Media/Posters/" + bookId + "/" + folder + "' frameborder='0' allowfullscreen ></iframe>";
                 $("#GameContainer").html(iframe);
                 bpop = $("#GameContainer").bPopup({ fadeSpeed: 'slow', followSpeed: 1500, modalColor: 'Black', onClose: function () { $("#GameContainer").html(""); } });
             }

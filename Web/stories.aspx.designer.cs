@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web.resources {
+namespace Web {
     
     
-    public partial class games {
+    public partial class stories {
     }
 }

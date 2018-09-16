@@ -29,8 +29,8 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>English Title</th>
-                                                <th>Arabic Title</th>
+                                                <th>Title</th>
+                                                <th>Language</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -38,8 +38,8 @@
                                             <%for(int i=0;i<results.Count;i++){ %>
                                             <tr id="<%=results[i].id %>">
                                                 <td><%=results[i].OrderIndex %></td>
-                                                <td><a href="#" id="entitle<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Levels" data-title="English title"><%=results[i].title %></a></td>
-                                                <td><a href="#" id="artitle<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Levels" data-title="Arabic title"><%=results[i].artitle %></a></td>
+                                                <td><a href="#" id="title<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Levels" data-title="Title"><%=results[i].title %></a></td>
+                                                <td><a href="#" id="lang<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Levels" data-title="Language"><%=results[i].lang %></a></td>
                                                 <td><% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "delete"))
                {%><a href="#" class="fa fa-times" onclick="DeleteRow(<%=results[i].id %>)"></a><br /><%} %>
                                                     <a onclick="getSubPage('games.aspx','<%=results[i].id %>')" href="#!games.aspx">Games</a>
@@ -50,8 +50,8 @@
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>English Title</th>
-                                                <th>Arabic Title</th>
+                                                <th>Title</th>
+                                                <th>Language</th>
                                                 <th></th>
                                             </tr>
                                         </tfoot>
@@ -85,7 +85,16 @@
                {%>
             <%for(int i=0;i<results.Count;i++){%>
             $('#entitle<%=i%>').editable();
-            $('#artitle<%=i%>').editable();
+            $('#lang<%=i%>').editable({
+                type: 'select',
+                title: 'Language',
+                placement: 'right',
+                value: '<%=results[i].lang%>',
+                source: [
+                    { value: 'fr', text: 'Francais' },
+                    { value: 'en', text: 'English' }
+                ]
+            });
             <%} }%>
         });
     </script>
@@ -107,8 +116,11 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon">Arabic Title:</span>
-                                    <input name="artitle" type="text" class="form-control" placeholder="Title">
+                                    <span class="input-group-addon">Language:</span>
+                                    <select name="langselect" id="langselect" class="form-control">
+                                        <option value="fr">Francais</option>
+                                        <option value="en">English</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +179,7 @@
                 //$("#email_message").wysihtml5();
             });
             function AddRow() {
-                $.post("resources/AddRow.ashx", { table: "Levels", Rows: $("input[name='title']").val() + "|" + $("input[name='artitle']").val() },
+                $.post("resources/AddRow.ashx", { table: "Levels", Rows: $("input[name='title']").val() + "|" + $("select[name='langselect']").val() },
                     function (data) {
                         getContent("bookslevels.aspx");
                         $(".modal-backdrop").hide();

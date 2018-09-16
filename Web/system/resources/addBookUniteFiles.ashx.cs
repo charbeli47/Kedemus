@@ -47,7 +47,7 @@ namespace Web.system.resources
                 Decompress(filepath);
                 fi.Delete();
             }
-            db.BookChapterFiles.Add(new BookChapterFile { InteractiveFile = game_file, thumb = thumb_file, chapterId = uniteId });
+            db.BookUniteFiles.Add(new BookUniteFile { InteractiveFile = game_file, thumb = thumb_file, uniteId = uniteId });
             db.SaveChanges();
         }
 

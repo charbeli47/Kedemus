@@ -23,31 +23,11 @@ namespace Web.system.resources
             
             switch (table)
             {
-                case "Categories":
-                    if (direction == "back")
-                    {
-                        var moved = db.Categories.Where(c => (toPosition <= c.OrderIndex && c.OrderIndex <= fromPosition))
-                            .ToList();
-                        foreach (var p in moved)
-                        {
-                            p.OrderIndex++;
-                        }
-                    }
-                    else
-                    {
-                        var moved = db.Categories.Where(c => (fromPosition <= c.OrderIndex && c.OrderIndex <= toPosition))
-                            .ToList();
-                        foreach (var p in moved)
-                        {
-                            p.OrderIndex--;
-                        }
-                    }
-                    db.Categories.Where(x => x.id == id).SingleOrDefault().OrderIndex = toPosition;
-                    break;
+                
                 case "Levels":
                     if (direction == "back")
                     {
-                        var moved = db.Levels.Where(c => (toPosition <= c.OrderIndex && c.OrderIndex <= fromPosition))
+                        var moved = db.BooksLevels.Where(c => (toPosition <= c.OrderIndex && c.OrderIndex <= fromPosition))
                             .ToList();
                         foreach (var p in moved)
                         {
@@ -56,7 +36,7 @@ namespace Web.system.resources
                     }
                     else
                     {
-                        var moved = db.Levels.Where(c => (fromPosition <= c.OrderIndex && c.OrderIndex <= toPosition))
+                        var moved = db.BooksLevels.Where(c => (fromPosition <= c.OrderIndex && c.OrderIndex <= toPosition))
                             .ToList();
                         foreach (var p in moved)
                         {
@@ -65,7 +45,7 @@ namespace Web.system.resources
                                 p.OrderIndex = 0;
                         }
                     }
-                    db.Levels.Where(x => x.id == id).SingleOrDefault().OrderIndex = toPosition;
+                    db.BooksLevels.Where(x => x.id == id).SingleOrDefault().OrderIndex = toPosition;
                     break;
                 case "Slides":
                     if (direction == "back")
@@ -93,7 +73,7 @@ namespace Web.system.resources
                 case "BookUnites":
                     if (direction == "back")
                     {
-                        var moved = db.BookInteractiveChapters.Where(c => (toPosition <= c.OrderIndex && c.OrderIndex <= fromPosition))
+                        var moved = db.BookUnites.Where(c => (toPosition <= c.OrderIndex && c.OrderIndex <= fromPosition))
                             .ToList();
                         foreach (var p in moved)
                         {
@@ -102,7 +82,7 @@ namespace Web.system.resources
                     }
                     else
                     {
-                        var moved = db.BookInteractiveChapters.Where(c => (fromPosition <= c.OrderIndex && c.OrderIndex <= toPosition))
+                        var moved = db.BookUnites.Where(c => (fromPosition <= c.OrderIndex && c.OrderIndex <= toPosition))
                             .ToList();
                         foreach (var p in moved)
                         {
@@ -111,7 +91,7 @@ namespace Web.system.resources
                                 p.OrderIndex = 0;
                         }
                     }
-                    db.BookInteractiveChapters.Where(x => x.id == id).SingleOrDefault().OrderIndex = toPosition;
+                    db.BookUnites.Where(x => x.id == id).SingleOrDefault().OrderIndex = toPosition;
                     break;
             }
             db.SaveChanges();

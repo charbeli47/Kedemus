@@ -18,10 +18,9 @@ namespace Web
         public Student()
         {
             this.StudentLibraries = new HashSet<StudentLibrary>();
-            this.StudentScores = new HashSet<StudentScore>();
         }
     
-        public int id { get; set; }
+        public long id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }
@@ -29,16 +28,13 @@ namespace Web
         public string Email { get; set; }
         public string AccessCode { get; set; }
         public Nullable<int> schoolId { get; set; }
-        public Nullable<int> levelId { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public string MacAdr { get; set; }
+        public Nullable<int> levelId { get; set; }
     
-        public virtual Level Level { get; set; }
+        public virtual BooksLevel BooksLevel { get; set; }
         public virtual School School { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentLibrary> StudentLibraries { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentScore> StudentScores { get; set; }
     }
 }

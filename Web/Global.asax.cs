@@ -25,26 +25,26 @@ namespace Web
                        "~/login.aspx", true, new RouteValueDictionary { { "lang", "en" }, { "page", "login" } });
                 routes.MapPageRoute("ENLogout", "en/logout",
                        "~/logout.aspx", true, new RouteValueDictionary { { "lang", "en" }, { "page", "logout" } });
-                routes.MapPageRoute("ENGames", "en/games",
-                       "~/games.aspx", true, new RouteValueDictionary { { "lang", "en" }, { "page", "games" } });
+                routes.MapPageRoute("ENPosters", "en/posters",
+                       "~/games.aspx", true, new RouteValueDictionary { { "lang", "en" }, { "page", "posters" } });
+                
                 routes.MapPageRoute("ENVerifyAccount", "en/verify-account",
                        "~/verify-account.aspx", true, new RouteValueDictionary { { "lang", "en" }, { "page", "verify-account" } });
                 routes.MapPageRoute("ENForgotPassword", "en/forgot-password",
                        "~/forgot-password.aspx", true, new RouteValueDictionary { { "lang", "en" }, { "page", "forgot-password" } });
 
-                //Arabic 
-                routes.MapPageRoute("ARHome", "ar/home",
-                    "~/default.aspx", true, new RouteValueDictionary { { "lang", "ar" }, { "page", "home" } });
-                routes.MapPageRoute("ARLogin", "ar/login",
-                       "~/login.aspx", true, new RouteValueDictionary { { "lang", "ar" }, { "page", "login" } });
-                routes.MapPageRoute("ARLogout", "ar/logout",
-                       "~/logout.aspx", true, new RouteValueDictionary { { "lang", "ar" }, { "page", "logout" } });
-                routes.MapPageRoute("ARGames", "ar/games",
-                       "~/games.aspx", true, new RouteValueDictionary { { "lang", "ar" }, { "page", "games" } });
-                routes.MapPageRoute("ARVerifyAccount", "ar/verify-account",
-                       "~/verify-account.aspx", true, new RouteValueDictionary { { "lang", "ar" }, { "page", "verify-account" } });
-                routes.MapPageRoute("ARForgotPassword", "ar/forgot-password",
-                       "~/forgot-password.aspx", true, new RouteValueDictionary { { "lang", "ar" }, { "page", "forgot-password" } });
+                //French 
+                routes.MapPageRoute("FRLogin", "fr/login",
+                       "~/login.aspx", true, new RouteValueDictionary { { "lang", "fr" }, { "page", "login" } });
+                routes.MapPageRoute("FRLogout", "fr/logout",
+                       "~/logout.aspx", true, new RouteValueDictionary { { "lang", "fr" }, { "page", "logout" } });
+                routes.MapPageRoute("FRPosters", "fr/posters",
+                       "~/games.aspx", true, new RouteValueDictionary { { "lang", "fr" }, { "page", "posters" } });
+                
+                routes.MapPageRoute("FRVerifyAccount", "fr/verify-account",
+                       "~/verify-account.aspx", true, new RouteValueDictionary { { "lang", "fr" }, { "page", "verify-account" } });
+                routes.MapPageRoute("FRForgotPassword", "fr/forgot-password",
+                       "~/forgot-password.aspx", true, new RouteValueDictionary { { "lang", "fr" }, { "page", "forgot-password" } });
             }
             catch { }
 
@@ -54,16 +54,43 @@ namespace Web
             {
                 try
                 {
-                    var itemLevel = book.ItemsLevels.FirstOrDefault() != null ? book.ItemsLevels.FirstOrDefault().LevelId : 0;
-                    routes.MapPageRoute("ENBook" + book.id.ToString(), "en/book-" + book.id.ToString(),
-                    "~/product.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "en" }, { "levelId", itemLevel }, {"page","book-" + book.id } });
-
-                    routes.MapPageRoute("ARBook" + book.id.ToString(), "ar/book-" + book.id.ToString(),
-                    "~/product.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "ar" }, { "levelId", itemLevel }, { "page", "book-" + book.id } });
+                    if (book.lang == "en")
+                    {
+                        routes.MapPageRoute("ENBook" + book.id.ToString(), "en/book-" + book.id.ToString(),
+                    "~/product.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "en" }, { "levelId", book.levelId }, { "page", "book-" + book.id } });
+                        routes.MapPageRoute("ENStories" + book.id.ToString(), "en/stories-" + book.id,
+                       "~/stories.aspx", true, new RouteValueDictionary { { "lang", "en" }, { "page", "stories-" + book.id }, { "bookId", book.id } });
+                    }
+                    else
+                    {
+                        routes.MapPageRoute("FRBook" + book.id.ToString(), "fr/book-" + book.id.ToString(),
+                        "~/product.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "fr" }, { "levelId", book.levelId }, { "page", "book-" + book.id } });
+                        routes.MapPageRoute("FRStories" + book.id.ToString(), "fr/stories-" + book.id,
+                       "~/stories.aspx", true, new RouteValueDictionary { { "lang", "fr" }, { "page", "stories-" + book.id }, { "bookId", book.id } });
+                    }
                 }
                 catch { }
             }
-            var levels = db.Levels.ToList();
+            var stories = db.BookStories.ToList();
+            foreach (var story in stories)
+            {
+                try
+                {
+                    if (story.Book.lang == "en")
+                    {
+                        routes.MapPageRoute("ENStory" + story.id.ToString(), "en/story-" + story.id.ToString(),
+                        "~/story.aspx", true, new RouteValueDictionary { { "id", story.id }, { "lang", "en" }, { "bookId", story.bookId }, { "page", "story-" + story.id } });
+                    }
+                    else
+                    {
+
+                        routes.MapPageRoute("FRStory" + story.id.ToString(), "fr/story-" + story.id.ToString(),
+                        "~/story.aspx", true, new RouteValueDictionary { { "id", story.id }, { "lang", "fr" }, { "bookId", story.bookId }, { "page", "story-" + story.id } });
+                    }
+                }
+                catch { }
+            }
+            var levels = db.BooksLevels.ToList();
             foreach(var level in levels)
             {
                 try
@@ -71,8 +98,8 @@ namespace Web
                     routes.MapPageRoute("ENLevel" + level.id.ToString(), "en/level-" + level.id.ToString(),
                     "~/books.aspx", true, new RouteValueDictionary { { "id", level.id }, { "lang", "en" }, { "levelId", level.id }, { "page", "level-" + level.id } });
 
-                    routes.MapPageRoute("ARLevel" + level.id.ToString(), "ar/level-" + level.id.ToString(),
-                    "~/books.aspx", true, new RouteValueDictionary { { "id", level.id }, { "lang", "ar" }, { "levelId", level.id }, { "page", "level-" + level.id } });
+                    routes.MapPageRoute("FRLevel" + level.id.ToString(), "fr/level-" + level.id.ToString(),
+                    "~/books.aspx", true, new RouteValueDictionary { { "id", level.id }, { "lang", "fr" }, { "levelId", level.id }, { "page", "level-" + level.id } });
                 }
                 catch { }
             }
@@ -89,7 +116,7 @@ namespace Web
                 try
                 {
                     routes.Remove(RouteTable.Routes["ENBook" + book.id.ToString()]);
-                    routes.Remove(RouteTable.Routes["ARBook" + book.id.ToString()]);
+                    routes.Remove(RouteTable.Routes["FRBook" + book.id.ToString()]);
                 }
                 catch
                 {
@@ -97,16 +124,15 @@ namespace Web
                 }
                 try
                 {
-                    var itemLevel = book.ItemsLevels.FirstOrDefault() != null ? book.ItemsLevels.FirstOrDefault().LevelId : 0;
                     routes.MapPageRoute("ENBook" + book.id.ToString(), "en/book-" + book.id.ToString(),
-                    "~/product.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "en" }, { "levelId", itemLevel }, { "page", "book-" + book.id } });
+                    "~/product.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "en" }, { "levelId", book.levelId }, { "page", "book-" + book.id } });
 
-                    routes.MapPageRoute("ARBook" + book.id.ToString(), "ar/book-" + book.id.ToString(),
-                    "~/product.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "ar" }, { "levelId", itemLevel }, { "page", "book-" + book.id } });
+                    routes.MapPageRoute("FRBook" + book.id.ToString(), "fr/book-" + book.id.ToString(),
+                    "~/product.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "fr" }, { "levelId", book.levelId }, { "page", "book-" + book.id } });
                 }
                 catch { }
             }
-            var levels = db.Levels.ToList();
+            var levels = db.BooksLevels.ToList();
             foreach (var level in levels)
             {
                 try
@@ -121,10 +147,10 @@ namespace Web
                 try
                 {
                     routes.MapPageRoute("ENLevel" + level.id.ToString(), "en/level-" + level.id.ToString(),
-                    "~/books.aspx", true, new RouteValueDictionary { { "id", level.id }, { "lang", "en" }, { "levelId", level.id }, { "page", "level-" + level.id } });
+                   "~/books.aspx", true, new RouteValueDictionary { { "id", level.id }, { "lang", "en" }, { "levelId", level.id }, { "page", "level-" + level.id } });
 
-                    routes.MapPageRoute("ARLevel" + level.id.ToString(), "ar/level-" + level.id.ToString(),
-                    "~/books.aspx", true, new RouteValueDictionary { { "id", level.id }, { "lang", "ar" }, { "levelId", level.id }, { "page", "level-" + level.id } });
+                    routes.MapPageRoute("FRLevel" + level.id.ToString(), "fr/level-" + level.id.ToString(),
+                    "~/books.aspx", true, new RouteValueDictionary { { "id", level.id }, { "lang", "fr" }, { "levelId", level.id }, { "page", "level-" + level.id } });
                 }
                 catch { }
             }

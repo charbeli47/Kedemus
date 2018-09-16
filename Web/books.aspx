@@ -1,81 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/default.Master" AutoEventWireup="true" CodeBehind="books.aspx.cs" Inherits="Web.books" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="main" runat="server">
-    <%--<div id="slider_row">
-                <div id="top_column" class="center_column">
-                    <div id="homepage-slider">
-                        <ul id="homeslider" style="max-height: 560px;">
-                            <%foreach (var img in banners)
-                                { %>
-                            <li class="homeslider-container">
-                                <a href="#">
-                                    <img src="../Media/<%=img.thumb %>" width="1920" height="560" />
-                                </a>
-                            </li>
-                            <%} %>
-                        </ul>
-                    </div>
-
-                    <%--<div id="htmlcontent_top">
-                        <ul class="htmlcontent-home clearfix row">
-                            <li class="htmlcontent-item-1 col-xs-4">
-                                <a href="index.php?id_category=5&amp;controller=category" class="item-link" title="">
-                                    <div class="item-html">
-                                        <div class="div1">
-                                            <h2>Today's<br />
-                                                Top 50 eBooks</h2>
-                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                            <p class="p1">
-                                                <button class="btn btn-default" type="button">Shop now!</button></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="htmlcontent-item-2 col-xs-4">
-                                <a href="index.php?id_category=6&amp;controller=category" class="item-link" title="">
-                                    <div class="item-html">
-                                        <div class="div2">
-                                            <h2>Recommended Reading</h2>
-                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                            <p class="p1">
-                                                <button class="btn btn-default" type="button">Shop now!</button></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="htmlcontent-item-3 col-xs-4">
-                                <a href="index.php?id_category=7&amp;controller=category" class="item-link" title="">
-                                    <div class="item-html">
-                                        <div class="div3">
-                                            <h2>-50%</h2>
-                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                            <p class="p1">
-                                                <button class="btn btn-default" type="button">Shop now!</button></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>--%>
+   
     <div style="background-color:#4fb9e1;padding:1%;">
-        <img src="../img/humberger.png"  onclick="$('#subGames').slideToggle()" style='cursor:pointer;height:30px'/>
-        <span style="color:white;font-size:40px;font-weight:bold;<%=lang=="ar"?"font-family:Web-Font-Ar":""%>;position:absolute;left:45%;margin-top:5px" id="cat"><%=lang=="en"?"READINGS":"قرائات" %></span>
+   
+        <span style="color:white;font-size:40px;font-weight:bold;position:absolute;left:45%;margin-top:5px" id="cat"><%=lang=="en"?"BOOKS":"LIVRES" %></span>
         <div style="position:absolute;width:300px;display:none;background-color:white;z-index:999999;" id="subGames">
-            <ul id="home-page-tabs" class="nav nav-tabs clearfix">
-                                    <%foreach (var category in categories.Where(x=>x.ForGame!=true).ToList())
-                                        { %>
-                                    <li class="cat-<%=category.id %>" style="width:100%;margin:0px;background-color:#d4d4d4;border-bottom:1px solid #cccccc"><a data-toggle="tab" href="#cat-<%=category.id %>" class="cat-<%=category.id %>" style="color:black;text-decoration:none;font-size:20px;<%=lang=="ar"?"font-family:Web-Font-Ar":""%>" onclick="$('#cat').html('&nbsp;&nbsp;&nbsp;<%=lang=="en"?category.title:category.artitle %>')"><%=lang=="en"?category.title:category.artitle %></a></li>
-                                    
-                                    <%} %>
-                <%if (student.School.showGame != false)
-                    { %>
-                <%foreach (var category in categories.Where(x => x.ForGame == true).ToList())
-    { %>
-                <li class="cat-0" style="width:100%;margin:0px;background-color:#d4d4d4;border-bottom:1px solid #cccccc"><a href="games?levelId=<%=levelId %>&categoryId=<%=category.id %>" style="color:black;text-decoration:none;font-size:20px;<%=lang=="ar"?"font-family:Web-Font-Ar":""%>" class="cat-0"><%=lang == "en" ? category.title : category.artitle %></a></li><%}
-    } %>
-                
-                                </ul>
         </div>
     </div>
     <div id="columns" class="container">
@@ -86,26 +15,23 @@
                             <div id="center_column" class="center_column col-xs-12 col-sm-12">
                                 
                                 <div class="tab-content">
-                                    <%foreach (var category in categories.Where(x=>x.ForGame!=true).ToList())
-                                        {
-                                            var items = category.ItemsCategories.Where(x=>x.Book.ItemsLevels.Where(y=>y.LevelId == levelId).Count()>0 && x.Book.SchoolBooks.Where(z=>z.schoolId == student.schoolId).Count()>0 && x.Book.isAvailable == true);%>
-                                    <ul id="cat-<%=category.id %>" class="product_list grid row homefeatured tab-pane">
-                                        <%foreach (var item in items)
+                                   <ul id="cat" class="product_list grid row homefeatured tab-pane">
+                                        <%foreach (var item in results)
                                             { %>
                                         <li class="ajax_block_product col-xs-12 col-sm-3 col-md-2 last-item-of-mobile-line">
                                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                                 <div class="left-block">
                                                     <div class="product-image-container">
-                                                        <a class="product_img_link" <%=student.levelId == levelId?("href='book-"+item.BookId+"'"):"" %> title="<%=lang=="en"?item.Book.title:item.Book.artitle %>n" itemprop="url">
-                                                            <img class="replace-2x img-responsive" src="../Media/<%=item.Book.thumb %>" alt="<%=lang=="en"?item.Book.title:item.Book.artitle %>" title="<%=lang=="en"?item.Book.title:item.Book.artitle %>" itemprop="image" />
-                                                            <img class="img-responsive hover-image" id="thumb-<%=item.BookId %>" src="../Media/<%=item.Book.thumb %>" alt="<%=lang=="en"?item.Book.title:item.Book.artitle %>" title="<%=lang=="en"?item.Book.title:item.Book.artitle %>" itemprop="image" />
+                                                        <a class="product_img_link" <%=student.levelId == levelId?("href='book-"+item.id+"'"):"" %> title="<%=item.title%>" itemprop="url">
+                                                            <img class="replace-2x img-responsive" src="../Media/<%=item.thumb %>" alt="<%=item.title %>" title="<%=item.title %>" itemprop="image" />
+                                                            <img class="img-responsive hover-image" id="thumb-<%=item.id %>" src="../Media/<%=item.thumb %>" alt="<%=item.title %>" title="<%=item.title %>" itemprop="image" />
                                                         </a>
-                                                        <a class="quick-view" <%=item.Book.ItemsLevels.Where(x => x.LevelId == student.levelId).Count() > 0 ? "href='book-" + item.BookId + "'" : "" %> rel="">
-                                                            <span style="font-size:15px;<%=lang=="ar"?"font-family:Web-Font-Ar":""%>"><%=lang == "en" ? item.Book.title : item.Book.artitle %></span>
+                                                        <a class="quick-view" <%=student.levelId == levelId ? "href='book-" + item.id + "'" : "" %> rel="">
+                                                            <span style="font-size:15px;"><%=item.title %></span>
                                                         </a>
-                                                        <%if (item.Book.StudentLibraries.Where(x=>x.studentId == student.id).Count() == 0 && student.levelId == levelId)
+                                                        <%if (item.StudentLibraries.Where(x=>x.studentId == student.id).Count() == 0 && student.levelId == levelId)
                                                             { %>
-                                                        <a class="sale-box" onclick="AddToLibrary('<%=item.BookId %>', this)">
+                                                        <a class="sale-box" onclick="AddToLibrary('<%=item.id %>', this)">
                                                             <span class="sale-label">Add to Library</span>
                                                         </a>
                                                         <%} %>
@@ -151,7 +77,6 @@
                                         </li>
                                         <%} %>
                                     </ul>
-                                    <%} %>
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/default.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="Web._default2" %>
-<asp:Content ID="Content2" ContentPlaceHolderID="header" runat="server">
+﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="Web._default2" %>
+<%--<asp:Content ID="Content2" ContentPlaceHolderID="header" runat="server">
 <link href="../css/contact-form.css" rel="stylesheet" />
     
 </asp:Content>
@@ -19,100 +19,10 @@
                         </ul>
                     </div>
 
-                    <%--<div id="htmlcontent_top">
-                        <ul class="htmlcontent-home clearfix row">
-                            <li class="htmlcontent-item-1 col-xs-4">
-                                <a href="index.php?id_category=5&amp;controller=category" class="item-link" title="">
-                                    <div class="item-html">
-                                        <div class="div1">
-                                            <h2>Today's<br />
-                                                Top 50 eBooks</h2>
-                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                            <p class="p1">
-                                                <button class="btn btn-default" type="button">Shop now!</button></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="htmlcontent-item-2 col-xs-4">
-                                <a href="index.php?id_category=6&amp;controller=category" class="item-link" title="">
-                                    <div class="item-html">
-                                        <div class="div2">
-                                            <h2>Recommended Reading</h2>
-                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                            <p class="p1">
-                                                <button class="btn btn-default" type="button">Shop now!</button></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="htmlcontent-item-3 col-xs-4">
-                                <a href="index.php?id_category=7&amp;controller=category" class="item-link" title="">
-                                    <div class="item-html">
-                                        <div class="div3">
-                                            <h2>-50%</h2>
-                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                            <p class="p1">
-                                                <button class="btn btn-default" type="button">Shop now!</button></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>--%>
+
                 </div>
             </div>
-    <%--<%if(Session["UserId"]!=null) { %>
-            <div id="columns" class="container">
-                <div class="row">
-                    <div class="large-left col-sm-12">
-                        <div class="row">
-                            <div id="center_column" class="center_column col-xs-12 col-sm-12">
-                                <ul id="home-page-tabs" class="nav nav-tabs clearfix">
-                                    <%foreach (var category in categories)
-                                        { %>
-                                    <li class="cat-<%=category.id %>"><a data-toggle="tab" href="#cat-<%=category.id %>" class="cat-<%=category.id %>"><%=lang=="en"?category.title:category.artitle %></a></li>
-                                    
-                                    <%} %>
-                                </ul>
-                                <div class="tab-content">
-                                    <%foreach (var category in categories)
-                                        {
-                                            var items = category.ItemsCategories;%>
-                                    <ul id="cat-<%=category.id %>" class="product_list grid row homefeatured tab-pane">
-                                        <%foreach (var item in items)
-                                            {
-                                                if (item.Book.ItemsLevels.Where(x => x.LevelId == student.levelId).Count() > 0)
-                                                {%>
-                                        <li class="ajax_block_product col-xs-12 col-sm-3 col-md-2 last-item-of-mobile-line">
-                                            <div class="product-container" itemscope itemtype="http://schema.org/Product">
-                                                <div class="left-block">
-                                                    <div class="product-image-container">
-                                                        <a class="product_img_link" <%=item.Book.ItemsLevels.Where(x => x.LevelId == student.levelId).Count() > 0 ? "href='book-" + item.BookId + "'" : "" %>  title="<%=lang == "en" ? item.Book.title : item.Book.artitle %>n" itemprop="url">
-                                                            <img class="replace-2x img-responsive" src="../Media/<%=item.Book.thumb %>" alt="<%=lang == "en" ? item.Book.title : item.Book.artitle %>" title="<%=lang == "en" ? item.Book.title : item.Book.artitle %>" itemprop="image" />
-                                                            <img class="img-responsive hover-image" id="thumb-<%=item.BookId %>" src="../Media/<%=item.Book.thumb %>" alt="<%=lang == "en" ? item.Book.title : item.Book.artitle %>" title="<%=lang == "en" ? item.Book.title : item.Book.artitle %>" itemprop="image" />
-                                                        </a>
-                                                        <a class="quick-view" <%=item.Book.ItemsLevels.Where(x => x.LevelId == student.levelId).Count() > 0 ? "href='book-" + item.BookId + "'" : "" %> rel="">
-                                                            <span><%=lang == "en" ? item.Book.title : item.Book.artitle %></span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="right-block">
-                                                    
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <%}
-                                            } %>
-                                    </ul>
-                                    <%} %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    <%} %>--%>
+    
             <div class="home-column">
                 <div class="container">
                     
@@ -285,4 +195,4 @@ Technology entices most kids, right? If you have a phone or a tablet, engage you
                     </section>
                 
             </div>
-</asp:Content>
+</asp:Content>--%>

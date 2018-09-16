@@ -12,23 +12,22 @@ namespace Web
     using System;
     using System.Collections.Generic;
     
-    public partial class School
+    public partial class BooksLevel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public School()
+        public BooksLevel()
         {
-            this.SchoolBooks = new HashSet<SchoolBook>();
+            this.Books = new HashSet<Book>();
             this.Students = new HashSet<Student>();
         }
     
         public int id { get; set; }
         public string title { get; set; }
-        public string artitle { get; set; }
-        public string thumb { get; set; }
-        public Nullable<bool> showGame { get; set; }
+        public string lang { get; set; }
+        public Nullable<int> OrderIndex { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SchoolBook> SchoolBooks { get; set; }
+        public virtual ICollection<Book> Books { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Students { get; set; }
     }
