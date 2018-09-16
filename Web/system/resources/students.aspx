@@ -50,7 +50,7 @@
                                                 <td><%=results[i].Phone %></td>
                                                 <td><%=results[i].Address %></td>
                                                 <td><%=results[i].AccessCode %></td>
-                                                <td><a href="#" id="levelId<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Students" data-title="Level"><%=HttpUtility.HtmlEncode(results[i].Level!=null?results[i].Level.title:"") %></a></td>
+                                                <td><a href="#" id="levelId<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Students" data-title="Level"><%=HttpUtility.HtmlEncode(results[i].BooksLevel!=null?results[i].BooksLevel.title:"") %></a></td>
                                             </tr>
                                             <%} %>
                                         </tbody>

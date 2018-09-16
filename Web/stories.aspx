@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/default.Master" AutoEventWireup="true" CodeBehind="stories.aspx.cs" Inherits="Web.stories" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="main" runat="server">
    
-    <div style="background-color:#4fb9e1;padding:1%;">
+    <div style="background-color:#4fb9e1;padding:1%;height:60px">
    
         <span style="color:white;font-size:40px;font-weight:bold;;position:absolute;left:45%;margin-top:5px" id="cat"><%=book.title + "(" + (book.lang=="en"?"Stories":"Histoires") + ")" %></span>
         
