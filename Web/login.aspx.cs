@@ -24,9 +24,9 @@ namespace Web
                 if(student!=null)
                 {
                     string key = student.id.ToString();
-                    var ssu = sessionUsers.Where(x => x.Key == key).SingleOrDefault();
-                    if (ssu == null)
-                    {
+                    //var ssu = sessionUsers.Where(x => x.Key == key).SingleOrDefault();
+                    //if (ssu == null)
+                    //{
                         string decryptedPass = StringCipher.Decrypt(student.Password);
                         if (Request.Form["header-passwd"] == decryptedPass)
                         {
@@ -41,17 +41,17 @@ namespace Web
                             if (lang == "fr")
                                 msg.Text = "<font color='red'>Nom d'utilisateur / mot de passe invalide.</font>";
                         }
-                    }
-                    else
-                    {
-                        msg.Text = lang=="fr"? "<font color='red'>Il y a une autre session utilisant ce compte, veuillez en utiliser une autre.</font>" : "<font color='red'>There is another Session using this account,please use another one.</font>";
-                    }
+                    //}
+                    //else
+                    //{
+                    //    msg.Text = lang=="fr"? "<font color='red'>Il y a une autre session utilisant ce compte, veuillez en utiliser une autre.</font>" : "<font color='red'>There is another Session using this account,please use another one.</font>";
+                    //}
                 }
                 else
                 {
                     if (lang == "en")
                         msg.Text = "<font color='red'>Invalid Username/Password.</font>";
-                    if (lang == "ar")
+                    if (lang == "fr")
                         msg.Text = "<font color='red'>Nom d'utilisateur / mot de passe invalide. </font>";
                 }
             }
@@ -62,9 +62,9 @@ namespace Web
                 if (student != null)
                 {
                     string key = student.id.ToString();
-                    var ssu = sessionUsers.Where(x => x.Key == key).SingleOrDefault();
-                    if (ssu == null)
-                    {
+                    //var ssu = sessionUsers.Where(x => x.Key == key).SingleOrDefault();
+                    //if (ssu == null)
+                    //{
                         string decryptedPass = StringCipher.Decrypt(student.Password);
                         if (Request.Form["passwd"] == decryptedPass)
                         {
@@ -79,17 +79,17 @@ namespace Web
                             if (lang == "ar")
                                 msg.Text = "<font color='red'>Nom d'utilisateur / mot de passe invalide. </font>";
                         }
-                    }
-                    else
-                    {
-                        msg.Text = lang == "ar" ? "<font color='red'>Il y a une autre session utilisant ce compte, veuillez en utiliser une autre.</font>" : "<font color='red'>There is another Session using this account,please another one.</font>";
-                    }
+                    //}
+                    //else
+                    //{
+                    //    msg.Text = lang == "fr" ? "<font color='red'>Il y a une autre session utilisant ce compte, veuillez en utiliser une autre.</font>" : "<font color='red'>There is another Session using this account,please another one.</font>";
+                    //}
                 }
                 else
                 {
                     if (lang == "en")
                         msg.Text = "<font color='red'>Invalid Username/Password.</font>";
-                    if (lang == "ar")
+                    if (lang == "fr")
                         msg.Text = "<font color='red'>Nom d'utilisateur / mot de passe invalide. </font>";
                 }
             }

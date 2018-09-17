@@ -98,7 +98,7 @@
             <div class="unitesBack">
                <% foreach (var unite in result.BookUnites.OrderBy(x=>x.OrderIndex))
                 { %>
-            <a data-toggle="tab" class="cat-<%=unite.id %>" id="unite<%=unite.id %>" style="font-size:56px" href="#cat-<%=unite.id %>"><%=unite.OrderIndex%></a>
+            <a data-toggle="tab" class="cat-<%=unite.id %>" id="unite<%=unite.id %>" style="font-size:33px;padding:5px" href="#cat-<%=unite.id %>"><%=unite.OrderIndex%></a>
         <%}%>
                 </div>
             <div id="columns" class="container">
@@ -113,15 +113,19 @@
             
                                     
                                     <ul id="cat-<%=unite.id %>" class="product_list grid row homefeatured tab-pane">
-                                        <%foreach (var item in unite.BookUniteFiles.OrderBy(x=>x.OrderIndex))
-                                            { %>
-                                        <li class="ajax_block_product col-xs-12 col-sm-2 col-md-4 last-item-of-mobile-line">
+                                        <%
+                                            var files = unite.BookUniteFiles.OrderBy(x => x.OrderIndex).ToList();
+                                            for (int i=0;i<files.Count;i++)
+                                            {
+                                                var item = files[i];%>
+                                        <li class="ajax_block_product col-xs-12 col-sm-2 col-md-3 last-item-of-mobile-line">
                                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                                 <div class="left-block">
                                                     <div class="product-image-container">
                                                         <a class="product_img_link" style="cursor:pointer" onclick="popupFile('<%=item.uniteId %>','<%=item.InteractiveFile%>')" itemprop="url">
-                                                            <img class="replace-2x img-responsive" src="../Media/<%=item.thumb %>" itemprop="image" />
-                                                            <img class="img-responsive hover-image" id="thumb-<%=item.uniteId %>" src="../Media/<%=item.thumb %>" itemprop="image" />
+                                                            <img class="replace-2x img-responsive" src="../img/exerciseBack.png" alt="EXERCICE <%= i+1%>" title="EXERCICE <%= i+1%>" itemprop="image" style="margin-top: -26px;"/>
+                                                            <img class="img-responsive hover-image" id="thumb-<%=item.id %>" src="../img/exerciseBack.png" alt="EXERCICE <%= i+1%>" title="EXERCICE <%= i+1%>" itemprop="image" />
+                                                            <h3 style="margin-top:-120px">EXERCICE <%= i+1%></h3>
                                                         </a>
                                                         
                                                     </div>

@@ -23,7 +23,7 @@
                                                         <a class="product_img_link" <%=student.levelId == book.levelId?("href='book-"+book.id+"'"):"" %> title="<%=book.title%>" itemprop="url">
                                                             <img class="replace-2x img-responsive" src="../img/exerciseBack.png" alt="<%=book.title %>" title="<%=book.title %>" itemprop="image" />
                                                             <img class="img-responsive hover-image" id="thumb-<%=book.id %>" src="../img/exerciseBack.png" alt="<%=book.title %>" title="<%=book.title %>" itemprop="image" />
-                                                            <h3><%=lang=="en"?"WORKBOOK":"Classeur" %></h3>
+                                                            <h3 style="margin-top:-80px"><%=lang=="en"?"WORKBOOK":"CLASSEUR" %></h3>
                                                         </a>
                                                         <%--<a class="quick-view" <%=student.levelId == levelId ? "href='book-" + item.id + "'" : "" %> rel="">
                                                             <span style="font-size:15px;"><%=item.title %></span>
@@ -39,10 +39,10 @@
                                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                                 <div class="left-block">
                                                     <div class="product-image-container">
-                                                        <a class="product_img_link" <%=student.levelId == book.levelId?("href='games?bookId="+book.id+"'"):"" %> title="<%=book.title%>" itemprop="url">
+                                                        <a class="product_img_link" <%=student.levelId == book.levelId?("href='posters?bookId="+book.id+"'"):"" %> title="<%=book.title%>" itemprop="url">
                                                             <img class="replace-2x img-responsive" src="../img/exerciseBack.png" alt="<%=book.title %>" title="<%=book.title %>" itemprop="image" />
                                                             <img class="img-responsive hover-image" id="thumb-<%=book.id %>" src="../img/exerciseBack.png" alt="<%=book.title %>" title="<%=book.title %>" itemprop="image" />
-                                                            <h3><%=lang=="en"?"Posters":"Affiches" %></h3>
+                                                            <h3 style="margin-top:-80px"><%=lang=="en"?"Posters":"AFFICHES" %></h3>
                                                         </a>
                                                         <%--<a class="quick-view" <%=student.levelId == levelId ? "href='book-" + item.id + "'" : "" %> rel="">
                                                             <span style="font-size:15px;"><%=item.title %></span>
@@ -58,10 +58,10 @@
                                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                                 <div class="left-block">
                                                     <div class="product-image-container">
-                                                        <a class="product_img_link" <%=student.levelId == book.levelId?("href='games?bookId="+book.id+"'"):"" %> title="<%=book.title%>" itemprop="url">
+                                                        <a class="product_img_link" <%=student.levelId == book.levelId?("href='stories-"+book.id+"'"):"" %> title="<%=book.title%>" itemprop="url">
                                                             <img class="replace-2x img-responsive" src="../img/exerciseBack.png" alt="<%=book.title %>" title="<%=book.title %>" itemprop="image" />
                                                             <img class="img-responsive hover-image" id="thumb-<%=book.id %>" src="../img/exerciseBack.png" alt="<%=book.title %>" title="<%=book.title %>" itemprop="image" />
-                                                            <h3><%=lang=="en"?"Stories":"Histoires" %></h3>
+                                                            <h3 style="margin-top:-80px"><%=lang=="en"?"Stories":"HISTOIRES" %></h3>
                                                         </a>
                                                         <%--<a class="quick-view" <%=student.levelId == levelId ? "href='book-" + item.id + "'" : "" %> rel="">
                                                             <span style="font-size:15px;"><%=item.title %></span>

@@ -16,7 +16,7 @@ namespace Web
                 key = Session["UserId"].ToString();
             Session["UserId"] = null;
             SessionUser.Remove(key);
-            Response.Redirect("home");
+            Response.Redirect("/");
         }
     }
 }

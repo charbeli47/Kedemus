@@ -85,7 +85,7 @@
     <%if (!string.IsNullOrEmpty(result.InteractiveFile))
         { %>
 
-<div class="col-sm-12 col-md-12 col-lg-12" style="display:none" id="slVideo">
+<div class="col-sm-12 col-md-12 col-lg-12" id="slVideo">
 <iframe width="100%" height="658" data-bgfit="cover" id="slplayer" data-bgposition="center center" src="/Media/Stories/<%=result.bookId + "/" + result.InteractiveFile %>" frameborder="0" allowfullscreen></iframe>
 </div>
  <%}

@@ -34,8 +34,8 @@ namespace Web
             {
                 BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
                 var studentId = (long)Session["UserId"];
-                var student = db.Students.Where(x => x.id == studentId);
-                Response.Redirect("/fr/books");
+                var student = db.Students.Where(x => x.id == studentId).SingleOrDefault();
+                Response.Redirect("/fr/level-" + student.levelId);
             }
             else
                 Response.Redirect("/fr/login");

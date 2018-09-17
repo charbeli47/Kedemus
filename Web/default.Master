@@ -328,7 +328,7 @@
                         <div class="row">
                             <nav>
                                 <div id="header_logo">
-                                    <a href="home" title="Brands Marketing">
+                                    <a href="/" title="Brands Marketing">
                                         <img class="logo img-responsive" src="../img/logo.png" alt="Brands Marketing" height="60" />
                                     </a>
                                     

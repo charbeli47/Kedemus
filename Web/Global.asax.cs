@@ -61,14 +61,14 @@ namespace Web
                         routes.MapPageRoute("ENStories" + book.id.ToString(), "en/stories-" + book.id,
                        "~/stories.aspx", true, new RouteValueDictionary { { "lang", "en" }, { "page", "stories-" + book.id }, { "bookId", book.id } });
                         routes.MapPageRoute("ENBookMenu" + book.id.ToString(), "en/bookmenu-" + book.id.ToString(),
-                    "~/product.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "en" }, { "levelId", book.levelId }, { "page", "bookmenu-" + book.id } });
+                    "~/bookmenu.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "en" }, { "bookId", book.id }, { "page", "bookmenu-" + book.id } });
                     }
                     else
                     {
                         routes.MapPageRoute("FRBook" + book.id.ToString(), "fr/book-" + book.id.ToString(),
                         "~/product.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "fr" }, { "levelId", book.levelId }, { "page", "book-" + book.id } });
                         routes.MapPageRoute("FRBookMenu" + book.id.ToString(), "fr/bookmenu-" + book.id.ToString(),
-                        "~/product.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "fr" }, { "levelId", book.levelId }, { "page", "bookmenu-" + book.id } });
+                        "~/bookmenu.aspx", true, new RouteValueDictionary { { "id", book.id }, { "lang", "fr" }, { "bookId", book.id }, { "page", "bookmenu-" + book.id } });
                         routes.MapPageRoute("FRStories" + book.id.ToString(), "fr/stories-" + book.id,
                        "~/stories.aspx", true, new RouteValueDictionary { { "lang", "fr" }, { "page", "stories-" + book.id }, { "bookId", book.id } });
                     }
