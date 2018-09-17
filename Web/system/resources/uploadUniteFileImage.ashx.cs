@@ -11,7 +11,7 @@ namespace Web.system.resources
     /// <summary>
     /// Summary description for uploadPartnersImage
     /// </summary>
-    public class uploadGameImage : IHttpHandler
+    public class uploadUniteFileImage : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)
@@ -19,7 +19,7 @@ namespace Web.system.resources
             context.Response.ContentType = "text/plain";
             BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
             int imId = int.Parse(context.Request["id"]);
-            var row = db.BookPosters.Where(x => x.id == imId).SingleOrDefault();
+            var row = db.BookUniteFiles.Where(x => x.id == imId).SingleOrDefault();
             switch (context.Request["field"])
             {
                 case "Img":
@@ -27,7 +27,7 @@ namespace Web.system.resources
                     break;
                 case "interactive":
                     string filename = row.InteractiveFile;
-                    row.InteractiveFile = SaveZip(context, context.Request["img"], filename, row.bookId);
+                    row.InteractiveFile = SaveZip(context, context.Request["img"], filename, row.uniteId);
                     break;
             }
             db.SaveChanges();
@@ -47,7 +47,7 @@ namespace Web.system.resources
             }
             return guid;
         }
-        public string SaveZip(HttpContext context, string base64, string filename, int? bookId)
+        public string SaveZip(HttpContext context, string base64, string filename, int? uniteId)
         {
             string basea = base64.Substring(0, base64.LastIndexOf(";base64,") + 8);
             string guid;
@@ -56,8 +56,8 @@ namespace Web.system.resources
             using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(base64.Replace(basea, ""))))
             {
                 guid = filename + ".zip";
-                path = context.Server.MapPath("~/Media/Stories/" + bookId + "/" + guid);
-                dirpath = context.Server.MapPath("~/Media/Stories/" + bookId + "/" + filename);
+                path = context.Server.MapPath("~/Media/Unites/" + uniteId + "/" + guid);
+                dirpath = context.Server.MapPath("~/Media/Unites/" + uniteId + "/" + filename);
                 FileStream fs = new FileStream(path, FileMode.CreateNew);
                 ms.WriteTo(fs);
                 fs.Close();

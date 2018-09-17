@@ -98,7 +98,7 @@
             <div class="unitesBack">
                <% foreach (var unite in result.BookUnites.OrderBy(x=>x.OrderIndex))
                 { %>
-            <a data-toggle="tab" class="cat-<%=unite.id %>" id="unite<%=unite.id %>" style="font-size:33px;padding:5px" href="#cat-<%=unite.id %>"><%=unite.OrderIndex%></a>
+            <a data-toggle="tab" class="cat-<%=unite.id %>" id="unite<%=unite.id %>" style="font-size:33px;padding:5px" href="#cat-<%=unite.id %>"><%=unite.title%></a>
         <%}%>
                 </div>
             <div id="columns" class="container">

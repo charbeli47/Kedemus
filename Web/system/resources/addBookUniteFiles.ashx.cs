@@ -18,18 +18,9 @@ namespace Web.system.resources
         {
             context.Response.ContentType = "text/plain";
             int uniteId = int.Parse(context.Request["pageId"]);
-            HttpPostedFile thumbfile = context.Request.Files["thumb"];
             HttpPostedFile uniteFile = context.Request.Files["uniteFile"];
             BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
-            string thumb_file = "";
-            if (thumbfile.ContentLength > 0)
-            {
-                string sfiletype = thumbfile.FileName;
-                sfiletype = sfiletype.Substring(sfiletype.LastIndexOf('.') + 1).ToLower();
-                thumb_file = Guid.NewGuid().ToString() + "." + sfiletype;
-                string _path = context.Server.MapPath("~/Media");
-                thumbfile.SaveAs(_path + "/" + thumb_file);
-            }
+            
             string game_file = "";
             if(uniteFile.ContentLength>0)
             {
@@ -47,7 +38,7 @@ namespace Web.system.resources
                 Decompress(filepath);
                 fi.Delete();
             }
-            db.BookUniteFiles.Add(new BookUniteFile { InteractiveFile = game_file, thumb = thumb_file, uniteId = uniteId });
+            db.BookUniteFiles.Add(new BookUniteFile { InteractiveFile = game_file, uniteId = uniteId });
             db.SaveChanges();
         }
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Web;
 
@@ -39,6 +40,10 @@ namespace Web.system.resources
                         db.BookSlides.Add(new BookSlide { img = img, bookId = row.id, OrderIndex = iorder });
                         iorder++;
                     }
+                    break;
+                case "interactive":
+                    string filename = row.InteractiveFile;
+                    row.InteractiveFile = SaveZip(context, context.Request["img"], filename, row.bookId);
                     break;
             }
             db.SaveChanges();
@@ -91,6 +96,38 @@ namespace Web.system.resources
                 ms.Close();
             }
             return guid;
+        }
+        public string SaveZip(HttpContext context, string base64, string filename, int? bookId)
+        {
+            string basea = base64.Substring(0, base64.LastIndexOf(";base64,") + 8);
+            string guid;
+            string dirpath = "";
+            string path = "";
+            using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(base64.Replace(basea, ""))))
+            {
+                guid = filename + ".zip";
+                path = context.Server.MapPath("~/Media/Stories/"+bookId+"/" + guid);
+                dirpath = context.Server.MapPath("~/Media/Stories/" + bookId + "/" + filename);
+                FileStream fs = new FileStream(path, FileMode.CreateNew);
+                ms.WriteTo(fs);
+                fs.Close();
+                ms.Close();
+            }
+            DirectoryInfo dir = new DirectoryInfo(dirpath);
+
+            if (dir.Exists)
+            {
+                dir.Delete(true);
+            }
+            FileInfo fi = new FileInfo(path);
+            Decompress(path);
+            fi.Delete();
+            return guid;
+        }
+        public static void Decompress(string zipPath)
+        {
+            string extractPath = zipPath.Substring(0, zipPath.LastIndexOf("\\"));
+            ZipFile.ExtractToDirectory(zipPath, extractPath);
         }
         public string SaveVideo(HttpContext context, string base64)
         {

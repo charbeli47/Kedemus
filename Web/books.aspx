@@ -22,18 +22,18 @@
                                                 <div class="left-block">
                                                     <div class="product-image-container">
                                                         <a class="product_img_link" <%=student.levelId == levelId?("href='bookmenu-"+item.id+"'"):"" %> title="<%=item.title%>" itemprop="url">
-                                                            <img class="replace-2x img-responsive" src="../Media/<%=item.thumb %>" alt="<%=item.title %>" title="<%=item.title %>" itemprop="image" />
-                                                            <img class="img-responsive hover-image" id="thumb-<%=item.id %>" src="../Media/<%=item.thumb %>" alt="<%=item.title %>" title="<%=item.title %>" itemprop="image" />
+                                                            <img class="replace-2x img-responsive" src="../Media/<%=item.thumb %>" alt="<%=item.title %>" title="<%=item.title %>" itemprop="image" style="height:219px;width:auto" />
+                                                            <img class="img-responsive hover-image" id="thumb-<%=item.id %>" src="../Media/<%=item.thumb %>" alt="<%=item.title %>" title="<%=item.title %>" itemprop="image" style="height:219px;width:auto" />
                                                         </a>
                                                         <a class="quick-view" <%=student.levelId == levelId ? "href='bookmenu-" + item.id + "'" : "" %> rel="">
                                                             <span style="font-size:15px;"><%=item.title %></span>
                                                         </a>
-                                                        <%if (item.StudentLibraries.Where(x=>x.studentId == student.id).Count() == 0 && student.levelId == levelId)
+                                                        <%--<%if (item.StudentLibraries.Where(x=>x.studentId == student.id).Count() == 0 && student.levelId == levelId)
                                                             { %>
                                                         <a class="sale-box" onclick="AddToLibrary('<%=item.id %>', this)">
                                                             <span class="sale-label">Add to Library</span>
                                                         </a>
-                                                        <%} %>
+                                                        <%} %>--%>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">

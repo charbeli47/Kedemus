@@ -39,7 +39,7 @@
                                             <%for(int i=0;i<results.Count;i++){ %>
                                             <tr>
                                                 <td><%=results[i].id %></td>
-                                                <td><a href="../Media/Stories/<%=results[i].bookId %>/<%=results[i].InteractiveFile %>" target="_blank"><%=results[i].InteractiveFile %></a></td>
+                                                <td><input type="file" name="interactiveupload" data-id="<%=results[i].id %>"/><a href="../Media/Stories/<%=results[i].bookId %>/<%=results[i].InteractiveFile %>" target="_blank"><%=results[i].InteractiveFile %></a><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editInteractiveLoader<%=results[i].id %>" /></td>
                                                 <td><input type="file" name="thumbnailupload" data-id="<%=results[i].id %>"/><img src="../Media/<%=results[i].thumb %>" style="height:100px" /><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editLoader<%=results[i].id %>" /></td>
                                                 <td><input type="file" name="pdfupload" data-id="<%=results[i].id %>"/><a href="../Media/<%=results[i].pdf %>" style="height:100px" target="_blank">View File</a><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editPdfLoader<%=results[i].id %>" /></td>
                                                 <td><a href="#" id="title<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Stories" data-title="Title"><%=HttpUtility.HtmlEncode(results[i].title) %></a></td>
@@ -91,6 +91,29 @@
             $('#title<%=i%>').editable();
             <%} }%>
         });
+        $("input[name='interactiveupload']").on("change", function () {
+            var files = !!this.files ? this.files : [];
+            if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+            var imId = this.attributes["data-id"].value;
+            $("#editInteractiveLoader" + imId).show(); // only image file
+                var reader = new FileReader(); // instance of the FileReader
+                reader.readAsDataURL(files[0]); // read the local file
+
+                reader.onloadend = function () { // set image data as background of div
+
+                    var imRes = this.result;
+                    $.ajax({
+                        type: "POST",
+                        url: "resources/uploadStoriesImage.ashx",
+                        data: { img: imRes, id: imId, field: "interactive" }
+                    })
+.done(function (msg) {
+    getSubPage('stories.aspx','<%=Request["pageId"] %>');
+    $("#editInteractiveLoader" + imId).hide();
+});
+                }
+            
+        });
         $("input[name='thumbnailupload']").on("change", function () {
             var files = !!this.files ? this.files : [];
             if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
@@ -105,7 +128,7 @@
                     var imRes = this.result;
                     $.ajax({
                         type: "POST",
-                        url: "resources/uploadStoryImage.ashx",
+                        url: "resources/uploadStoriesImage.ashx",
                         data: { img: imRes, id: imId, field: "Img" }
                     })
 .done(function (msg) {

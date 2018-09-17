@@ -1259,6 +1259,9 @@
     <Compile Include="system\resources\UpdateOrder.ashx.cs">
       <DependentUpon>UpdateOrder.ashx</DependentUpon>
     </Compile>
+    <Compile Include="system\resources\uploadUniteFileImage.ashx.cs">
+      <DependentUpon>uploadUniteFileImage.ashx</DependentUpon>
+    </Compile>
     <Compile Include="system\resources\uploadStoriesImage.ashx.cs">
       <DependentUpon>uploadStoriesImage.ashx</DependentUpon>
     </Compile>
@@ -1407,6 +1410,7 @@
     <Content Include="system\resources\addBookUniteFiles.ashx" />
     <Content Include="system\resources\uploadStoriesImage.ashx" />
     <Content Include="system\resources\addStory.ashx" />
+    <Content Include="system\resources\uploadUniteFileImage.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

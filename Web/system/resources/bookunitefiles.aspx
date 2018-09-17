@@ -28,7 +28,6 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Image</th>
                                                 <th>File</th>
                                                 <th></th>
                                             </tr>
@@ -37,8 +36,7 @@
                                             <%for(int i=0;i<results.Count;i++){ %>
                                             <tr id="<%=results[i].id %>">
                                                 <td><%=results[i].OrderIndex %></td>
-                                                <td><img src="../Media/<%=results[i].thumb %>" style="height:100px" /></td>
-                                                <td><a href="../Media/Unites/<%=results[i].chapterId %>/<%=results[i].InteractiveFile %>" target="_blank">Open File</a></td>
+                                                <td><input type="file" name="interactiveupload" data-id="<%=results[i].id %>"/><a href="../Media/Unites/<%=results[i].uniteId %>/<%=results[i].InteractiveFile %>" target="_blank"><%=results[i].InteractiveFile %></a><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editInteractiveLoader<%=results[i].id %>" /></td>
                                                 <td><% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "delete"))
                {%><a href="#" class="fa fa-times" onclick="DeleteRow(<%=results[i].id %>)"></a><%} %></td>
                                             </tr>
@@ -47,7 +45,6 @@
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Image</th>
                                                 <th>File</th>
                                                 <th></th>
                                             </tr>
@@ -80,6 +77,29 @@
             //make username editable
            
         });
+        $("input[name='interactiveupload']").on("change", function () {
+            var files = !!this.files ? this.files : [];
+            if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+            var imId = this.attributes["data-id"].value;
+            $("#editInteractiveLoader" + imId).show(); // only image file
+                var reader = new FileReader(); // instance of the FileReader
+                reader.readAsDataURL(files[0]); // read the local file
+
+                reader.onloadend = function () { // set image data as background of div
+
+                    var imRes = this.result;
+                    $.ajax({
+                        type: "POST",
+                        url: "resources/uploadUniteFileImage.ashx",
+                        data: { img: imRes, id: imId, field: "interactive" }
+                    })
+.done(function (msg) {
+    getSubPage("bookunitefiles.aspx", '<%=Request["pageId"]%>');
+    $("#editInteractiveLoader" + imId).hide();
+});
+                }
+            
+        });
     </script>
 
 <div class="modal fade" id="compose-modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -92,13 +112,6 @@
                     <form action="resources/addBookUniteFiles.ashx" id="submitForm" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="pageId" value="<%=Request["pageId"] %>" />
                         <div class="modal-body">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon">Image:</span>
-                                    <input name="thumb" type="file" class="form-control" >
-
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">File:</span>
