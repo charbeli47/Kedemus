@@ -83,7 +83,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar(max)" />
-          <Property Name="OrderIndex" Type="nvarchar(max)" />
+          <Property Name="OrderIndex" Type="int" />
         </EntityType>
         <EntityType Name="cms_groups">
           <Key>
@@ -495,6 +495,7 @@
           <EntitySet Name="BookStories" EntityType="BrandsMktgBooksModel.BookStory" />
           <EntitySet Name="BookUniteFiles" EntityType="BrandsMktgBooksModel.BookUniteFile" />
           <EntitySet Name="BookUnites" EntityType="BrandsMktgBooksModel.BookUnite" />
+          <EntitySet Name="Categories" EntityType="BrandsMktgBooksModel.Category" />
           <EntitySet Name="cms_groups" EntityType="BrandsMktgBooksModel.cms_groups" />
           <EntitySet Name="cms_permissions" EntityType="BrandsMktgBooksModel.cms_permissions" />
           <EntitySet Name="cms_policies" EntityType="BrandsMktgBooksModel.cms_policies" />
@@ -515,6 +516,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Books_BooksLevels" Association="BrandsMktgBooksModel.FK_Books_BooksLevels">
             <End Role="BooksLevel" EntitySet="BooksLevels" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Categories" Association="BrandsMktgBooksModel.FK_Books_Categories">
+            <End Role="Category" EntitySet="Categories" />
             <End Role="Book" EntitySet="Books" />
           </AssociationSet>
           <AssociationSet Name="FK_BookSlides_Books" Association="BrandsMktgBooksModel.FK_BookSlides_Books">
@@ -565,11 +570,6 @@
             <End Role="Student" EntitySet="Students" />
             <End Role="StudentLibrary" EntitySet="StudentLibraries" />
           </AssociationSet>
-          <EntitySet Name="Categories" EntityType="BrandsMktgBooksModel.Category" />
-          <AssociationSet Name="FK_Books_Categories" Association="BrandsMktgBooksModel.FK_Books_Categories">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Book" EntitySet="Books" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="BookPoster">
           <Key>
@@ -593,15 +593,15 @@
           <Property Name="isAvailable" Type="Boolean" />
           <Property Name="levelId" Type="Int32" />
           <Property Name="lang" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="categoryId" Type="Int32" />
           <NavigationProperty Name="BookPosters" Relationship="BrandsMktgBooksModel.FK_BookPosters_Books" FromRole="Book" ToRole="BookPoster" />
           <NavigationProperty Name="BookUnites" Relationship="BrandsMktgBooksModel.FK_BookInteractiveChapters_Books" FromRole="Book" ToRole="BookUnite" />
           <NavigationProperty Name="BooksLevel" Relationship="BrandsMktgBooksModel.FK_Books_BooksLevels" FromRole="Book" ToRole="BooksLevel" />
+          <NavigationProperty Name="Category" Relationship="BrandsMktgBooksModel.FK_Books_Categories" FromRole="Book" ToRole="Category" />
           <NavigationProperty Name="BookSlides" Relationship="BrandsMktgBooksModel.FK_BookSlides_Books" FromRole="Book" ToRole="BookSlide" />
           <NavigationProperty Name="BookStories" Relationship="BrandsMktgBooksModel.FK_BookStories_Books" FromRole="Book" ToRole="BookStory" />
           <NavigationProperty Name="SchoolBooks" Relationship="BrandsMktgBooksModel.FK_SchoolBooks_Books" FromRole="Book" ToRole="SchoolBook" />
           <NavigationProperty Name="StudentLibraries" Relationship="BrandsMktgBooksModel.FK_StudentLibrary_Books" FromRole="Book" ToRole="StudentLibrary" />
-          <Property Name="categoryId" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="BrandsMktgBooksModel.FK_Books_Categories" FromRole="Book" ToRole="Category" />
         </EntityType>
         <EntityType Name="BooksLevel">
           <Key>
@@ -658,6 +658,15 @@
           <Property Name="OrderIndex" Type="Int32" />
           <NavigationProperty Name="Book" Relationship="BrandsMktgBooksModel.FK_BookInteractiveChapters_Books" FromRole="BookUnite" ToRole="Book" />
           <NavigationProperty Name="BookUniteFiles" Relationship="BrandsMktgBooksModel.FK_BookUniteFiles_BookUnites" FromRole="BookUnite" ToRole="BookUniteFile" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderIndex" Type="Int32" />
+          <NavigationProperty Name="Books" Relationship="BrandsMktgBooksModel.FK_Books_Categories" FromRole="Category" ToRole="Book" />
         </EntityType>
         <EntityType Name="cms_groups">
           <Key>
@@ -826,6 +835,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Books_Categories">
+          <End Type="BrandsMktgBooksModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BookSlides_Books">
           <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="0..1" />
           <End Type="BrandsMktgBooksModel.BookSlide" Role="BookSlide" Multiplicity="*" />
@@ -976,27 +997,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="OrderIndex" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Books" Relationship="BrandsMktgBooksModel.FK_Books_Categories" FromRole="Category" ToRole="Book" />
-        </EntityType>
-        <Association Name="FK_Books_Categories">
-          <End Type="BrandsMktgBooksModel.Category" Role="Category" Multiplicity="0..1" />
-          <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Book">
-              <PropertyRef Name="categoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1078,6 +1078,15 @@
                 <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="bookId" ColumnName="bookId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="BrandsMktgBooksModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1205,15 +1214,6 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="BrandsMktgBooksModel.Category">
-              <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

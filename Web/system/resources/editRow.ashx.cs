@@ -89,7 +89,13 @@ namespace Web.resources
                         level.lang = value;
                     success = "success";
                     break;
-                
+                case "BooksCategories":
+                    var cat = db.Categories.Where(x => x.id == pk).SingleOrDefault();
+                    if (name.Contains("title"))
+                        cat.title = value;
+                    success = "success";
+                    break;
+
                 case "Schools":
                     var school = db.Schools.Where(x => x.id == pk).SingleOrDefault();
                     if (name.Contains("artitle"))

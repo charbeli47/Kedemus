@@ -133,6 +133,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <%--<%if (Web.Permissions.Check(op.id, "Content", "view"))
                                   { %><li><a href="#!content.aspx" onclick="getContent('content.aspx')"><i class="fa fa-angle-double-right"></i> Content</a></li><%} %>--%>
                                 <%if (Web.Permissions.Check(op.id, "Books", "view"))
+                                  { %><li><a href="#!bookscategories.aspx" onclick="getContent('bookscategories.aspx')"><i class="fa fa-angle-double-right"></i> Books Categories</a></li><%} %>
+                                <%if (Web.Permissions.Check(op.id, "Books", "view"))
                                   { %><li><a href="#!bookslevels.aspx" onclick="getContent('bookslevels.aspx')"><i class="fa fa-angle-double-right"></i> Books Levels</a></li><%} %>
                                 <%if (Web.Permissions.Check(op.id, "Books", "view"))
                                   { %><li><a href="#!books.aspx" onclick="getSearchedContent('', 'books.aspx','1')"><i class="fa fa-angle-double-right"></i> Books</a></li><%} %>

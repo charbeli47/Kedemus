@@ -29,9 +29,7 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>English Title</th>
-                                                <th>Arabic Title</th>
-                                                <th>For Game</th>
+                                                <th>Title</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -39,9 +37,7 @@
                                             <%for(int i=0;i<results.Count;i++){ %>
                                             <tr id="<%=results[i].id %>">
                                                 <td><%=results[i].OrderIndex %></td>
-                                                <td><a href="#" id="entitle<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=BooksCategories" data-title="Enter English title"><%=results[i].title %></a></td>
-                                                <td><a href="#" id="artitle<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=BooksCategories" data-title="Enter Arabic title"><%=results[i].artitle %></a></td>
-                                                <td><a href="#" id="ForGame<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=BooksCategories" data-title="For Game"><%=results[i].ForGame==true?"YES":"NO" %></a></td>
+                                                <td><a href="#" id="title<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=BooksCategories" data-title="Title"><%=results[i].title %></a></td>
                                                 <td><% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "delete"))
                {%><a href="#" class="fa fa-times" onclick="DeleteRow(<%=results[i].id %>)"></a><%} %></td>
                                             </tr>
@@ -50,9 +46,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>English Title</th>
-                                                <th>Arabic Title</th>
-                                                <th>For Game</th>
+                                                <th>Title</th>
                                                 <th></th>
                                             </tr>
                                         </tfoot>
@@ -85,18 +79,7 @@
             <% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "edit"))
                {%>
             <%for(int i=0;i<results.Count;i++){%>
-            $('#entitle<%=i%>').editable();
-            $('#artitle<%=i%>').editable();
-            $('#ForGame<%=i%>').editable({
-                type: 'select',
-                title: 'For Game',
-                placement: 'right',
-                value: '<%=results[i].ForGame == true?"YES":"NO"%>',
-                source: [
-                    { value: 'YES', text: 'YES' },
-                    { value: 'NO', text: 'NO' }
-                ]
-            });
+            $('#title<%=i%>').editable();
             <%} }%>
         });
     </script>
@@ -112,20 +95,8 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon">English Title:</span>
-                                    <input name="entitle" type="text" class="form-control" placeholder="Title">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon">Arabic Title:</span>
-                                    <input name="artitle" type="text" class="form-control" placeholder="Title">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon">For Game:</span>
-                                    <input type="checkbox" name="ForGame"/>
+                                    <span class="input-group-addon">Title:</span>
+                                    <input name="title" type="text" class="form-control" placeholder="Title">
                                 </div>
                             </div>
                         </div>
@@ -184,7 +155,7 @@
                 //$("#email_message").wysihtml5();
             });
             function AddRow() {
-                $.post("resources/AddRow.ashx", { table: "BooksCategories", Rows: $("input[name='entitle']").val() + "|" + $("input[name='artitle']").val() + "|" + $("input[name='ForGame']").is(':checked') },
+                $.post("resources/AddRow.ashx", { table: "BooksCategories", Rows: $("input[name='title']").val() },
                     function (data) {
                         getContent("bookscategories.aspx");
                         $(".modal-backdrop").hide();

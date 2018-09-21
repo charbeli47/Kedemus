@@ -47,6 +47,14 @@ namespace Web.resources
                     db.BooksLevels.Add(new BooksLevel() { title = split[0], lang = split[1], OrderIndex = lastOrderId });
                     success = "success";
                     break;
+                case "BooksCategories":
+                    var catorderId = db.Categories.OrderByDescending(x => x.OrderIndex).FirstOrDefault();
+
+                    if (catorderId != null)
+                        lastOrderId = (int)catorderId.OrderIndex + 1;
+                    db.Categories.Add(new Category() { title = split[0], OrderIndex = lastOrderId });
+                    success = "success";
+                    break;
                 case "BookUnites":
                     var lastunite = db.BookUnites.OrderByDescending(x => x.OrderIndex).FirstOrDefault();
                     

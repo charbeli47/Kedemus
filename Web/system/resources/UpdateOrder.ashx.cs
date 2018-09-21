@@ -47,6 +47,29 @@ namespace Web.system.resources
                     }
                     db.BooksLevels.Where(x => x.id == id).SingleOrDefault().OrderIndex = toPosition;
                     break;
+                case "Categories":
+                    if (direction == "back")
+                    {
+                        var moved = db.Categories.Where(c => (toPosition <= c.OrderIndex && c.OrderIndex <= fromPosition))
+                            .ToList();
+                        foreach (var p in moved)
+                        {
+                            p.OrderIndex++;
+                        }
+                    }
+                    else
+                    {
+                        var moved = db.Categories.Where(c => (fromPosition <= c.OrderIndex && c.OrderIndex <= toPosition))
+                            .ToList();
+                        foreach (var p in moved)
+                        {
+                            p.OrderIndex--;
+                            if (p.OrderIndex < 0)
+                                p.OrderIndex = 0;
+                        }
+                    }
+                    db.Categories.Where(x => x.id == id).SingleOrDefault().OrderIndex = toPosition;
+                    break;
                 case "Slides":
                     if (direction == "back")
                     {

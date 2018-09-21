@@ -23,7 +23,7 @@ namespace Web
                 levelId = int.Parse(Page.RouteData.Values["levelId"].ToString());
                 BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
                 long sId = (long)Session["UserId"];
-                results = db.Books.Where(x => x.lang == lang && x.isAvailable == true).ToList();
+                results = db.Books.Where(x => x.lang == lang && x.isAvailable == true && x.levelId == levelId).ToList();
                 student = db.Students.Where(x=>x.id == sId).SingleOrDefault();
             }
         }

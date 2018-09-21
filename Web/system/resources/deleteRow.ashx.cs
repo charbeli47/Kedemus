@@ -71,6 +71,11 @@ namespace Web.resources
                     db.BooksLevels.Remove(level);
                     success = "success";
                     break;
+                case "BooksCategories":
+                    Category cat = db.Categories.Where(x => x.id == tableId).SingleOrDefault();
+                    db.Categories.Remove(cat);
+                    success = "success";
+                    break;
                 case "Schools":
                     School school = db.Schools.Where(x => x.id == tableId).SingleOrDefault();
                     db.Schools.Remove(school);

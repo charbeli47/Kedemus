@@ -32,6 +32,7 @@ namespace Web
         public virtual DbSet<BookStory> BookStories { get; set; }
         public virtual DbSet<BookUniteFile> BookUniteFiles { get; set; }
         public virtual DbSet<BookUnite> BookUnites { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<cms_groups> cms_groups { get; set; }
         public virtual DbSet<cms_permissions> cms_permissions { get; set; }
         public virtual DbSet<cms_policies> cms_policies { get; set; }
@@ -42,6 +43,5 @@ namespace Web
         public virtual DbSet<StudentLibrary> StudentLibraries { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
     }
 }
