@@ -927,6 +927,7 @@
     <Content Include="system\js\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="system\login.aspx" />
     <Content Include="system\logout.aspx" />
+    <Content Include="system\resources\bookscategories.aspx" />
     <Content Include="system\resources\stories.aspx" />
     <Content Include="system\resources\games.aspx" />
     <Content Include="system\resources\loggedsessions.aspx" />
@@ -964,6 +965,9 @@
     </Compile>
     <Compile Include="bookmenu.aspx.designer.cs">
       <DependentUpon>bookmenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="story.aspx.cs">
       <DependentUpon>story.aspx</DependentUpon>
@@ -1169,6 +1173,13 @@
     </Compile>
     <Compile Include="system\resources\addStudents.ashx.cs">
       <DependentUpon>addStudents.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="system\resources\bookscategories.aspx.cs">
+      <DependentUpon>bookscategories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="system\resources\bookscategories.aspx.designer.cs">
+      <DependentUpon>bookscategories.aspx</DependentUpon>
     </Compile>
     <Compile Include="system\resources\downloadStudentsExcel.ashx.cs">
       <DependentUpon>downloadStudentsExcel.ashx</DependentUpon>

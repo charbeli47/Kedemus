@@ -32,6 +32,7 @@ namespace Web
         public Nullable<bool> isAvailable { get; set; }
         public Nullable<int> levelId { get; set; }
         public string lang { get; set; }
+        public Nullable<int> categoryId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BookPoster> BookPosters { get; set; }
@@ -46,5 +47,6 @@ namespace Web
         public virtual ICollection<SchoolBook> SchoolBooks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentLibrary> StudentLibraries { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

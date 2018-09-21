@@ -37,6 +37,8 @@
         <AssociationConnector Association="BrandsMktgBooksModel.FK_SchoolBooks_Schools" />
         <AssociationConnector Association="BrandsMktgBooksModel.FK_Students_Schools" />
         <AssociationConnector Association="BrandsMktgBooksModel.FK_StudentLibrary_Students" />
+        <EntityTypeShape EntityType="BrandsMktgBooksModel.Category" Width="1.5" PointX="7.375" PointY="9.875" />
+        <AssociationConnector Association="BrandsMktgBooksModel.FK_Books_Categories" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

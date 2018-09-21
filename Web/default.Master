@@ -433,7 +433,21 @@
                     <div class="container">
                         <div class="row">
                             <div class="top_menu">
-                                
+                                <div class="menu-title"> Menu</div>
+                                <ul class="menu clearfix">
+                                    
+                                    <%foreach (var level in levels)
+                                                 { %>
+                                    <%if (usr != null && level.id == usr.levelId)
+                                                 { %>
+                                    <li><a href="level-<%=level.id %>" <%=(Page.RouteData.Values["levelId"] != null && Page.RouteData.Values["levelId"].ToString() == level.id.ToString() || (Request["levelId"]!=null && Request["levelId"] == level.id.ToString()) ? "style='color:#27a9f7;'" : "style='color:lightblue;'") %>><%=level.title %></a></li>
+                                    <%}
+                                                 else
+                                                 { %>
+                                    <li><a href="level-<%=level.id %>" <%=(Page.RouteData.Values["levelId"] != null && Page.RouteData.Values["levelId"].ToString() == level.id.ToString() || (Request["levelId"]!=null && Request["levelId"] == level.id.ToString()) ? "style='color:black;'" : "") %>><%=level.title %></a></li>
+                                    <%}
+                                                 }%>
+                                </ul>
                             </div>
 
 

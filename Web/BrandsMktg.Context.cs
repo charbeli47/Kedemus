@@ -42,5 +42,6 @@ namespace Web
         public virtual DbSet<StudentLibrary> StudentLibraries { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
     }
 }

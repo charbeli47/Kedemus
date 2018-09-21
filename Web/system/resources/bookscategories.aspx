@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="bookslevels.aspx.cs" Inherits="Web.resources.bookslevels" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="bookscategories.aspx.cs" Inherits="Web.system.resources.bookscategories" %>
 
 <link href="css/iCheck/all.css" rel="stylesheet" type="text/css" />
 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
                         Web Content
-                        <small>Books Levels</small>
+                        <small>Books Categories</small>
                     </h1>
                     <%--<ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -29,8 +29,9 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Title</th>
-                                                <th>Language</th>
+                                                <th>English Title</th>
+                                                <th>Arabic Title</th>
+                                                <th>For Game</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -38,20 +39,20 @@
                                             <%for(int i=0;i<results.Count;i++){ %>
                                             <tr id="<%=results[i].id %>">
                                                 <td><%=results[i].OrderIndex %></td>
-                                                <td><a href="#" id="title<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Levels" data-title="Title"><%=results[i].title %></a></td>
-                                                <td><a href="#" id="lang<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Levels" data-title="Language"><%=results[i].lang %></a></td>
+                                                <td><a href="#" id="entitle<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=BooksCategories" data-title="Enter English title"><%=results[i].title %></a></td>
+                                                <td><a href="#" id="artitle<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=BooksCategories" data-title="Enter Arabic title"><%=results[i].artitle %></a></td>
+                                                <td><a href="#" id="ForGame<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=BooksCategories" data-title="For Game"><%=results[i].ForGame==true?"YES":"NO" %></a></td>
                                                 <td><% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "delete"))
-               {%><a href="#" class="fa fa-times" onclick="DeleteRow(<%=results[i].id %>)"></a><br /><%} %>
-                                                    <a onclick="getSubPage('games.aspx','<%=results[i].id %>')" href="#!games.aspx">Games</a>
-                                                </td>
+               {%><a href="#" class="fa fa-times" onclick="DeleteRow(<%=results[i].id %>)"></a><%} %></td>
                                             </tr>
                                             <%} %>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Title</th>
-                                                <th>Language</th>
+                                                <th>English Title</th>
+                                                <th>Arabic Title</th>
+                                                <th>For Game</th>
                                                 <th></th>
                                             </tr>
                                         </tfoot>
@@ -67,7 +68,7 @@
 
         <script type="text/javascript">
             $(function () {
-                $("#example1").dataTable({ bPaginate: false }).rowReordering({ sURL: "resources/UpdateOrder.ashx", sTable: "Levels" });
+                $("#example1").dataTable({ bPaginate: false }).rowReordering({ sURL: "resources/UpdateOrder.ashx", sTable: "Categories" });
             });
             </script>
 <%--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">--%>
@@ -84,15 +85,16 @@
             <% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "edit"))
                {%>
             <%for(int i=0;i<results.Count;i++){%>
-            $('#title<%=i%>').editable();
-            $('#lang<%=i%>').editable({
+            $('#entitle<%=i%>').editable();
+            $('#artitle<%=i%>').editable();
+            $('#ForGame<%=i%>').editable({
                 type: 'select',
-                title: 'Language',
+                title: 'For Game',
                 placement: 'right',
-                value: '<%=results[i].lang%>',
+                value: '<%=results[i].ForGame == true?"YES":"NO"%>',
                 source: [
-                    { value: 'fr', text: 'Francais' },
-                    { value: 'en', text: 'English' }
+                    { value: 'YES', text: 'YES' },
+                    { value: 'NO', text: 'NO' }
                 ]
             });
             <%} }%>
@@ -104,23 +106,26 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title"><i class="fa fa-envelope-o"></i> Add new Level</h4>
+                        <h4 class="modal-title"><i class="fa fa-envelope-o"></i> Add new Category</h4>
                     </div>
                     <form action="#" method="post">
                         <div class="modal-body">
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">English Title:</span>
-                                    <input name="title" type="text" class="form-control" placeholder="Title">
+                                    <input name="entitle" type="text" class="form-control" placeholder="Title">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon">Language:</span>
-                                    <select name="langselect" id="langselect" class="form-control">
-                                        <option value="fr">Francais</option>
-                                        <option value="en">English</option>
-                                    </select>
+                                    <span class="input-group-addon">Arabic Title:</span>
+                                    <input name="artitle" type="text" class="form-control" placeholder="Title">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">For Game:</span>
+                                    <input type="checkbox" name="ForGame"/>
                                 </div>
                             </div>
                         </div>
@@ -179,16 +184,16 @@
                 //$("#email_message").wysihtml5();
             });
             function AddRow() {
-                $.post("resources/AddRow.ashx", { table: "Levels", Rows: $("input[name='title']").val() + "|" + $("select[name='langselect']").val() },
+                $.post("resources/AddRow.ashx", { table: "BooksCategories", Rows: $("input[name='entitle']").val() + "|" + $("input[name='artitle']").val() + "|" + $("input[name='ForGame']").is(':checked') },
                     function (data) {
-                        getContent("bookslevels.aspx");
+                        getContent("bookscategories.aspx");
                         $(".modal-backdrop").hide();
                     });
             }
             function DeleteRow(id) {
-                $.post("resources/DeleteRow.ashx", { table: "Levels", tableId: id },
+                $.post("resources/DeleteRow.ashx", { table: "BooksCategories", tableId: id },
                     function (data) {
-                        getContent("bookslevels.aspx");
+                        getContent("bookscategories.aspx");
                         $(".modal-backdrop").hide();
                     });
             }
