@@ -13,6 +13,7 @@ namespace Web
         protected int levelId;
         protected Student student;
         protected List<Book> results;
+        protected List<Category> categories;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserId"] == null)
@@ -25,6 +26,7 @@ namespace Web
                 long sId = (long)Session["UserId"];
                 results = db.Books.Where(x => x.lang == lang && x.isAvailable == true && x.levelId == levelId).ToList();
                 student = db.Students.Where(x=>x.id == sId).SingleOrDefault();
+                categories = db.Categories.ToList();
             }
         }
     }

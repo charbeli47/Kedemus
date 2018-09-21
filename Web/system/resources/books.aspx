@@ -32,6 +32,7 @@
                                                 <th>ID</th>
                                                 <th>Title</th>
                                                 <th>Level</th>
+                                                <th>Category</th>
                                                 <th>Language</th>
                                                 <th>Thumbnail</th>
                                                 <th>PDF File</th>
@@ -45,6 +46,7 @@
                                                 <td class="index"><%=results[i].id %></td>
                                                 <td><a href="#" id="title<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Books" data-title="Title"><%=HttpUtility.HtmlEncode(results[i].title) %></a></td>
                                                 <td><a href="#" id="level<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Books" data-title="Level"><%=HttpUtility.HtmlEncode(results[i].BooksLevel.title) %></a></td>
+                                                <td><a href="#" id="category<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Books" data-title="Category"><%=HttpUtility.HtmlEncode(results[i].Category.title) %></a></td>
                                                 <td><a href="#" id="lang<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Books" data-title="Language"><%=HttpUtility.HtmlEncode(results[i].lang) %></a></td>
                                                 <td><input type="file" name="thumbnailupload" data-id="<%=results[i].id %>"/><img src="../Media/<%=results[i].thumb %>" style="height:100px" /><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editLoader<%=results[i].id %>" /></td>
                                                 <td><input type="file" name="pdfupload" data-id="<%=results[i].id %>"/><a href="../Media/<%=results[i].pdf %>" style="height:100px" target="_blank">View File</a><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editPdfLoader<%=results[i].id %>" /></td>
@@ -65,6 +67,7 @@
                                                 <th>ID</th>
                                                 <th>Title</th>
                                                 <th>Level</th>
+                                                <th>Category</th>
                                                 <th>Language</th>
                                                 <th>Thumbnail</th>
                                                 <th>PDF File</th>
@@ -110,10 +113,7 @@
             <% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "edit"))
                {%>
             <%for(int i=0;i<results.Count;i++){%>
-            $('#entitle<%=i%>').editable();
-            $('#artitle<%=i%>').editable();
-            $('#entext<%=i%>').editable();
-            $('#artext<%=i%>').editable();
+            $('#title<%=i%>').editable();
             $('#youtubeId<%=i%>').editable();
             $('#SignLanguage<%=i%>').editable();
             $('#isAvailable<%=i%>').editable({
@@ -138,11 +138,20 @@
             });
             $('#level<%=i%>').editable({
                 type: 'select',
-                title: 'Language',
+                title: 'Level',
                 placement: 'right',
                 value: '<%=results[i].levelId%>',
                 source: [
                     <%=levelsList%>
+                ]
+            });
+            $('#category<%=i%>').editable({
+                type: 'select',
+                title: 'Category',
+                placement: 'right',
+                value: '<%=results[i].categoryId%>',
+                source: [
+                    <%=categoriesList%>
                 ]
             });
             
@@ -246,6 +255,12 @@
                                 <div class="input-group">
                                     <span class="input-group-addon">Level:</span>
                                     <select name="levelselect" id="levelselect" runat="server" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Category:</span>
+                                    <select name="categoryselect" id="categoryselect" runat="server" class="form-control"></select>
                                 </div>
                             </div>
                             

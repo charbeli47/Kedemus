@@ -15,7 +15,7 @@ namespace Web.system.resources
         protected int resultCount;
         protected List<Book> results;
         protected List<BooksLevel> levels;
-        protected string searchKey = "", levelsList;
+        protected string searchKey = "", levelsList, categoriesList;
         protected void Page_Load(object sender, EventArgs e)
         {
             BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
@@ -50,6 +50,18 @@ namespace Web.system.resources
                 }
                 if (!string.IsNullOrEmpty(levelsList))
                     levelsList = levelsList.Substring(1);
+
+                var categories = db.Categories.ToList();
+                categoryselect.DataSource = categories;
+                categoryselect.DataTextField = "title";
+                categoryselect.DataValueField = "id";
+                categoryselect.DataBind();
+                foreach (Category category in categories)
+                {
+                    categoriesList += ",{ value: " + category.id + ", text: '" + category.title + "' }";
+                }
+                if (!string.IsNullOrEmpty(categoriesList))
+                    categoriesList = categoriesList.Substring(1);
             }
         }
     }

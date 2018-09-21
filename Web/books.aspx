@@ -2,9 +2,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="main" runat="server">
    
     <div style="background-color:#4fb9e1;padding:1%;height:60px">
-   
+   <img src="../img/humberger.png"  onclick="$('#subGames').slideToggle()" style='cursor:pointer;height:30px'/>
         <span style="color:white;font-size:40px;font-weight:bold;position:absolute;left:45%;margin-top:5px" id="cat"><%=lang=="en"?"BOOKS":"LIVRES" %></span>
-        
+       <div style="position:absolute;width:300px;display:none;background-color:white;z-index:999999;" id="subGames">
+            <ul id="home-page-tabs" class="nav nav-tabs clearfix">
+                                    <%foreach (var category in categories)
+                                        { %>
+                                    <li class="cat-<%=category.id %>" style="width:100%;margin:0px;background-color:#d4d4d4;border-bottom:1px solid #cccccc"><a data-toggle="tab" href="#cat-<%=category.id %>" class="cat-<%=category.id %>" style="color:black;text-decoration:none;font-size:20px;" onclick="$('#cat').html('&nbsp;&nbsp;&nbsp;<%=category.title %>')"><%=category.title %></a></li>
+                                    
+                                    <%} %>
+                
+                
+                                </ul>
+        </div> 
     </div>
     <div id="columns" class="container">
         
@@ -14,14 +24,18 @@
                             <div id="center_column" class="center_column col-xs-12 col-sm-12">
                                 
                                 <div class="tab-content">
-                                   <ul id="cat" class="product_list grid row homefeatured tab-pane">
-                                        <%foreach (var item in results)
-                                            { %>
+                                   <%foreach (var category in categories)
+                                                { %>
+                                    <ul id="cat-<%=category.id %>"  class="product_list grid row homefeatured tab-pane">
+                                        <%
+
+                                                foreach (var item in results.Where(x => x.categoryId == category.id).ToList())
+                                                { %>
                                         <li class="ajax_block_product col-xs-12 col-sm-3 col-md-2 last-item-of-mobile-line">
                                             <div class="product-container" itemscope itemtype="http://schema.org/Product">
                                                 <div class="left-block">
                                                     <div class="product-image-container">
-                                                        <a class="product_img_link" <%=student.levelId == levelId?("href='bookmenu-"+item.id+"'"):"" %> title="<%=item.title%>" itemprop="url">
+                                                        <a class="product_img_link" <%=student.levelId == levelId ? ("href='bookmenu-" + item.id + "'") : "" %> title="<%=item.title%>" itemprop="url">
                                                             <img class="replace-2x img-responsive" src="../Media/<%=item.thumb %>" alt="<%=item.title %>" title="<%=item.title %>" itemprop="image" style="height:219px;width:auto" />
                                                             <img class="img-responsive hover-image" id="thumb-<%=item.id %>" src="../Media/<%=item.thumb %>" alt="<%=item.title %>" title="<%=item.title %>" itemprop="image" style="height:219px;width:auto" />
                                                         </a>
@@ -76,6 +90,7 @@
                                         </li>
                                         <%} %>
                                     </ul>
+                                    <%} %>
                                 </div>
                             </div>
                         </div>

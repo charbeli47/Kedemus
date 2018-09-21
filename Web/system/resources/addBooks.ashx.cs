@@ -38,7 +38,8 @@ namespace Web.system.resources
             string lang = context.Request["langselect"];
             bool isAvailable = context.Request["isAvailable"] == "on";
             int levelId = int.Parse(context.Request["levelselect"]);
-            Book book = new Book { title = title, thumb = thumb_file, pdf = pdf_file, isAvailable = isAvailable, lang = lang, levelId = levelId};
+            int categoryId = int.Parse(context.Request["categoryselect"]);
+            Book book = new Book { title = title, thumb = thumb_file, pdf = pdf_file, isAvailable = isAvailable, lang = lang, levelId = levelId, categoryId = categoryId};
             book = db.Books.Add(book);
             
             db.SaveChanges();
