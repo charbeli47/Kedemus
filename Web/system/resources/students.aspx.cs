@@ -17,12 +17,13 @@ namespace Web.system.resources
         protected string searchKey = "";
         protected School school;
         public string levelsList;
+        protected int pageId;
         protected void Page_Load(object sender, EventArgs e)
         {
             BrandsMktgBooksEntities db = new BrandsMktgBooksEntities();
             int opId = int.Parse(Request["opId"]);
             int.TryParse(Request["page"], out page);
-            int pageId = int.Parse(Request["pageId"]);
+            pageId = int.Parse(Request["pageId"]);
             bool perm = Permissions.Check(opId, "Web Users", "view");
             if (!perm)
                 Response.Write("<script>getContent('accessdenied.html');</script>");

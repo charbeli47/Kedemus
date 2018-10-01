@@ -33,6 +33,8 @@ namespace Web
         public Nullable<int> levelId { get; set; }
         public string lang { get; set; }
         public Nullable<int> categoryId { get; set; }
+        public Nullable<bool> isSingleBook { get; set; }
+        public string VimeoId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BookPoster> BookPosters { get; set; }

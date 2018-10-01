@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar(max)" />
           <Property Name="InteractiveFile" Type="nvarchar(max)" />
           <Property Name="bookId" Type="int" />
@@ -27,6 +27,8 @@
           <Property Name="levelId" Type="int" />
           <Property Name="lang" Type="nvarchar" MaxLength="2" />
           <Property Name="categoryId" Type="int" />
+          <Property Name="isSingleBook" Type="bit" />
+          <Property Name="VimeoId" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="BooksLevels">
           <Key>
@@ -190,16 +192,6 @@
           <Property Name="UserName" Type="nvarchar(max)" />
           <Property Name="Password" Type="nvarchar(max)" />
           <Property Name="levelId" Type="int" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_BookInteractiveChapters_Books">
           <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
@@ -417,7 +409,6 @@
           <EntitySet Name="Schools" EntityType="Self.Schools" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentLibrary" EntityType="Self.StudentLibrary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BookInteractiveChapters_Books" Association="Self.FK_BookInteractiveChapters_Books">
             <End Role="Books" EntitySet="Books" />
             <End Role="BookUnites" EntitySet="BookUnites" />
@@ -505,7 +496,6 @@
           <EntitySet Name="Schools" EntityType="BrandsMktgBooksModel.School" />
           <EntitySet Name="StudentLibraries" EntityType="BrandsMktgBooksModel.StudentLibrary" />
           <EntitySet Name="Students" EntityType="BrandsMktgBooksModel.Student" />
-          <EntitySet Name="sysdiagrams" EntityType="BrandsMktgBooksModel.sysdiagram" />
           <AssociationSet Name="FK_BookPosters_Books" Association="BrandsMktgBooksModel.FK_BookPosters_Books">
             <End Role="Book" EntitySet="Books" />
             <End Role="BookPoster" EntitySet="BookPosters" />
@@ -575,7 +565,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="InteractiveFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="bookId" Type="Int32" />
@@ -594,6 +584,8 @@
           <Property Name="levelId" Type="Int32" />
           <Property Name="lang" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
           <Property Name="categoryId" Type="Int32" />
+          <Property Name="isSingleBook" Type="Boolean" />
+          <Property Name="VimeoId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BookPosters" Relationship="BrandsMktgBooksModel.FK_BookPosters_Books" FromRole="Book" ToRole="BookPoster" />
           <NavigationProperty Name="BookUnites" Relationship="BrandsMktgBooksModel.FK_BookInteractiveChapters_Books" FromRole="Book" ToRole="BookUnite" />
           <NavigationProperty Name="BooksLevel" Relationship="BrandsMktgBooksModel.FK_Books_BooksLevels" FromRole="Book" ToRole="BooksLevel" />
@@ -788,16 +780,6 @@
           <NavigationProperty Name="BooksLevel" Relationship="BrandsMktgBooksModel.FK_Students_BooksLevels" FromRole="Student" ToRole="BooksLevel" />
           <NavigationProperty Name="School" Relationship="BrandsMktgBooksModel.FK_Students_Schools" FromRole="Student" ToRole="School" />
           <NavigationProperty Name="StudentLibraries" Relationship="BrandsMktgBooksModel.FK_StudentLibrary_Students" FromRole="Student" ToRole="StudentLibrary" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_BookPosters_Books">
           <End Type="BrandsMktgBooksModel.Book" Role="Book" Multiplicity="0..1" />
@@ -1017,6 +999,8 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="BrandsMktgBooksModel.Book">
               <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="VimeoId" ColumnName="VimeoId" />
+                <ScalarProperty Name="isSingleBook" ColumnName="isSingleBook" />
                 <ScalarProperty Name="categoryId" ColumnName="categoryId" />
                 <ScalarProperty Name="lang" ColumnName="lang" />
                 <ScalarProperty Name="levelId" ColumnName="levelId" />
@@ -1203,17 +1187,6 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="BrandsMktgBooksModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

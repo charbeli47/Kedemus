@@ -136,6 +136,7 @@
     <Content Include="bin\NPOI.OpenXml4Net.dll" />
     <Content Include="bin\NPOI.OpenXmlFormats.dll" />
     <Content Include="bookmenu.aspx" />
+    <Content Include="iframe.aspx" />
     <Content Include="img\exerciseBack.png" />
     <Content Include="story.aspx" />
     <Content Include="stories.aspx" />
@@ -956,9 +957,6 @@
     <Compile Include="Book.cs">
       <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
-    <Compile Include="BookPoster.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
     <Compile Include="bookmenu.aspx.cs">
       <DependentUpon>bookmenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -966,7 +964,53 @@
     <Compile Include="bookmenu.aspx.designer.cs">
       <DependentUpon>bookmenu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BookPoster.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BooksLevel.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookSlide.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookStory.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookUnite.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookUniteFile.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_groups.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_permissions.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_policies.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cms_user.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Content.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="iframe.aspx.cs">
+      <DependentUpon>iframe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="iframe.aspx.designer.cs">
+      <DependentUpon>iframe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="School.cs">
+      <DependentUpon>BrandsMktg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBook.cs">
       <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="story.aspx.cs">
@@ -990,21 +1034,6 @@
     <Compile Include="books.aspx.designer.cs">
       <DependentUpon>books.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BooksLevel.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookSlide.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookStory.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookUnite.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookUniteFile.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
     <Compile Include="BrandsMktg.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1019,21 +1048,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BrandsMktg.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="cms_groups.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cms_permissions.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cms_policies.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cms_user.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Content.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -1094,12 +1108,6 @@
     <Compile Include="removeFromLibrary.ashx.cs">
       <DependentUpon>removeFromLibrary.ashx</DependentUpon>
     </Compile>
-    <Compile Include="School.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SchoolBook.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
     <Compile Include="sendMail.ashx.cs">
       <DependentUpon>sendMail.ashx</DependentUpon>
     </Compile>
@@ -1109,9 +1117,6 @@
       <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentLibrary.cs">
-      <DependentUpon>BrandsMktg.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
       <DependentUpon>BrandsMktg.tt</DependentUpon>
     </Compile>
     <Compile Include="system\App_data\DXFData.cs" />

@@ -37,6 +37,8 @@
                                                 <th>Thumbnail</th>
                                                 <th>PDF File</th>
                                                 <th>Is Available</th>
+                                                <th>Is Single Book</th>
+                                                <th>Vimeo ID</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -51,6 +53,8 @@
                                                 <td><input type="file" name="thumbnailupload" data-id="<%=results[i].id %>"/><img src="../Media/<%=results[i].thumb %>" style="height:100px" /><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editLoader<%=results[i].id %>" /></td>
                                                 <td><input type="file" name="pdfupload" data-id="<%=results[i].id %>"/><a href="../Media/<%=results[i].pdf %>" style="height:100px" target="_blank">View File</a><img src="img/ajax-loader.gif" style="height:40px;display:none" id="editPdfLoader<%=results[i].id %>" /></td>
                                                 <td><a href="#" id="isAvailable<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Books"><%=results[i].isAvailable %></a></td>
+                                                <td><a href="#" id="isSingleBook<%=i %>" data-type="select" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Books"><%=results[i].isSingleBook %></a></td>
+                                                <td><a href="#" id="VimeoId<%=i %>" data-type="text" data-pk="<%=results[i].id %>" data-url="resources/editRow.ashx?table=Books" data-title="Vimeo ID"><%=HttpUtility.HtmlEncode(results[i].VimeoId) %></a></td>
                                                 <td><% if (Web.Permissions.Check(int.Parse(Request["opId"]), "Books", "delete"))
                {%>
                                                     <a href="#" class="fa fa-times" onclick="DeleteRow(<%=results[i].id %>)"></a><br />
@@ -72,6 +76,8 @@
                                                 <th>Thumbnail</th>
                                                 <th>PDF File</th>
                                                 <th>Is Available</th>
+                                                <th>Is Single Book</th>
+                                                <th>Vimeo ID</th>
                                                 <th></th>
                                             </tr>
                                         </tfoot>
@@ -116,11 +122,22 @@
             $('#title<%=i%>').editable();
             $('#youtubeId<%=i%>').editable();
             $('#SignLanguage<%=i%>').editable();
+            $('#VimeoId<%=i%>').editable();
             $('#isAvailable<%=i%>').editable({
                 type: 'select',
                 title: 'choose if available',
                 placement: 'right',
                 value: '<%=results[i].isAvailable == true?"YES":"NO"%>',
+                source: [
+                    { value: 'YES', text: 'YES' },
+                    { value: 'NO', text: 'NO' }
+                ]
+            });
+            $('#isSingleBook<%=i%>').editable({
+                type: 'select',
+                title: 'choose if available',
+                placement: 'right',
+                value: '<%=results[i].isSingleBook == true?"YES":"NO"%>',
                 source: [
                     { value: 'YES', text: 'YES' },
                     { value: 'NO', text: 'NO' }
@@ -263,7 +280,18 @@
                                     <select name="categoryselect" id="categoryselect" runat="server" class="form-control"></select>
                                 </div>
                             </div>
-                            
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Is Single Book:</span>
+                                    <input type="checkbox" name="isSingleBook"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Vimeo ID:</span>
+                                    <input name="VimeoId" type="text" class="form-control" placeholder="Viemo ID">
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer clearfix">
 

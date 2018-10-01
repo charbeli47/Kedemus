@@ -63,6 +63,10 @@ namespace Web.resources
                         project.levelId = int.Parse(value);
                     else if (name.Contains("isAvailable"))
                         project.isAvailable = value == "YES";
+                    else if (name.Contains("isSingleBook"))
+                        project.isSingleBook = value == "YES";
+                    if (name.Contains("VimeoId"))
+                        project.VimeoId = value;
                     success = "success";
                     break;
                 case "BookUnites":

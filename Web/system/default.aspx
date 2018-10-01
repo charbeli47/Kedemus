@@ -259,7 +259,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
             }
-            
+            function getSearchedSubPage(s, page, pageNum, pageId)
+            {
+                $.ajax({
+                    cache: false,
+                    type: "GET",
+                    url: "getContent.ashx",
+                    contentType: "text/html;charset=utf-8",
+                    dataType: 'html',
+                    data: { section: page, opId:<%= op.id%>, args: "page="+pageNum+"&key="+s+"&pageId=" + pageId },
+                    success: function (response) {
+                        $(".right-side").html(response);
+                    }
+                });
+            }
             function getHashPage() {
                 var page = window.location.hash.replace("#!", "");
                 if(page!="")

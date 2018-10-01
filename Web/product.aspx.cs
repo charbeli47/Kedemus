@@ -29,9 +29,9 @@ namespace Web
                     bookId = int.Parse(Page.RouteData.Values["id"].ToString());
                     result = db.Books.Where(x => x.id == bookId).SingleOrDefault();
                     int userLevelId = (int)usr.levelId;
-                    if (result.levelId != userLevelId)
+                    if (result.levelId != userLevelId &&  (result.isSingleBook==null || result.isSingleBook == false))
                     {
-                        Response.Redirect("home");
+                        Response.Redirect("/");
                     }
                 }
                 else

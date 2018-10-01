@@ -68,7 +68,7 @@
                                         </tfoot>
                                     </table>
                                     <%var ppSize = page * pageSize; if (ppSize > resultCount) ppSize = resultCount; %>
-                                    <div class="row"><div class="col-xs-6"><div class="dataTables_info" id="example1_info">Showing <%=((page - 1) * pageSize) + 1 %> to <%= ppSize%> of <%= resultCount %> entries</div></div><div class="col-xs-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#!students.aspx" onclick="getSearchedContent('<%=searchKey %>','students.aspx','<%=page - 1 %>')">← Previous</a></li><li class="next"><a href="#!students.aspx" onclick="getSearchedContent('<%=searchKey %>','students.aspx','<%=page + 1 %>')">Next → </a></li></ul></div></div></div>
+                                    <div class="row"><div class="col-xs-6"><div class="dataTables_info" id="example1_info">Showing <%=((page - 1) * pageSize) + 1 %> to <%= ppSize%> of <%= resultCount %> entries</div></div><div class="col-xs-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#!students.aspx" onclick="getSearchedSubPage('<%=searchKey %>','students.aspx','<%=page - 1 %>','<%=pageId %>')">← Previous</a></li><li class="next"><a href="#!students.aspx" onclick="getSearchedSubPage('<%=searchKey %>','students.aspx','<%=page + 1 %>','<%=pageId %>')">Next → </a></li></ul></div></div></div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
@@ -84,7 +84,7 @@
             });
             function searchTable(s)
             {
-                getSearchedContent(s,'students.aspx','<%=page %>');
+                getSearchedSubPage(s,'students.aspx','<%=page %>', '<%=pageId%>');
             }
             </script>
 <%--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">--%>
@@ -214,7 +214,7 @@
                         contentType: false,
                         processData: false,
                         success: function (data) {
-                            getSubPage("students.aspx", '<%=Request["pageId"]%>');
+                            getSearchedSubPage('<%=searchKey%>','students.aspx','<%=page %>', '<%=pageId%>');
                             document.getElementById("submitBtn").disabled = false;
                             $("#loader").hide();
                             $(".modal-backdrop").hide();

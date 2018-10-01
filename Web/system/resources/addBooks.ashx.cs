@@ -39,7 +39,9 @@ namespace Web.system.resources
             bool isAvailable = context.Request["isAvailable"] == "on";
             int levelId = int.Parse(context.Request["levelselect"]);
             int categoryId = int.Parse(context.Request["categoryselect"]);
-            Book book = new Book { title = title, thumb = thumb_file, pdf = pdf_file, isAvailable = isAvailable, lang = lang, levelId = levelId, categoryId = categoryId};
+            bool isSingleBook = context.Request["isSingleBook"] == "on";
+            string VimeoId = context.Request["VimeoId"];
+            Book book = new Book { title = title, thumb = thumb_file, pdf = pdf_file, isAvailable = isAvailable, lang = lang, levelId = levelId, categoryId = categoryId, isSingleBook = isSingleBook, VimeoId = VimeoId};
             book = db.Books.Add(book);
             
             db.SaveChanges();

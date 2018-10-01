@@ -13,7 +13,7 @@
 <div id="columns" class="container">
  
 <div class="breadcrumb clearfix">
-<a class="home" href="<%=result.levelId != null ? "level-" + result.levelId : "home" %>" title="<%=lang == "en" ? "Return to Home" : "Retour à l'accueil" %>">
+<a class="home" href="<%=result.levelId != null ? "level-" + result.levelId : "/" %>" title="<%=lang == "en" ? "Return to Home" : "Retour à l'accueil" %>">
 <i class="fa fa-home"></i>
 </a>
 <span class="navigation-pipe">&gt;</span>
@@ -81,19 +81,19 @@
            
         </center>
     </div> 
-    <
-    <%--<%if (!string.IsNullOrEmpty(result.SignLanguageVideo))
+    
+    <%if (result.isSingleBook!=null && result.isSingleBook == true)
         { %>
 
-<div class="col-sm-12 col-md-12 col-lg-12" style="display:none" id="slVideo">
-<iframe width="100%" height="658" data-bgfit="cover" id="slplayer" data-bgposition="center center" src="https://www.youtube-nocookie.com/embed/<%=result.SignLanguageVideo %>?version=3&rel=0&autoplay=0&controls=0&loop=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+<div class="col-sm-12 col-md-12 col-lg-12" id="slVideo">
+<iframe width="100%" height="658" data-bgfit="cover" id="slplayer" data-bgposition="center center" src="https://kedemos.brandseducation.com/iframe.aspx?q=<%=result.VimeoId %>" frameborder="0" allowfullscreen></iframe>
 </div>
  <%}
-    %>--%>
+    %>
     <div class="container">
         <center>
             
-        <%if (result.BookUnites != null)
+        <%if (result.BookUnites != null && result.BookUnites.Count>0)
             {%>
             <div class="unitesBack">
                <% foreach (var unite in result.BookUnites.OrderBy(x=>x.OrderIndex))
