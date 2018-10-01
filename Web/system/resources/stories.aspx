@@ -129,7 +129,7 @@
                     $.ajax({
                         type: "POST",
                         url: "resources/uploadStoriesImage.ashx",
-                        data: { img: imRes, id: imId, field: "Img" }
+                        data: { img: imRes, id: imId, field: "thumb" }
                     })
 .done(function (msg) {
                         getSubPage('stories.aspx','<%=Request["pageId"] %>');
